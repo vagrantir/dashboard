@@ -65,7 +65,7 @@ define(['vuex', 'vue', 'jquery', 'chartsjs', 'axios'], function (Vuex, Vue, $, C
             }
         }
 
-        function generateNumberArray(count, n, p,) {
+        function generateNumberArray(count, n, p) {
             let result = [];
 
             n = n >= 0 ? n : 5
