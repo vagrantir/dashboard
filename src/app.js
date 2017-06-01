@@ -1,7 +1,3 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
-import Element from 'element-ui'
-
 define(['vuex', 'vue', 'jquery', 'chartsjs', 'axios'], function (Vuex, Vue, $, Chart, axios) {
         'use strict';
         window.Vue = Vue;
