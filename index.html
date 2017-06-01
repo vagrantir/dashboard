@@ -255,21 +255,6 @@
             </div>
         </div>
     </div>
-
-
-    <ul class="nav nav-tabs navbar navbar-info" role="tablist">
-        <li class="nav-item waves-effect waves-light" v-for="item in periodItems">
-            <a class="nav-link" :class="{active:(item == activePeriod)}" data-toggle="tab" href="#" role="tab"
-               v-on:click.prevent="clickPeriod(item)">{{ item.label }}</a>
-        </li>
-        <div class="btn-group pull-right hidden-sm-down" data-toggle="buttons">
-            <label class="btn btn-primary" :class="{active:(item == activeKind)}"
-                   v-for="item in kindItems" v-on:click.prevent="clickKind(item)">
-                <input type="radio" name="options" :id="item.itemId"
-                       autocomplete="off">{{item.label }}
-            </label>
-        </div>
-    </ul>
 </script>
 <script type="text/x-template" id="tpl-pager">
     <nav class="pull-right">
@@ -294,48 +279,6 @@
 </script>
 <script type="text/x-template" id="tpl-dummy">
 </script>
-
-
-<!-- /Vue templates -->
-<!-- SCRIPTS -->
-<!-- JQuery -->
-<!--<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>-->
-<!--<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>-->
-
-<!--<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>-->
-<!--<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
-
-<!--<script src="md/js/ripples.min.js"></script>-->
-<!--<script src="md/js/material.min.js"></script>-->
-<!--<script src="//fezvrasta.github.io/snackbarjs/dist/snackbar.min.js"></script>-->
-
-
-<!--<script src="//cdnjs.cloudflare.com/ajax/libs/noUiSlider/6.2.0/jquery.nouislider.min.js"></script>-->
-<!--<script>-->
-<!--$(function () {-->
-<!--$.material.init();-->
-<!--$(".shor").noUiSlider({-->
-<!--start: 40,-->
-<!--connect: "lower",-->
-<!--range: {-->
-<!--min: 0,-->
-<!--max: 100-->
-<!--}-->
-<!--});-->
-
-<!--$(".svert").noUiSlider({-->
-<!--orientation: "vertical",-->
-<!--start: 40,-->
-<!--connect: "lower",-->
-<!--range: {-->
-<!--min: 0,-->
-<!--max: 100-->
-<!--}-->
-<!--});-->
-<!--});-->
-<!--</script>-->
-
-
 <script data-main="js/loader" src="js/require.js"></script>
 
 </body>
