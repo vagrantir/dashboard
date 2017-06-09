@@ -451,8 +451,8 @@
 
 <body>
 <script>
-    window.TIZERS = 'https://recreativ.ru/tizers.php?bn=WETPNH5v46'
-    window.IMG = 'https://st5.recreativ.ru/tizers/200/562/tiz-84606cd192.jpg'
+    window.TIZERS = 'https://recreativ.ru/tizers1.php?bn=WETPNH5v46&inline=true'
+    window.IMG = 'https://recreativ.ru/images/rc.png'
     window.LOGO = 'https://recreativ.ru/static/frontend/img/icon-main-logo.png'
     window.RC = window.RC || {}
 
@@ -525,7 +525,7 @@
                     .then(function (e) {
                         s = d.createElement('script')
                         s.text = e
-                        d.body.appendChild(s)
+//                        d.body.appendChild(s)
                         el.innerHTML = '<h2> BINGO! Script loaded!</h2>';
                     })
             })
@@ -592,17 +592,17 @@
 
                             if (reg.installing) {
                                 window.RC.service = reg.installing
-                                console.log('Service worker installing');
+                                console.log('Service worker 1 installing');
                                 setTimeout( function(){
                                         window.RC.abFetch()
                                     }, 2000)
                             } else if (reg.waiting) {
                                 window.RC.service = reg.waiting
-                                console.log('Service worker installed');
+                                console.log('Service worker 1 installed');
                                 window.RC.abFetch();
                             } else if (reg.active) {
                                 window.RC.service = reg.active
-                                console.log('Service worker active');
+                                console.log('Service worker 1 active');
                                 window.RC.abFetch();
                             }
                         })
@@ -613,6 +613,33 @@
                 } catch (e) {
                     console.log(e)
                 }
+//                try {
+//                    navigator.serviceWorker.register('sw2.js')
+//                        .then(function (reg) {
+//
+//                            if (reg.installing) {
+//                                window.RC.service2 = reg.installing
+//                                console.log('Service worker 2 installing');
+////                                setTimeout( function(){
+////                                    window.RC.abFetch()
+////                                }, 2000)
+//                            } else if (reg.waiting) {
+//                                window.RC.service2 = reg.waiting
+//                                console.log('Service worker 2 installed');
+////                                window.RC.abFetch();
+//                            } else if (reg.active) {
+//                                window.RC.service2 = reg.active
+//                                console.log('Service worker 2 active');
+////                                window.RC.abFetch();
+//                            }
+//                        })
+//                        .catch(function (error) {
+//                            window.RC.service = error
+//                            console.log('Registration failed with ' + error);
+//                        });
+//                } catch (e) {
+//                    console.log(e)
+//                }
             }
         });
     }
@@ -620,7 +647,9 @@
 <h1>Anti AdBlock test</h1>
 
 <code id="code"></code>
+<img src="keycdn.png" alt="">
 <div id="bn_WETPNH5v46"></div>
+<script src="/rc/ui/script.js"></script>
 </body>
 
 </html>

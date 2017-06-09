@@ -1,15 +1,15 @@
 var swCache = null;
-caches.open('RC1').then(function (c) {
+caches.open('RC2').then(function (c) {
     swCache = c;
-    console.log('SW1:SW1: Cache opened')
+    console.log('SW2:SW2: Cache opened')
     console.log(c)
 })
 
 self.addEventListener('install', function (event) {
     // event.registerForeignFetch({scopes:['/'], origins: ['https://www.example.com/']})
     event.waitUntil(
-        caches.open('RC1').then(function (cache) {
-            console.log('SW1:RC1 Service go-go-go!')
+        caches.open('RC2').then(function (cache) {
+            console.log('SW2:RC Service go-go-go!')
             cache.addAll([
                 'https://recreativ.ru/tizers.php?bn=WETPNH5v46',
                 'https://recreativ.ru/tizers1.php?bn=WETPNH5v46&inline=true',
@@ -41,19 +41,19 @@ self.addEventListener('install', function (event) {
     );
 });
 self.addEventListener('activate', function (event) {
-    console.log('SW1:Activate event')
+    console.log('SW2:Activate event')
 })
 
 self.addEventListener('sync', function (event) {
-    console.log('SW1:Sync event')
+    console.log('SW2:Sync event')
 })
 
 self.addEventListener('push', function (event) {
-    console.log('SW1:Push event')
+    console.log('SW2:Push event')
 })
 
 self.addEventListener('message', function (event) {
-    console.log('SW1:Message event:')
+    console.log('SW2:Message event:')
     console.log(event.data)
     switch (event.data.type) {
         case 'script': {
@@ -71,31 +71,24 @@ self.addEventListener('message', function (event) {
 })
 
 self.addEventListener('fetch', function (event) {
-    console.log('SW1:fetch listener');
+    console.log('SW2:fetch listener');
     console.log(event.request.url);
     console.log(event.request.headers);
     var proxy = new Request('https://www.keycdn.com/blog/wp-content/uploads/2015/08/keycdn.png')
     event.respondWith(
         caches.match(event.request).then(function (response) {
             if (response) {
-                console.log('SW1:Found response in cache:');
+                console.log('SW2:Found response in cache:');
                 console.log(JSON.stringify(response));
                 return response;
             }
-            console.log('SW1:No response found in cache. About to fetch from network...');
+            console.log('SW2:No response found in cache. About to fetch from network...');
 
             return fetch(event.request)
                 .then(function (response) {
-                    console.log('SW1:Response from network is:');
-                    if (response.status !== 404){
-                        return response;
-                    }
-                    return response.text()
-                })
-                .then(function(text){
-                    var fake = new Response(text.replace("<head>", "<head><script></script>"));
-
-                    return fake;
+                    console.log('SW2:Response from network is:');
+                    console.log(JSON.stringify(response));
+                    return response;
                 })
                 .catch(function (error) {
                     console.error('Fetching failed:', error);
@@ -103,7 +96,7 @@ self.addEventListener('fetch', function (event) {
                     console.log(proxy.url);
                     return fetch(proxy)
                         .then(function (response) {
-                            console.log('SW1:Response from network is:');
+                            console.log('SW2:Response from network is:');
                             console.log(JSON.stringify(response));
                             return response;
                         })
@@ -147,3 +140,4 @@ function loadImage(event) {
             })
     )
 }
+

