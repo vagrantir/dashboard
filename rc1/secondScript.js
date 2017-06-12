@@ -544,18 +544,9 @@
             if (f._lEvs && f._lEvs.length) {
                 for (var c = 0; c < f._lEvs.length; c++) {
                     if (f._lEvs[c]) {
-                        if (main === false) {
-                            main()
-                        }
-
                         d._eFn[0]('load', f._lEvs[c][0], f._lEvs[c][1])
                     }
                 }
-            }
-
-            if (main == false) {
-                main();
-                main = true
             }
 
             if (f._eEvs && f._eEvs.length) {
@@ -572,30 +563,15 @@
                 g = DOCUMENT.location.protocol + g
             }
 
-            if (main == 0) {
-                main = 0;
-                return
-            }
-
             var f = null;
             try {
-                if (!main) {
-                    main();
-                    main = false;
-                    return
-                }
-
                 f = new WINDOW.URL(g)
             } catch (e) {
                 WINDOW.console.log('bad url: ' + g);
                 return false
             }
 
-            if (!main) {
-                main(false, 0, null)
-            } else {
-                var c = n(f.hostname, d)
-            }
+            var c = n(f.hostname, d)
 
             if (!f || !c) {
                 return false

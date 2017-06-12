@@ -81,14 +81,19 @@
 
         function ajaxGetUri(ajaxUri, callbackFunction) {
             function onLoad() {
+                window.logs([
+                    'ajax loaded: '+ajaxUri,
+                ])
                 callbackFunction(ajaxRequest)
             }
 
             function onError() {
+                window.logs([
+                    'ajax load failed: '+ajaxUri,
+                ])
                 disableStylesByAjaxRequestTimeout(ajaxRequest)
             }
 
-            window.logs(ajaxUri)
             var ajaxRequest = new WINDOW.XMLHttpRequest();
             ajaxRequest.open("GET", ajaxUri, true);
             ajaxRequest.responseType = "text";
@@ -339,9 +344,7 @@
 
         stateData.er_load = []; // stack of error event targets
         stateData.sc_load = []; // stack of load event targets
-
         stateData.docs = []; // stack of documents - root and iframe
-
         stateData.vars = paramsObjectFactory("proxy_host", "", "session", dict[4]); // x['vars'] =
         stateData.dloaded = false; // x['dloaded'] ? document loaded
 

@@ -3,10 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <title>Test Anti-AdBlock with iframe</title>
-    <script src="../../rc1/firstScript.js"></script>
+    <script>
+        var blob = new Blob(['console.log("Hello!")'], {type: 'application/javascript'});
+        var url = URL.createObjectURL(blob);
+        //        const webWorker = new Worker(url);
+        window.addEventListener('load', function () {
+
+            var ifr = document.createElement('iframe')
+            ifr.src = url
+            document.body.appendChild(ifr)
+
+            if ('serviceWorker' in navigator) {
+                try {
+                    navigator.serviceWorker.register('/aabsw.js')
+                        .then(function (reg) {
+                            if (reg.installing) {
+                                console.log('Service worker 1 installing');
+                            } else if (reg.waiting) {
+                                console.log('Service worker 1 installed');
+                            } else if (reg.active) {
+                                console.log('Service worker 1 active');
+                                try{
+                                    navigator.serviceWorker.unregister(reg);
+                                } catch(e){
+
+                                }
+                            }
+                            fetch(new Request('/adv.png'))
+                                .then(function (response) {
+                                    window.RC = {url: URL.createObjectURL(response.blob())}
+                                })
+                        })
+                        .catch(function (error) {
+                            console.log('Registration failed with ' + error);
+                        });
+                } catch (e) {
+                    console.log(e)
+                }
+            }
+        })
+        ;
+
+    </script>
+    <!--<script src="../../rc1/firstScript.js"></script>-->
 </head>
 <body>
+<h1>AAB test</h1>
+<img src="/adv.png" alt="keycdn">
 <div id="bn_WETPNH5v46"></div>
-<script src="https://recreativ.ru/tizers.php?bn=WETPNH5v46&inline=true"></script>
+<!--<script src="https://recreativ.ru/tizers1.php?bn=WETPNH5v46&inline=true&iframe=true"></script>-->
+<!--<iframe src="https://recreativ.ru/tizers1.php?bn=WETPNH5v46&inline=true&iframe=true"></iframe>-->
 </body>
 </html>
