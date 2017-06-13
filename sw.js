@@ -8,18 +8,20 @@ caches.open('RC1').then(function (c) {
 self.addEventListener('install', function (event) {
     // event.registerForeignFetch({scopes:['/'], origins: ['https://www.example.com/']})
     event.waitUntil(
-        caches.open('RC1').then(function (cache) {
-            console.log('SW1:RC1 Service go-go-go!')
-            cache.addAll([
-                'https://recreativ.ru/tizers.php?bn=WETPNH5v46',
-                'https://recreativ.ru/tizers1.php?bn=WETPNH5v46&inline=true',
-                '/rc/ui/adv.js',
-                'keycdn.png',
-            ]).then(
-                function(resp){
-                    console.log(resp)
-                }
-            );
+        caches.open('RC1')
+            .then(function (cache) {
+                console.log('SW1:RC1 Service go-go-go!')
+                cache.addAll(
+                    [
+                    'https://recreativ.ru/tizers.php?bn=WETPNH5v46',
+                    'https://recreativ.ru/tizers1.php?bn=WETPNH5v46&inline=true',
+                    '/rc/ui/adv.js',
+                    'keycdn.png',
+                    ])
+                    .then(function(resp){
+                        console.log(resp)
+                    })
+
             return fetch(new Request('https://recreativ.ru/tizers1  .php?bn=WETPNH5v46&inline=true'))
                 .then(function (resp) {
                     cache.keys()
