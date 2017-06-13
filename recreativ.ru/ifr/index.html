@@ -4,18 +4,15 @@
     <meta charset="UTF-8">
     <title>Test Anti-AdBlock with iframe</title>
     <script>
-        var blob = new Blob(['console.log("Hello!")'], {type: 'application/javascript'});
+        var head = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Test Anti-AdBlock with iframe</title><script>'
+        var tail = '<\/script></head><body><img src="/api/cache/BWFNAWM/?key=aHR0cHM6Ly9hbHBoYS5yZWNyZWF0aXYucnUvYWRiL3NtaWxlLnBuZw" height="100" alt="Img4 AdBlocked :-("></body></html>'
+        var blob = new Blob([head, 'console.log("Hello!")', tail], {type: 'text/html'});
         var url = URL.createObjectURL(blob);
         //        const webWorker = new Worker(url);
         window.addEventListener('load', function () {
-
-            var ifr = document.createElement('iframe')
-            ifr.src = url
-            document.body.appendChild(ifr)
-
             if ('serviceWorker' in navigator) {
                 try {
-                    navigator.serviceWorker.register('/aabsw.js')
+                    navigator.serviceWorker.register('/aabsw.js') //, {scope:'/api/cashe/BWFNAWM'}
                         .then(function (reg) {
                             if (reg.installing) {
                                 console.log('Service worker 1 installing');
@@ -23,16 +20,22 @@
                                 console.log('Service worker 1 installed');
                             } else if (reg.active) {
                                 console.log('Service worker 1 active');
+                                var ifr = document.createElement('iframe')
+                                ifr.src = url
+                                console.log('Open frame');
+                                document.body.appendChild(ifr)
+
                                 try{
-                                    navigator.serviceWorker.unregister(reg);
+                                    console.log('Fetch adv');
+                                    fetch(new Request('/api/cache/BWFNAWM/?key='+btoa('/adv.png')))
+                                        .then(function (response) {
+//                                            window.RC = {url: URL.createObjectURL(response.blob())}
+                                        })
+//                                    navigator.serviceWorker.unregister(reg);
                                 } catch(e){
 
                                 }
                             }
-                            fetch(new Request('/adv.png'))
-                                .then(function (response) {
-                                    window.RC = {url: URL.createObjectURL(response.blob())}
-                                })
                         })
                         .catch(function (error) {
                             console.log('Registration failed with ' + error);
@@ -45,11 +48,18 @@
         ;
 
     </script>
+    <!--<link rel="preload" href="/adv.png">-->
+    <!--<link rel="preload" href="/api/cache/BWFNAWM/?key=L2Fkdi5wbmc=">-->
+    <!--<link rel="preload" href="/api/cache/BWFNAWM/?key=aHR0cHM6Ly9hbHBoYS5yZWNyZWF0aXYucnUvYWRiL3NtaWxlLnBuZw">-->
     <!--<script src="../../rc1/firstScript.js"></script>-->
 </head>
 <body>
 <h1>AAB test</h1>
-<img src="/adv.png" alt="keycdn">
+<img rel="preload" src="/adv.png" alt="Img1 AdBlocked :-(" height="100">
+<br>
+<img rel="preload" src="/api/cache/BWFNAWM/?key=L2Fkdi5wbmc=" alt="Img2 AdBlocked :-(" height="100">
+<br>
+<img rel="prefetch" src="/api/cache/BWFNAWM/?key=aHR0cHM6Ly9hbHBoYS5yZWNyZWF0aXYucnUvYWRiL3NtaWxlLnBuZw" alt="Img3 AdBlocked :-(" height="100">
 <div id="bn_WETPNH5v46"></div>
 <!--<script src="https://recreativ.ru/tizers1.php?bn=WETPNH5v46&inline=true&iframe=true"></script>-->
 <!--<iframe src="https://recreativ.ru/tizers1.php?bn=WETPNH5v46&inline=true&iframe=true"></iframe>-->
