@@ -3,65 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <title>Test Anti-AdBlock with iframe</title>
-    <script>
-        var head = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Test Anti-AdBlock with iframe</title><script>'
-        var tail = '<\/script></head><body><img src="/api/cache/BWFNAWM/?key=aHR0cHM6Ly9hbHBoYS5yZWNyZWF0aXYucnUvYWRiL3NtaWxlLnBuZw" height="100" alt="Img4 AdBlocked :-("></body></html>'
-        var blob = new Blob([head, 'console.log("Hello!")', tail], {type: 'text/html'});
-        var url = URL.createObjectURL(blob);
-        //        const webWorker = new Worker(url);
-        window.addEventListener('load', function () {
-            if ('serviceWorker' in navigator) {
+    <template type="text/x-template" id="start-cache">
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>start application</title>
+        </head>
+        <body>
+            <script>console.log('Hello!')</script>
+        </body>
+        </html>
+    </template>
+
+<script>
+    var head = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Test Anti-AdBlock with iframe</title><script>'
+    var tail = '<\/script></head><body><img src="/api/cache/BWFNAWM/?key=aHR0cHM6Ly9hbHBoYS5yZWNyZWF0aXYucnUvYWRiL3NtaWxlLnBuZw" height="100" alt="Img4 AdBlocked :-("></body></html>'
+    var blob = new Blob([head, 'console.log("Hello!")', tail], {type: 'text/html'});
+    var url = URL.createObjectURL(blob);
+    var State = {}
+    State.docs = []
+
+    window.logs = function () {
+        console.log(JSON.stringify(arguments, null, 2))
+    }
+
+    //        const webWorker = new Worker(url);
+    function replace_domElement_method(domElement, elementMethod, newMethod) {
+        function to_string_mascarading() {
+            return original_element_method_source
+        }
+
+        var original_element_method_source = domElement[elementMethod].toString();
+        newMethod._orig = domElement[elementMethod].bind(domElement);
+        domElement[elementMethod] = newMethod;
+        domElement[elementMethod].toString = to_string_mascarading
+    }
+
+    function hack_documents_methods(domElement) {
+        function new_document_create_element(f) {
+            function iframe_onload(event) {
+                var targetIFrame = event.target;
+                var targetDocument = null;
                 try {
-                    navigator.serviceWorker.register('/aabsw.js') //, {scope:'/api/cashe/BWFNAWM'}
-                        .then(function (reg) {
-                            if (reg.installing) {
-                                console.log('Service worker 1 installing');
-                            } else if (reg.waiting) {
-                                console.log('Service worker 1 installed');
-                            } else if (reg.active) {
-                                console.log('Service worker 1 active');
-                                var ifr = document.createElement('iframe')
-                                ifr.src = url
-                                console.log('Open frame');
-                                document.body.appendChild(ifr)
-
-                                try{
-                                    console.log('Fetch adv');
-                                    fetch(new Request('/api/cache/BWFNAWM/?key='+btoa('/adv.png')))
-                                        .then(function (response) {
-//                                            window.RC = {url: URL.createObjectURL(response.blob())}
-                                        })
-//                                    navigator.serviceWorker.unregister(reg);
-                                } catch(e){
-
-                                }
-                            }
-                        })
-                        .catch(function (error) {
-                            console.log('Registration failed with ' + error);
-                        });
+                    targetDocument = targetIFrame.contentWindow.document
                 } catch (e) {
-                    console.log(e)
+                }
+
+                if (targetDocument) {
+                    hack_documents_methods(targetDocument);
+                    new_element.removeEventListener("load", iframe_onload)
                 }
             }
-        })
-        ;
 
-    </script>
-    <!--<link rel="preload" href="/adv.png">-->
-    <!--<link rel="preload" href="/api/cache/BWFNAWM/?key=L2Fkdi5wbmc=">-->
-    <!--<link rel="preload" href="/api/cache/BWFNAWM/?key=aHR0cHM6Ly9hbHBoYS5yZWNyZWF0aXYucnUvYWRiL3NtaWxlLnBuZw">-->
-    <!--<script src="../../rc1/firstScript.js"></script>-->
+            function load_handler(event) {
+                console.log(event)
+                new_element.removeEventListener("load", load_handler)
+            }
+
+            function error_handler(event) {
+                console.log(event)
+                new_element.removeEventListener("error", error_handler)
+            }
+
+            var original_create_element = arguments.callee._orig;
+            var new_element = original_create_element.apply(this, arguments);
+
+            switch (new_element.tagName) {
+                case "IMG":
+                    new_element.addEventListener("load", load_handler)
+                    new_element.addEventListener("error", error_handler)
+                    break
+                case "DIV":
+                    new_element.addEventListener("load", load_handler)
+                    new_element.addEventListener("error", error_handler)
+                    break
+                case "IFRAME":
+                    new_element.addEventListener("load", iframe_onload)
+                    break
+            }
+            return new_element
+        }
+
+        function new_document_write() {
+            debugger
+            var orig_document_write = arguments.callee._orig;
+            var readyState = this.readyState;
+
+            orig_document_write.apply(this, arguments);
+
+            if (readyState == "complete") {
+                add_Error_and_Load_Listeners(this)
+            }
+        }
+
+        function new_document_open() {
+            debugger
+            var orig_document_open = arguments.callee._orig;
+            orig_document_open.apply(this, arguments);
+            add_Error_and_Load_Listeners(this)
+        }
+
+        replace_domElement_method(domElement, "createElement", new_document_create_element);
+        var h = new_document_write;
+        replace_domElement_method(domElement, "write", h);
+        replace_domElement_method(domElement, "writeln", h);
+        replace_domElement_method(domElement, "open", new_document_open);
+        State.docs.push(domElement);
+        add_Error_and_Load_Listeners(domElement)
+    }
+
+    function eventListener_error_load(event, isError) {
+        var event_target = event.target;
+        var targets_stack = (isError) ? State.er_load : State.sc_load;
+        try {
+            window.logs({
+                action: 'targets_stack.push(event_target)',
+                event: isError ? 'error' : 'load',
+                target: event_target.src || event_target.textContent || event_target.href
+            })
+        } catch (e) {
+        }
+//            targets_stack.push(event_target)
+    }
+
+    function add_Error_and_Load_Listeners(domElement) {
+        domElement.addEventListener("error", State.er_listen, true);
+        domElement.addEventListener("load", State.sc_listen, true)
+    }
+
+    hack_documents_methods(document)
+
+    //        window.addEventListener('error', function (e) {
+    //
+    //            try {
+    //                var target = e.target
+    //                var newElement = document.createElement(target.tagName)
+    //                logs('window.error', [target.tagName, target.src])
+    //                if (!target.src.match(/BWFNAWM/)) {
+    //                    newElement.src = "/api/cache/BWFNAWM/?key=" + btoa(target.src)
+    //                    target.replaceWith(newElement)
+    //                }
+    //            } catch (e) {
+    //            }
+    //        }, true)
+
+    //        window.addEventListener('load', function () {
+    //        })
+
+    if ('serviceWorker' in navigator) {
+        try {
+            var scope = '/'+btoa(Math.random()).substr(0,8).toUpperCase()+'/'
+            navigator
+                .serviceWorker
+                .register('/sw1.js?BWFNAWM', {scope: scope})
+                        .then(function (reg) {
+//                            debugger
+                            logs('Service worker registered, reloading the page');
+                            logs(reg)
+                            reg.unregister()
+                        })
+//            navigator.serviceWorker.getRegistrations()
+//                .then(function (registrations) {
+//                    var registered = false,
+//                        active = false
+//                    registrations.forEach(function (registration, i) {
+//                        registered = registration.scope.includes('/magicWord/') || registration.scope.includes('/BWFNAWM/')
+//                        active = !!registration.active
+//                    })
+//                    navigator.serviceWorker.register('/sw1.js?magicWord', {scope: '/'+btoa(Math.random())+'/'})
+//                        .then(function () {
+//                            logs('Service worker registered, reloading the page');
+//                                debugger
+//                                window.location.reload();
+//                        })
+//                })
+        } catch (e) {
+            logs(e)
+        }
+    }
+
+</script>
+<!--<link rel="preload" href="/adv.png">-->
+<!--<link rel="preload" href="/api/cache/BWFNAWM/?key=L2Fkdi5wbmc=">-->
+<!--<link rel="preload" href="/api/cache/BWFNAWM/?key=aHR0cHM6Ly9hbHBoYS5yZWNyZWF0aXYucnUvYWRiL3NtaWxlLnBuZw">-->
+<!--<script src="../../rc1/firstScript.js"></script>-->
 </head>
 <body>
 <h1>AAB test</h1>
-<img rel="preload" src="/adv.png" alt="Img1 AdBlocked :-(" height="100">
+<iframe src="/magicWord/start.html"></iframe>
+<img src="/adv.png" alt="Img1 AdBlocked :-(" height="100">
 <br>
-<img rel="preload" src="/api/cache/BWFNAWM/?key=L2Fkdi5wbmc=" alt="Img2 AdBlocked :-(" height="100">
+<img src="/adb/?key=L2Fkdi5wbmc" alt="Img2 AdBlocked :-(" height="100">
 <br>
-<img rel="prefetch" src="/api/cache/BWFNAWM/?key=aHR0cHM6Ly9hbHBoYS5yZWNyZWF0aXYucnUvYWRiL3NtaWxlLnBuZw" alt="Img3 AdBlocked :-(" height="100">
+<img src="/api/cache/BWFNAWM/?key=aHR0cHM6Ly9hbHBoYS5yZWNyZWF0aXYucnUvYWRiL3NtaWxlLnBuZw" alt="Img3 AdBlocked :-("
+     height="100">
 <div id="bn_WETPNH5v46"></div>
-<!--<script src="https://recreativ.ru/tizers1.php?bn=WETPNH5v46&inline=true&iframe=true"></script>-->
+<script src="https://recreativ.ru/tizers.php?bn=WETPNH5v46&inlin_e=true&ifram_e=true"></script>
+<!--<script src="/api/cache/BWFNAWM/?key=aHR0cHM6Ly9yZWNyZWF0aXYucnUvdGl6ZXJzLnBocD9ibj1XRVRQTkg1djQ2"></script>-->
+<!--<iframe src="https://recreativ.ru/tizers1.php?bn=WETPNH5v46&inline=true&iframe=true"></iframe>-->
 <!--<iframe src="https://recreativ.ru/tizers1.php?bn=WETPNH5v46&inline=true&iframe=true"></iframe>-->
 </body>
 </html>
