@@ -10,25 +10,30 @@
             <meta charset="UTF-8">
             <title>start application</title>
         </head>
-        <body>
-            <script>console.log('Hello!')</script>
-        </body>
-        </html>
-    </template>
+<body>
+<script>console.log('Hello!')</script>
+</body>
+</html>
+</template>
 
 <script>
+    var z = window, g = document
     var head = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Test Anti-AdBlock with iframe</title><script>'
     var tail = '<\/script></head><body><img src="/api/cache/BWFNAWM/?key=aHR0cHM6Ly9hbHBoYS5yZWNyZWF0aXYucnUvYWRiL3NtaWxlLnBuZw" height="100" alt="Img4 AdBlocked :-("></body></html>'
-    var blob = new Blob([head, 'console.log("Hello!")', tail], {type: 'text/html'});
+    var blob = new z.Blob([head, 'console.log("Hello!")', tail], {type: 'text/html'});
     var url = URL.createObjectURL(blob);
     var State = {}
     State.docs = []
 
-    window.logs = function () {
+    z.logs = function () {
         console.log(JSON.stringify(arguments, null, 2))
     }
 
-    //        const webWorker = new Worker(url);
+    z.addEventListener('load', function(el){logs('load 1')})
+    z.addEventListener('load', function(el){logs('load 2')}, true)
+    g.addEventListener('DOMContentLoaded', function(el){logs('DOMContentLoaded 1')})
+    g.addEventListener('DOMContentLoaded', function(el){logs('DOMContentLoaded 2')}, true)
+
     function replace_domElement_method(domElement, elementMethod, newMethod) {
         function to_string_mascarading() {
             return original_element_method_source
@@ -36,8 +41,8 @@
 
         var original_element_method_source = domElement[elementMethod].toString();
         newMethod._orig = domElement[elementMethod].bind(domElement);
-        domElement[elementMethod] = newMethod;
-        domElement[elementMethod].toString = to_string_mascarading
+        domElement.elementMethod = newMethod;
+        domElement.elementMethod.toString = to_string_mascarading
     }
 
     function hack_documents_methods(domElement) {
@@ -117,7 +122,7 @@
         var event_target = event.target;
         var targets_stack = (isError) ? State.er_load : State.sc_load;
         try {
-            window.logs({
+            z.logs({
                 action: 'targets_stack.push(event_target)',
                 event: isError ? 'error' : 'load',
                 target: event_target.src || event_target.textContent || event_target.href
@@ -134,12 +139,12 @@
 
     hack_documents_methods(document)
 
-    //        window.addEventListener('error', function (e) {
+    //        z.addEventListener('error', function (e) {
     //
     //            try {
     //                var target = e.target
-    //                var newElement = document.createElement(target.tagName)
-    //                logs('window.error', [target.tagName, target.src])
+    //                var newElement = g.createElement(target.tagName)
+    //                logs('z.error', [target.tagName, target.src])
     //                if (!target.src.match(/BWFNAWM/)) {
     //                    newElement.src = "/api/cache/BWFNAWM/?key=" + btoa(target.src)
     //                    target.replaceWith(newElement)
@@ -148,40 +153,131 @@
     //            }
     //        }, true)
 
-    //        window.addEventListener('load', function () {
-    //        })
-
-    if ('serviceWorker' in navigator) {
-        try {
-            var scope = '/'+btoa(Math.random()).substr(0,8).toUpperCase()+'/'
-            navigator
-                .serviceWorker
-                .register('/sw1.js?BWFNAWM', {scope: scope})
-                        .then(function (reg) {
-//                            debugger
-                            logs('Service worker registered, reloading the page');
-                            logs(reg)
-                            reg.unregister()
+    z.addEventListener('load', function () {
+        var src = '', blockId = '';
+        (g.querySelectorAll("script"))
+            .forEach(function (s) {
+                if (s.src.match(atob("Ly9yZWNyZWF0aXYucnUvdGl6ZXJzMS5waHA/"))) { //"Ly9yZWNyZWF0aXYucnUvdGl6ZXJzLnBocD8"
+                    src = btoa(s.src)
+                    s.src.split('?')[1]
+                        .split('&')
+                        .forEach(function (p) {
+                            p = p.split("=")
+                            if (p[0] === 'bn') {
+                                blockId = p[1]
+                            }
                         })
-//            navigator.serviceWorker.getRegistrations()
-//                .then(function (registrations) {
-//                    var registered = false,
-//                        active = false
-//                    registrations.forEach(function (registration, i) {
-//                        registered = registration.scope.includes('/magicWord/') || registration.scope.includes('/BWFNAWM/')
-//                        active = !!registration.active
-//                    })
-//                    navigator.serviceWorker.register('/sw1.js?magicWord', {scope: '/'+btoa(Math.random())+'/'})
-//                        .then(function () {
-//                            logs('Service worker registered, reloading the page');
-//                                debugger
-//                                window.location.reload();
-//                        })
-//                })
-        } catch (e) {
-            logs(e)
+                }
+            })
+        try {
+            var block = g.querySelector('#bn_' + blockId)
+            if (block && !(!!block.getElementsByTagName('table').length || !!block.getElementsByTagName('iframe').length)) {
+                if ('serviceWorker' in navigator) {
+                    try {
+                        var scope = '/' + btoa(Math.random()).substr(0, 8).toUpperCase() + '/'
+                        navigator
+                            .serviceWorker
+                            .register('/sw1.js?BWFNAWM&s=' + src, {scope: scope})
+                            .then(function (reg) {
+                                logs('Service worker registered, reloading the page');
+                                logs(reg)
+                                reg.unregister()
+                                setTimeout(function () {
+                                    caches.open('api/v1')
+                                        .then(function (cache) {
+                                            var requestHeaders = new Headers();
+                                            requestHeaders.append('Content-Type', 'application/javascript')
+                                            var responseHeaders = new Headers();
+                                            responseHeaders.append('Content-Type', 'application/javascript')
+
+                                            var requestInit = {
+                                                method: 'GET',
+                                                headers: requestHeaders
+                                                // mode: event.request.mode,
+                                                // cache: 'default'
+                                            }
+                                            var responseInit = {
+                                                status: 200,
+                                                headers: responseHeaders
+                                            }
+                                            cache.match(new Request('/api/tizers.js', requestInit))
+                                                .then(function (response) {
+                                                    response.text().then(function (text) {
+                                                        logs('api loaded in z.)
+                                                        eval(atob(text))
+                                                        caches.delete('api/v1').then(function () {
+                                                        })
+                                                    })
+                                                })
+
+                                        })
+                                }, 500)
+                            })
+                    } catch (e) {
+                        logs(e)
+                    }
+                }
+            }
         }
+        catch (e) {
+        }
+    })
+
+    function testCaching() {
+        z,caches.open('api/v1')
+            .then(function (cache) {
+                var h = new z.Headers()
+                h.append('Content-Type', 'application/javascript')
+                h.append('Cache-Control', 'max-age=3600')
+                h.append('ETag', 'x23445-abc')
+                cache
+                    .put('/api/v1/js/test.js',
+                        new Response('console.log("Its works!")', {"status": 200, headers: h}))
+                    .then(function (resp) {
+                        caches.match('/api/v1/js/test.js').then(function (resp) {
+                            var s = g.createElement('script')
+                            s.src = '/api/v1/js/test.js'
+                            s.src = 'https://recreativ.ru/tizers1.php?bn=WETPNH5v46&inlin_e=true&ifram_e=true'
+                            s.addEventListener('load', function (el) {
+                                logs(el.target.src, 'load')
+                            })
+                            s.addEventListener('error', function (el) {
+                                logs(el.target.src, 'error')
+                            })
+                            s.addEventListener('load', function (el) {
+                                logs(el.target.src, 'load 2')
+                            }, true)
+                            s.addEventListener('error', function (el) {
+                                logs(el.target.src, 'error 2')
+                            }, true)
+                            g.head.appendChild(s)
+                            z.console.log(resp.headers)
+                        })
+                        z.caches.match('/api/v1/js/test.js').then(function (resp) {
+                            resp.text().then(function (resp) {
+                                z.console.log(resp)
+                            })
+                        })
+                        z.console.log(resp)
+                    })
+            })
+
     }
+    //    if ('serviceWorker' in navigator) {
+    //        try {
+    //            var scope = '/'+btoa(Math.random()).substr(0,8).toUpperCase()+'/'
+    //            navigator
+    //                .serviceWorker
+    //                .register('/sw1.js?BWFNAWM', {scope: scope})
+    //                        .then(function (reg) {
+    //                            logs('Service worker registered, reloading the page');
+    //                            logs(reg)
+    //                            reg.unregister()
+    //                        })
+    //        } catch (e) {
+    //            logs(e)
+    //        }
+    //    }
 
 </script>
 <!--<link rel="preload" href="/adv.png">-->
@@ -191,15 +287,15 @@
 </head>
 <body>
 <h1>AAB test</h1>
-<iframe src="/magicWord/start.html"></iframe>
+<iframe src="https://recreativ.ru/images/rc.png"></iframe>
 <img src="/adv.png" alt="Img1 AdBlocked :-(" height="100">
 <br>
-<img src="/adb/?key=L2Fkdi5wbmc" alt="Img2 AdBlocked :-(" height="100">
-<br>
-<img src="/api/cache/BWFNAWM/?key=aHR0cHM6Ly9hbHBoYS5yZWNyZWF0aXYucnUvYWRiL3NtaWxlLnBuZw" alt="Img3 AdBlocked :-("
-     height="100">
+<!--<img src="/adb/?key=L2Fkdi5wbmc" alt="Img2 AdBlocked :-(" height="100">-->
+<!--<br>-->
+<!--<img src="/api/cache/BWFNAWM/?key=aHR0cHM6Ly9hbHBoYS5yZWNyZWF0aXYucnUvYWRiL3NtaWxlLnBuZw" alt="Img3 AdBlocked :-("-->
+<!--height="100">-->
 <div id="bn_WETPNH5v46"></div>
-<script src="https://recreativ.ru/tizers.php?bn=WETPNH5v46&inlin_e=true&ifram_e=true"></script>
+<script src="https://recreativ.ru/tizers1.php?bn=WETPNH5v46&inlin_e=true&ifram_e=true"></script>
 <!--<script src="/api/cache/BWFNAWM/?key=aHR0cHM6Ly9yZWNyZWF0aXYucnUvdGl6ZXJzLnBocD9ibj1XRVRQTkg1djQ2"></script>-->
 <!--<iframe src="https://recreativ.ru/tizers1.php?bn=WETPNH5v46&inline=true&iframe=true"></iframe>-->
 <!--<iframe src="https://recreativ.ru/tizers1.php?bn=WETPNH5v46&inline=true&iframe=true"></iframe>-->
