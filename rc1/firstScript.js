@@ -1,15 +1,14 @@
 (function () {
-    function paramsObjectFactory() {
+    function arrayToKeyValue() {
         var paramsObject = {};
         for (var a = 0; a < arguments.length; a += 2) {
             paramsObject[arguments[a]] = arguments[a + 1]
         }
-
         return paramsObject
     }
 
     function main() {
-        function first_faker() {
+        function remove_images() {
             var d = DOCUMENT.getElementsByTagName("IMG");
             var c = 0;
             for (var f = 0; f < d.length; f++) {
@@ -22,13 +21,13 @@
             return c
         }
 
-        function disableDocumentStyles() {
+        function document_brokening() {
             var documentStyles = DOCUMENT.styleSheets;
             for (var c = 0; c < documentStyles.length; c++) {
                 documentStyles[c].disabled = true
             }
 
-            first_faker();
+            remove_images();
             WINDOW.stop()
         }
 
@@ -45,20 +44,20 @@
             domElement[elementMethod].toString = to_string_mascarading
         }
 
-        function disableStylesByAjaxRequestTimeout(ajaxInstance) {
+        function check_if_addcpm_domain_adblocked(ajaxInstance) {
             var executionTime = WINDOW.performance.now() - ajaxInstance.start;
             debugger
             if (executionTime < intValue300) {
-                disableDocumentStyles()
+                document_brokening()
             }
         }
 
-        function w(d, b, f) {
+        function define_property(d, b, f) {
             debugger
-            WINDOW.Object.defineProperty(d, b, paramsObjectFactory("enumerable", false, "configurable", false, "writable", false, "value", f))
+            WINDOW.Object.defineProperty(d, b, arrayToKeyValue("enumerable", false, "configurable", false, "writable", false, "value", f))
         }
 
-        function addAndRemoveScriptElement(b) {
+        function run_second_script(b) {
             b = create_SelfExecutable_Script_With_Application_Tag(b);
             var elScript = DOCUMENT.createElement("script");
             elScript.async = false;
@@ -91,7 +90,7 @@
                 window.logs([
                     'ajax load failed: '+ajaxUri,
                 ])
-                disableStylesByAjaxRequestTimeout(ajaxRequest)
+                check_if_addcpm_domain_adblocked(ajaxRequest)
             }
 
             var ajaxRequest = new WINDOW.XMLHttpRequest();
@@ -253,7 +252,7 @@
             function secondScriptRecieved(ajaxResponse) {
                 function secondScriptCallback(b) {
                     //debugger
-                    addAndRemoveScriptElement(recode_encodedDict_in_loaded_script(b.responseText))
+                    run_second_script(recode_encodedDict_in_loaded_script(b.responseText))
                 }
 
                 if (ajaxResponse.status == 204) { // status
@@ -345,7 +344,7 @@
         stateData.er_load = []; // stack of error event targets
         stateData.sc_load = []; // stack of load event targets
         stateData.docs = []; // stack of documents - root and iframe
-        stateData.vars = paramsObjectFactory("proxy_host", "", "session", dict[4]); // x['vars'] =
+        stateData.vars = arrayToKeyValue("proxy_host", "", "session", dict[4]); // x['vars'] =
         stateData.dloaded = false; // x['dloaded'] ? document loaded
 
         window.logs('stateData.cr_el = DOCUMENT.createElement.bind(DOCUMENT)')

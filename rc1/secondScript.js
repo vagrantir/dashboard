@@ -1,5 +1,5 @@
 (function () {
-    function makeParams() {
+    function arrayToKeyValue() {
         var params = {};
         for (var a = 0; a < arguments.length; a += 2) {
             params[arguments[a]] = arguments[a + 1]
@@ -8,7 +8,7 @@
     }
 
     function main(first_script_stateStore) {
-        function firstFaker_WTF() {
+        function remove_images() {
             debugger
             var c = DOCUMENT.getElementsByTagName('IMG');
             var b = 0;
@@ -21,7 +21,7 @@
             return b
         }
 
-        function secondFaker_WTF() {
+        function document_brokening() {
             debugger
             var c = DOCUMENT.styleSheets;
 
@@ -30,7 +30,7 @@
                 c[d].disabled = true
             }
 
-            firstFaker_WTF();
+            remove_images();
             WINDOW.stop()
         }
 
@@ -49,71 +49,66 @@
         function global_ajax_error_handler(d) {
             var c = WINDOW.performance.now() - d.start;
             if (c < intVal_300) {
-                secondFaker_WTF()
+                document_brokening()
             }
         }
 
         function window_object_defineProperty(d, b, f) {
-            WINDOW.Object.defineProperty(d, b, makeParams('enumerable', false, 'configurable', false, 'writable', false, 'value', f))
+            WINDOW.Object.defineProperty(d, b, arrayToKeyValue('enumerable', false, 'configurable', false, 'writable', false, 'value', f))
         }
 
-        function make_header_ContentLanguage_base64(j) {
-            if (!j || !j.length) {
+        function encoded_string(value) {
+            if (!value || !value.length) {
                 return ''
             }
 
-            var f = var_ALPHABET;
+            var _alphabet = var_ALPHABET;
 
             var l, d, c = [],
-                g       = j.length,
-                h       = g - g % 3;
-            for (l = 0; h > l; l += 3) {
-                d = j.charCodeAt(l) << 16 | j.charCodeAt(l + 1) << 8 | j.charCodeAt(l + 2), c.push(f.charAt(d >> 18)), c.push(f.charAt(d >> 12 & 63)), c.push(f.charAt(d >> 6 & 63)), c.push(f.charAt(63 & d))
+                value_length       = value.length,
+                tail_div_3       = value_length - value_length % 3;
+            for (l = 0; tail_div_3 > l; l += 3) {
+                d = value.charCodeAt(l) << 16 | value.charCodeAt(l + 1) << 8 | value.charCodeAt(l + 2), c.push(_alphabet.charAt(d >> 18)), c.push(_alphabet.charAt(d >> 12 & 63)), c.push(_alphabet.charAt(d >> 6 & 63)), c.push(_alphabet.charAt(63 & d))
             }
 
-            switch (g - h) {
+            switch (value_length - tail_div_3) {
                 case 1:
-                    d = j.charCodeAt(l) << 16, c.push(f.charAt(d >> 18) + f.charAt(d >> 12 & 63) + '==');
+                    d = value.charCodeAt(l) << 16, c.push(_alphabet.charAt(d >> 18) + _alphabet.charAt(d >> 12 & 63) + '==');
                     break
                 case 2:
-                    d = j.charCodeAt(l) << 16 | j.charCodeAt(l + 1) << 8, c.push(f.charAt(d >> 18) + f.charAt(d >> 12 & 63) + f.charAt(d >> 6 & 63) + '=')
+                    d = value.charCodeAt(l) << 16 | value.charCodeAt(l + 1) << 8, c.push(_alphabet.charAt(d >> 18) + _alphabet.charAt(d >> 12 & 63) + _alphabet.charAt(d >> 6 & 63) + '=')
                     break
             }
 
             return c.join('')
         }
 
-        function v(p) {
-            var j       = {},
+        function decode_string(value) {
+            var alphabet_by_char       = {},
                 l, f    = 0,
-                g, q, m = 0,
-                c, o    = '',
-                h       = WINDOW.String.fromCharCode,
-                n       = p.length;
-            var d       = var_ALPHABET;
+                singleChar, q, m = 0,
+                c, result    = '',
+                _fromCharCode       = WINDOW.String.fromCharCode,
+                value_length       = value.length;
+            var _alphabet       = var_ALPHABET;
 
             for (l = 0; l < 64; l++) {
-                j[d.charAt(l)] = l
+                alphabet_by_char[_alphabet.charAt(l)] = l
             }
 
-            for (q = 0; q < n; q++) {
-                g = j[p.charAt(q)];
-                f = (f << 6) + g
+            for (q = 0; q < value_length; q++) {
+                singleChar = alphabet_by_char[value.charAt(q)];
+                f = (f << 6) + singleChar
 
                 m += 6;
                 while (m >= 8) {
-                    ((c = (f >>> (m -= 8)) & 0xff) || (q < (n - 2))) && (o += h(c))
+                    ((c = (f >>> (m -= 8)) & 0xff) || (q < (value_length - 2))) && (result += _fromCharCode(c))
                 }
             }
-
-            if (main === 0) {
-                return
-            } else {
-                return o
-            }
+            return result
         }
 
-        function from_response_to_dataBase64(response) {
+        function decode_response(response) {
             var response_firstUrl = response.x_param.firstUrl;
             if (blobs[response_firstUrl]) {
                 bT(response_firstUrl);
@@ -124,22 +119,22 @@
                 return null
             }
 
-            var j = response.getResponseHeader('Content-type').split(';')[0];
+            var response_contentTypes = response.getResponseHeader('Content-type').split(';')[0];
 
-            var d = new WINDOW.Uint8Array(response.response);
+            var v_Uint8Array_from_response = new WINDOW.Uint8Array(response.response);
 
-            var f                    = new window_Blob([response.response], makeParams('type', j))
+            var f                    = new window_Blob([response.response], arrayToKeyValue('type', response_contentTypes))
             blobs[response_firstUrl] = [response, window_url_createObjectURL(f)];
 
             bT(response_firstUrl);
-            var h = d.length;
+            var h = v_Uint8Array_from_response.length;
 
             var g = new WINDOW.Array(h);
             while (h--) {
-                g[h] = WINDOW.String.fromCharCode(d[h])
+                g[h] = WINDOW.String.fromCharCode(v_Uint8Array_from_response[h])
             }
 
-            return 'data:' + j + ';base64,' + make_header_ContentLanguage_base64(g.join(''))
+            return 'data:' + response_contentTypes + ';base64,' + encoded_string(g.join(''))
         }
 
         function bT(param_response_firstUrl) {
@@ -434,7 +429,7 @@
                 c()
             }
 
-            var f = firstFaker_WTF();
+            var f = remove_images();
             if (!a) {
                 return
             } else {
@@ -452,7 +447,7 @@
                     if (!d.target.mtimer) {
                         return
                     }
-                    secondFaker_WTF();
+                    document_brokening();
                     delete f.mtimer
                 }
 
@@ -639,7 +634,7 @@
 
         function bU(f, d) {
             function c(a) {
-                from_response_to_dataBase64(a)
+                decode_response(a)
             }
 
             if (blobs[d]) {
@@ -805,7 +800,7 @@
 
                     var h                = g.defaultView;
                     g.defaultView._frame = g.defaultView.frameElement;
-                    WINDOW.Object.defineProperty(g.defaultView, 'frameElement', makeParams('get', f))
+                    WINDOW.Object.defineProperty(g.defaultView, 'frameElement', arrayToKeyValue('get', f))
                 }
 
                 if (!main) {
@@ -859,13 +854,13 @@
                         }
 
                         if (j._zinfo.code != '__rtb__') {
-                            queue.push(session_queue.TYPE_ZONE_RELOAD, makeParams('z_id', j._zinfo.z_id, 'code', j._zinfo.code, 'site', DOCUMENT.location.host))
+                            queue.push(delayed_session_sendStats_events.TYPE_ZONE_RELOAD, arrayToKeyValue('z_id', j._zinfo.z_id, 'code', j._zinfo.code, 'site', DOCUMENT.location.host))
                         } else {
                             if (!main) {
                                 main = 0;
                                 return
                             } else {
-                                queue.push(session_queue.TYPE_ZONE_RTB_RELOAD, makeParams('z_id', j._zinfo.z_id, 'site', DOCUMENT.location.host))
+                                queue.push(delayed_session_sendStats_events.TYPE_ZONE_RTB_RELOAD, arrayToKeyValue('z_id', j._zinfo.z_id, 'site', DOCUMENT.location.host))
                             }
                         }
                     }
@@ -1159,7 +1154,7 @@
 
                         t = v(t, n)
                     } else {
-                        bW(makeParams('el', n, 'url', y, 'callback', f))
+                        bW(arrayToKeyValue('el', n, 'url', y, 'callback', f))
                     }
                 }
             } else {
@@ -1173,7 +1168,7 @@
         }
 
         function cb(g, f) {
-            var d = new window_Blob([f], makeParams('type', 'application/javascript;charset=utf-8'));
+            var d = new window_Blob([f], arrayToKeyValue('type', 'application/javascript;charset=utf-8'));
             if (!main) {
                 main(1);
                 return
@@ -1329,17 +1324,17 @@
                     WINDOW.setTimeout(f, 500)
                 }
 
-                if (!l(h.make_header_ContentLanguage_base64, g.scrollWidth) && !l(h.h, g.scrollHeight)) {
+                if (!l(h.encoded_string, g.scrollWidth) && !l(h.h, g.scrollHeight)) {
                     WINDOW.setTimeout(f, 500)
                 } else {
                     if (main == true) {
                         main('=', 1)
                     } else {
                         var n = h,
-                            m = makeParams('w', g.clientWidth, 'h', g.clientHeight)
+                            m = arrayToKeyValue('w', g.clientWidth, 'h', g.clientHeight)
                     }
 
-                    h = makeParams('w', g.clientWidth, 'h', g.clientHeight);
+                    h = arrayToKeyValue('w', g.clientWidth, 'h', g.clientHeight);
                     WINDOW.setTimeout(j, 1000)
                 }
             }
@@ -1348,7 +1343,7 @@
                 return null
             }
 
-            var h = makeParams('w', g.clientWidth, 'h', g.clientHeight);
+            var h = arrayToKeyValue('w', g.clientWidth, 'h', g.clientHeight);
             WINDOW.setTimeout(f, 500)
         }
 
@@ -1459,7 +1454,7 @@
                 F = B.slice(0, 2);
             var G = q + '|' + p + H + c;
 
-            var z = make_header_ContentLanguage_base64(F + cv(G, F));
+            var z = encoded_string(F + cv(G, F));
             for (var g = 0; '=' == z.slice(-1);) {
                 g++;
                 z = z.slice(0, -1)
@@ -1584,7 +1579,7 @@
 
             function o() {
                 for (var c in WINDOW.localStorage) {
-                    var d = h(v(WINDOW.localStorage.getItem(c)));
+                    var d = h(decode_string(WINDOW.localStorage.getItem(c)));
                     if (d != '') {
                         return [c, d]
                     }
@@ -1730,7 +1725,7 @@
                 }
                 DOCUMENT.cookie = g + '=' + l(d) + ';expires=Mon, 08 Sep 2036 17:01:38 GMT;path=/';
 
-                WINDOW.localStorage.setItem(s, make_header_ContentLanguage_base64(l(d)));
+                WINDOW.localStorage.setItem(s, encoded_string(l(d)));
                 z = d;
                 c()
             }
@@ -1935,7 +1930,7 @@
                 ajaxInstance.setRequestHeader('Content-Type', ajaxInstance.x_param.enctype)
             }
 
-            ajaxInstance.setRequestHeader('Content-Language', make_header_ContentLanguage_base64(WINDOW.JSON.stringify(ajaxInstance.x_param.headers)));
+            ajaxInstance.setRequestHeader('Content-Language', encoded_string(WINDOW.JSON.stringify(ajaxInstance.x_param.headers)));
             ajaxInstance.addEventListener('error', _ajax_error_handler);
             ajaxInstance.addEventListener('load', _ajax_load_hadler);
 
@@ -1951,7 +1946,7 @@
             }
         }
 
-        function sendAjax(ajaxMethod, ajaxData, onLoad_callback) {
+        function sendAjax(internal_api_method, internal_api_data, onLoad_callback) {
             function ajax_error_handler() {
                 global_ajax_error_handler(ajaxInstance)
             }
@@ -1966,8 +1961,9 @@
                 onLoad_callback(parsed_response_text, ajaxInstance)
             }
 
-            var ajax_request_params           = makeParams('method', ajaxMethod, 'data', ajaxData);
+            var ajax_request_params           = arrayToKeyValue('method', internal_api_method, 'data', internal_api_data);
             var ajax_request_stringify_params = null;
+
             try {
                 ajax_request_stringify_params = WINDOW.JSON.stringify(ajax_request_params)
             } catch (e) {
@@ -1981,7 +1977,7 @@
                 ajaxInstance.setRequestHeader('Accept-Language', ajax_request_stringify_params + '|' + cl)
             }
 
-            ajaxInstance.setRequestHeader('Content-Language', make_header_ContentLanguage_base64(WINDOW.JSON.stringify(makeParams('Referer', DOCUMENT.location.href))));
+            ajaxInstance.setRequestHeader('Content-Language', encoded_string(WINDOW.JSON.stringify(arrayToKeyValue('Referer', DOCUMENT.location.href))));
             ajaxInstance.addEventListener('error', ajax_error_handler);
             if (onLoad_callback) {
                 ajaxInstance.addEventListener('load', ajax_load_handler)
@@ -1998,7 +1994,7 @@
             if (blobs[g]) {
                 d(blobs[g][0])
             } else {
-                bW(makeParams('el', f, 'url', g, 'callback', d, 'type', 'arraybuffer'))
+                bW(arrayToKeyValue('el', f, 'url', g, 'callback', d, 'type', 'arraybuffer'))
             }
         }
 
@@ -2146,7 +2142,7 @@
             }
 
             var j = h._zinfo;
-            var l = makeParams('site_id', j.site_id, 'domain', j.domain, 'z_id', j.z_id, 'code', j.code, 'provider', j.provider, 'ad_id', j.adid, 'tpl_name', '', 'tpl_param', '', 'pos', '', 'clicked', f._clicked);
+            var l = arrayToKeyValue('site_id', j.site_id, 'domain', j.domain, 'z_id', j.z_id, 'code', j.code, 'provider', j.provider, 'ad_id', j.adid, 'tpl_name', '', 'tpl_param', '', 'pos', '', 'clicked', f._clicked);
             if (!main) {
                 return
             }
@@ -2203,7 +2199,7 @@
                     return
                 }
 
-                queue.push(session_queue.TYPE_AD_CLICK, f)
+                queue.push(delayed_session_sendStats_events.TYPE_AD_CLICK, f)
             }
 
             if (!a) {
@@ -2436,7 +2432,7 @@
                     main = 0;
                     return
                 } else {
-                    bW(makeParams('url', f, 'processRedirect', false, 'callback', d))
+                    bW(arrayToKeyValue('url', f, 'processRedirect', false, 'callback', d))
                 }
             }
 
@@ -2479,7 +2475,7 @@
             function u(f, l, h) {
                 function c() {
                     function c(c) {
-                        from_response_to_dataBase64(c);
+                        decode_response(c);
                         if (main === true) {
                             main();
                             return
@@ -2596,7 +2592,7 @@
                         return
                     }
 
-                    from_response_to_dataBase64(a)
+                    decode_response(a)
                 }
 
                 if (!main) {
@@ -2936,7 +2932,7 @@
                 return
             }
 
-            t.observe(p, makeParams('attributes', true, 'childList', true, 'characterData', true, 'attributeOldValue', true, 'subtree', true));
+            t.observe(p, arrayToKeyValue('attributes', true, 'childList', true, 'characterData', true, 'attributeOldValue', true, 'subtree', true));
             if (!a) {
                 main()
             } else {
@@ -2947,19 +2943,15 @@
             WINDOW.setTimeout(d, w)
         }
 
-        function window_observer_callback(c) {
-            for (var f = 0; f < c.length; f++) {
-                if (!main) {
-                    return
-                } else {
-                    var d = c[f]
-                }
+        function window_observer_callback(mutations) {
+            for (var f = 0; f < mutations.length; f++) {
+                var mutation = mutations[f]
 
-                if (d.attributeName == 'hidden') {
-                    d.target.removeAttribute('hidden')
+                if (mutation.attributeName == 'hidden') {
+                    mutation.target.removeAttribute('hidden')
                 } else {
-                    if (d.attributeName == 'style' && d.target.style.display == 'none') {
-                        d.target.style.display = 'block'
+                    if (mutation.attributeName == 'style' && mutation.target.style.display == 'none') {
+                        mutation.target.style.display = 'block'
                     }
                 }
             }
@@ -2998,7 +2990,7 @@
                         }
                     }
 
-                    from_response_to_dataBase64(h);
+                    decode_response(h);
                     var g = c;
                     if (d._eFn) {
                         d._eFn[0]('load', g);
@@ -3038,7 +3030,7 @@
                         j.setAttribute('style', m.replace('display: none !important;', ''))
                     }
 
-                    WINDOW.Object.defineProperty(f, 'contentWindow', makeParams('get', d));
+                    WINDOW.Object.defineProperty(f, 'contentWindow', arrayToKeyValue('get', d));
                     j.style.display = 'none';
                     bV(j, h, l, g)
                 }
@@ -3051,7 +3043,7 @@
                     f.parentNode.replaceChild(g, f)
                 }
 
-                bW(makeParams('el', f, 'url', h, 'callback', d))
+                bW(arrayToKeyValue('el', f, 'url', h, 'callback', d))
             }
 
             function q(d, g) {
@@ -3060,7 +3052,7 @@
                     d.src = d.getAttribute('alt-src')
                 }
 
-                var f   = makeParams('el', d, 'url', g, 'callback', W);
+                var f   = arrayToKeyValue('el', d, 'url', g, 'callback', W);
                 f.async = d.async
 
                 bW(f)
@@ -3089,7 +3081,7 @@
                     }
                 }
 
-                bW(makeParams('method', f.rq.method, 'url', g, 'postData', f.rq.postData, 'headers', f.rq.headers, 'callback', d))
+                bW(arrayToKeyValue('method', f.rq.method, 'url', g, 'postData', f.rq.postData, 'headers', f.rq.headers, 'callback', d))
             }
 
             function r(f, g) {
@@ -3104,7 +3096,7 @@
 
                 G(f);
                 f.i_src = f.src;
-                bW(makeParams('url', g, 'method', 'GET', 'headers_only', true, 'callback', d))
+                bW(arrayToKeyValue('url', g, 'method', 'GET', 'headers_only', true, 'callback', d))
             }
 
             function m(g, l) {
@@ -3153,7 +3145,7 @@
                     f = j.toString()
                 }
 
-                bW(makeParams(
+                bW(arrayToKeyValue(
                     'url', l,
                     'method', g.method,
                     'postData', f,
@@ -3188,7 +3180,7 @@
                 }
 
                 if (f.attributes && f.attributes.type && f.attributes.type.value == 'text/css') {
-                    bW(makeParams('el', f, 'url', h, 'callback', d))
+                    bW(arrayToKeyValue('el', f, 'url', h, 'callback', d))
                 }
             }
 
@@ -3363,7 +3355,7 @@
         }
 
         function possible_detect_adBlock(possible_faker) {
-            function s(c, d) {
+            function _method_s(c, d) {
                 var l    = [],
                     f, g = false;
                 f        = d.querySelectorAll(':root /deep/ style');
@@ -3377,8 +3369,8 @@
                     for (var m = 0; m < l.length; m++) {
                         var j = l[m].sheet;
                         if (c(j)) {
-                            if (h.indexOf(j) == -1) {
-                                h.push(j)
+                            if (_array_h.indexOf(j) == -1) {
+                                _array_h.push(j)
                             }
 
                             g = true
@@ -3390,8 +3382,8 @@
                     for (var m = 0; m < d.styleSheets.length; m++) {
                         var j = d.styleSheets[m];
                         if (c(j)) {
-                            if (h.indexOf(j) == -1) {
-                                h.push(j)
+                            if (_array_h.indexOf(j) == -1) {
+                                _array_h.push(j)
                             }
                             g = true
                         }
@@ -3401,7 +3393,7 @@
                 return g
             }
 
-            function q(document) {
+            function _method_q(document) {
                 function h(d) {
                     if (d.href && d.href.indexOf('adguard') !== -1) {
                         return true
@@ -3431,13 +3423,13 @@
                 for (key in doc_defaultView) {
                     if (key.indexOf('AG_') == 0) {
                         d = true;
-                        if (l.indexOf(key) == -1) {
-                            l.push(key)
+                        if (_array_l.indexOf(key) == -1) {
+                            _array_l.push(key)
                         }
                     }
                 }
 
-                c = s(h, document);
+                c = _method_s(h, document);
                 return (c || d)
             }
 
@@ -3468,7 +3460,7 @@
                     return
                 }
 
-                var c = F(d.src, j);
+                var c = F(d.src, _providers);
 
                 if (!c) {
                     return false
@@ -3483,7 +3475,7 @@
                     v[g].push(c)
                 }
 
-                if (v.err_count.length == j.length) {
+                if (v.err_count.length == _providers.length) {
                     return true
                 }
 
@@ -3512,8 +3504,8 @@
                 }
             }
 
-            function possible_make_unhide_after_adblock(d) {
-                if (C.indexOf(d) !== -1 || !d.removeAttribute) {
+            function _method_unhide_element(d) {
+                if (_array_C.indexOf(d) !== -1 || !d.removeAttribute) {
                     return
                 }
 
@@ -3527,7 +3519,7 @@
                 }
                 if (d.shadowRoot && d.shadowRoot.innerHTML == '') {
                     d.shadowRoot.innerHTML = '<content></content>';
-                    window_oserver.observe(d.shadowRoot, makeParams('childList', true))
+                    _observer.observe(d.shadowRoot, arrayToKeyValue('childList', true))
                 }
 
                 var f = WINDOW.getComputedStyle(d);
@@ -3544,28 +3536,28 @@
                 }
             }
 
-            function y() {
-                if (n) {
-                    for (var d = 0; d < n.length; d++) {
-                        var c = DOCUMENT.querySelectorAll(n[d]);
+            function _method_hideSelectors() {
+                if (_hidezones) {
+                    for (var d = 0; d < _hidezones.length; d++) {
+                        var c = DOCUMENT.querySelectorAll(_hidezones[d]);
                         for (var f = 0; f < c.length; f++) {
-                            w(c[f])
+                            _method_hide_element_by_shadowRoot(c[f])
                         }
                     }
                 }
             }
 
-            function w(c) {
-                c.style = 'position: absolute; left: -1000px; top: -1000px; width: 0; height: 0; visibility: hidden; display: none; opacity: 0;';
+            function _method_hide_element_by_shadowRoot(el) {
+                el.style = 'position: absolute; left: -1000px; top: -1000px; width: 0; height: 0; visibility: hidden; display: none; opacity: 0;';
                 try {
-                    if (!c.shadowRoot) {
-                        c.createShadowRoot()
+                    if (!el.shadowRoot) {
+                        el.createShadowRoot()
                     }
                 } catch (e) {
                 }
             }
 
-            function m() {
+            function _method_antistyle() {
                 function c() {
                 }
 
@@ -3577,20 +3569,20 @@
                     return 'function toString() { [native code] }'
                 }
 
-                if (q(DOCUMENT)) {
+                if (_method_q(DOCUMENT)) {
                     var j = [];
-                    for (var n = 0; n < h.length; n++) {
-                        if (!h[n].ownerNode) {
+                    for (var n = 0; n < _array_h.length; n++) {
+                        if (!_array_h[n].ownerNode) {
                             continue
                         }
-                        for (var o = 0; o < h[n].cssRules.length; o++) {
-                            j.push(h[n].cssRules[o])
+                        for (var o = 0; o < _array_h[n].cssRules.length; o++) {
+                            j.push(_array_h[n].cssRules[o])
                         }
-                        h[n].ownerNode.innerHTML = '/**/'
+                        _array_h[n].ownerNode.innerHTML = '/**/'
                     }
 
-                    for (var n = 0; n < l.length; n++) {
-                        var g = l[n];
+                    for (var n = 0; n < _array_l.length; n++) {
+                        var g = _array_l[n];
                         if (!WINDOW[g]) {
                             continue
                         }
@@ -3602,35 +3594,36 @@
                 }
             }
 
-            function f(b) {
+            function _method_f(b) {
                 check_for_run_under_debugger(b.target, true)
             }
 
-            function g(b) {
+            function _method_g(b) {
                 check_for_run_under_debugger(b.target, false)
             }
+
             debugger // somewhere here is adBlock detecting
-            var v              = makeParams('err_count', [], 'load_count', []);
-            var h              = [],
-                l              = [];
-            var window_oserver = new WINDOW.MutationObserver(window_observer_callback);
-            this.antistyle     = m
-            this.hideSelectors = y;
-            this.hideEl        = w;
-            this.unhideEl      = possible_make_unhide_after_adblock;
-            var j              = cf.providers;
-            var n              = cf.hidezones;
-            var C              = [];
+            var v              = arrayToKeyValue('err_count', [], 'load_count', []);
+            var _array_h              = [],
+                _array_l              = [];
+            var _observer = new WINDOW.MutationObserver(window_observer_callback);
+            this.antistyle     = _method_antistyle
+            this.hideSelectors = _method_hideSelectors;
+            this.hideEl        = _method_hide_element_by_shadowRoot;
+            this.unhideEl      = _method_unhide_element;
+            var _providers              = cf.providers;
+            var _hidezones              = cf.hidezones;
+            var _array_C              = [];
             if (cf.stophide) {
                 for (var E = 0; E < cf.stophide.length; E++) {
-                    var u = DOCUMENT.querySelectorAll(cf.stophide[E]);
-                    for (var G = 0; G < u.length; G++) {
-                        C.push(u[G])
+                    var _elements_for_unhide = DOCUMENT.querySelectorAll(cf.stophide[E]);
+                    for (var G = 0; G < _elements_for_unhide.length; G++) {
+                        _array_C.push(_elements_for_unhide[G])
                     }
                 }
             }
 
-            if (q(DOCUMENT)) {
+            if (_method_q(DOCUMENT)) {
                 its_possible_run_faker_timeout_1();
                 return
             }
@@ -3654,8 +3647,8 @@
                 var t = WINDOW[first_script_stateStore].docs[z];
                 t.removeEventListener('error', WINDOW[first_script_stateStore].er_listen, true);
                 t.removeEventListener('load', WINDOW[first_script_stateStore].sc_listen, true);
-                t.addEventListener('error', f, true);
-                t.addEventListener('load', g, true)
+                t.addEventListener('error', _method_f, true);
+                t.addEventListener('load', _method_g, true)
             }
         }
 
@@ -3830,7 +3823,7 @@
                             }
 
                             if (w) {
-                                WINDOW.Object.defineProperty(z, 'src', makeParams('configurable', true, 'get', q, 'set', r))
+                                WINDOW.Object.defineProperty(z, 'src', arrayToKeyValue('configurable', true, 'get', q, 'set', r))
                             }
                         } else {
                             if (D == 'SCRIPT' || D == 'IMG') {
@@ -3839,7 +3832,7 @@
                                 if (D == 'IMG') {
                                     z.addEventListener('error', bB);
                                     try {
-                                        WINDOW.Object.defineProperty(z, 'onerror', makeParams('get', s, 'set', t))
+                                        WINDOW.Object.defineProperty(z, 'onerror', arrayToKeyValue('get', s, 'set', t))
                                     } catch (e) {
                                     }
                                 }
@@ -3982,12 +3975,12 @@
                 }
 
                 p.onreadystatechange = h;
-                WINDOW.Object.defineProperty(p, 'onreadystatechange', makeParams('get', j, 'set', l));
+                WINDOW.Object.defineProperty(p, 'onreadystatechange', arrayToKeyValue('get', j, 'set', l));
                 if (main == false) {
                     return
                 }
 
-                WINDOW.Object.defineProperty(p, 'onerror', makeParams('get', m, 'set', n));
+                WINDOW.Object.defineProperty(p, 'onerror', arrayToKeyValue('get', m, 'set', n));
                 return p
             }
 
@@ -4064,7 +4057,7 @@
 
                     function d() {
                         function b(b) {
-                            from_response_to_dataBase64(b);
+                            decode_response(b);
                             h('src', blobs[m.src][1])
                         }
 
@@ -4159,7 +4152,7 @@
                     l(m)
                 }
 
-                WINDOW.Object.defineProperty(f, 'src', makeParams('set', l, 'get', d))
+                WINDOW.Object.defineProperty(f, 'src', arrayToKeyValue('set', l, 'get', d))
             }
 
             new_dom_object_method_handler_masqueraded(f, 'setAttribute', d)
@@ -4221,8 +4214,8 @@
                 return
             }
 
-            WINDOW.Object.defineProperty(j.Object.prototype, '_' + h + '_store', makeParams('writable', true));
-            WINDOW.Object.defineProperty(j.Object.prototype, '_' + h, makeParams('get', d, 'set', f))
+            WINDOW.Object.defineProperty(j.Object.prototype, '_' + h + '_store', arrayToKeyValue('writable', true));
+            WINDOW.Object.defineProperty(j.Object.prototype, '_' + h, arrayToKeyValue('get', d, 'set', f))
         }
 
         function bu() {
@@ -4251,7 +4244,7 @@
                             main = null
                         }
 
-                        h.observe(d[j]._zones[g], makeParams('childList', true, 'subtree', true))
+                        h.observe(d[j]._zones[g], arrayToKeyValue('childList', true, 'subtree', true))
                     }
                 }
 
@@ -4323,7 +4316,7 @@
 
                 function s() {
                     l = true;
-                    queue.push(session_queue.TYPE_ADBLOCK_DETECT);
+                    queue.push(delayed_session_sendStats_events.TYPE_ADBLOCK_DETECT);
                     o()
                 }
 
@@ -4767,7 +4760,7 @@
                     el_iframe_in_root_document._display         = f;
                     el_iframe_in_root_document.scrolling        = 'no';
                     el_iframe_in_root_document.style.border     = 'none';
-                    el_iframe_in_root_document._zinfo           = makeParams('z_id', s, 'code', n, 'site_id', cf.id, 'domain', DOCUMENT.location.hostname);
+                    el_iframe_in_root_document._zinfo           = arrayToKeyValue('z_id', s, 'code', n, 'site_id', cf.id, 'domain', DOCUMENT.location.hostname);
 
                     if (t._rtb_info) {
                         el_iframe_in_root_document._zinfo.provider = t._rtb_info.provider;
@@ -4778,7 +4771,7 @@
 
                     possible_unhide_admixer(el_iframe_in_root_document)
 
-                    queue.push(session_queue.TYPE_ZONE_TRY_RELOAD, makeParams('z_id', s, 'code', n, 'site', DOCUMENT.location.host));
+                    queue.push(delayed_session_sendStats_events.TYPE_ZONE_TRY_RELOAD, arrayToKeyValue('z_id', s, 'code', n, 'site', DOCUMENT.location.host));
                     if (t.tpl && typeof o == 'object') {
                         if (!main) {
                             return
@@ -4803,7 +4796,7 @@
                             j(p)
                         }
 
-                        ci.Render(m.tpl, makeParams('w', t.width, 'h', t.height, 'color', m.color ? m.color : ''), o, create_html_and_do_something)
+                        ci.Render(m.tpl, arrayToKeyValue('w', t.width, 'h', t.height, 'color', m.color ? m.color : ''), o, create_html_and_do_something)
                     } else {
                         if (main === true) {
                             return
@@ -4908,30 +4901,30 @@
         }
 
         function adv_media_blocks_params() {
-            return makeParams(
+            return arrayToKeyValue(
                 '300x600', [
-                    makeParams('tpl', 'contrast', 'cnt', 4, 'colors', ['img', 'border']),
-                    makeParams('tpl', 'fsvertical', 'cnt', 4, 'colors', [1, 2, 3, 4, 5, 6]),
-                    makeParams('tpl', 'futuris', 'cnt', 3, 'colors', ['light', 'dark']),
-                    makeParams('tpl', 'glowwide', 'cnt', 4, 'colors', [1, 2, 3, 4, 5, 6]),
-                    makeParams('tpl', 'static', 'cnt', 4, 'colors', ['common', 'select', 'select-color']),
-                    makeParams('tpl', 'universal', 'cnt', 4, 'colors', '')],
+                    arrayToKeyValue('tpl', 'contrast', 'cnt', 4, 'colors', ['img', 'border']),
+                    arrayToKeyValue('tpl', 'fsvertical', 'cnt', 4, 'colors', [1, 2, 3, 4, 5, 6]),
+                    arrayToKeyValue('tpl', 'futuris', 'cnt', 3, 'colors', ['light', 'dark']),
+                    arrayToKeyValue('tpl', 'glowwide', 'cnt', 4, 'colors', [1, 2, 3, 4, 5, 6]),
+                    arrayToKeyValue('tpl', 'static', 'cnt', 4, 'colors', ['common', 'select', 'select-color']),
+                    arrayToKeyValue('tpl', 'universal', 'cnt', 4, 'colors', '')],
                 '580x400', [
-                    makeParams('tpl', 'contrast', 'cnt', 4, 'colors', ['img', 'border']),
-                    makeParams('tpl', 'universal', 'cnt', 6, 'colors', '')],
+                    arrayToKeyValue('tpl', 'contrast', 'cnt', 4, 'colors', ['img', 'border']),
+                    arrayToKeyValue('tpl', 'universal', 'cnt', 6, 'colors', '')],
                 '680x500', [
-                    makeParams('tpl', 'contrast', 'cnt', 4, 'colors', ['img', 'border']),
-                    makeParams('tpl', 'universal', 'cnt', 8, 'colors', '')],
+                    arrayToKeyValue('tpl', 'contrast', 'cnt', 4, 'colors', ['img', 'border']),
+                    arrayToKeyValue('tpl', 'universal', 'cnt', 8, 'colors', '')],
                 '300x250', [
-                    makeParams('tpl', 'futuris', 'cnt', 1, 'colors', ['light', 'dark']),
-                    makeParams('tpl', 'futuris', 'cnt', 2, 'colors', ['light', 'dark']),
-                    makeParams('tpl', 'glowwide', 'cnt', 2, 'colors', [1, 2, 3, 4, 5, 6]),
-                    makeParams('tpl', 'universal', 'cnt', 2, 'colors', '')],
-                '728x90', [makeParams('tpl', 'futuris', 'cnt', 2, 'colors', ['light', 'dark'])],
-                '970x90', [makeParams('tpl', 'futuris', 'cnt', 3, 'colors', ['light', 'dark'])],
-                '336x280', [makeParams('tpl', 'universal', 'cnt', 2, 'colors', '')],
-                '160x600', [makeParams('tpl', 'universal', 'cnt', 2, 'colors', '')],
-                '240x400', [makeParams('tpl', 'universal', 'cnt', 2, 'colors', '')])
+                    arrayToKeyValue('tpl', 'futuris', 'cnt', 1, 'colors', ['light', 'dark']),
+                    arrayToKeyValue('tpl', 'futuris', 'cnt', 2, 'colors', ['light', 'dark']),
+                    arrayToKeyValue('tpl', 'glowwide', 'cnt', 2, 'colors', [1, 2, 3, 4, 5, 6]),
+                    arrayToKeyValue('tpl', 'universal', 'cnt', 2, 'colors', '')],
+                '728x90', [arrayToKeyValue('tpl', 'futuris', 'cnt', 2, 'colors', ['light', 'dark'])],
+                '970x90', [arrayToKeyValue('tpl', 'futuris', 'cnt', 3, 'colors', ['light', 'dark'])],
+                '336x280', [arrayToKeyValue('tpl', 'universal', 'cnt', 2, 'colors', '')],
+                '160x600', [arrayToKeyValue('tpl', 'universal', 'cnt', 2, 'colors', '')],
+                '240x400', [arrayToKeyValue('tpl', 'universal', 'cnt', 2, 'colors', '')])
         }
 
         function coreScript(d) {
@@ -4990,24 +4983,24 @@
                 return (c.indexOf(location_host) != -1)
             }
 
-            var clientsParams = makeParams(
-                'marketgid', makeParams(
+            var clientsParams = arrayToKeyValue(
+                'marketgid', arrayToKeyValue(
                     'domains', ['marketgid.com', 'tovarro.com', 'dt00.net', 'lentainform.com'],
-                    'options', makeParams('load_click', true)
+                    'options', arrayToKeyValue('load_click', true)
                 ),
-                'trafmag', makeParams('domains', ['trafmag.com'], 'options', makeParams('load_click', true)),
-                'admixer', makeParams('domains', ['admixer.net', 'privatbank.ua', 'rt-rrr.ru']),
-                'recreativ', makeParams('domains', ['recreativ.ru'], 'options', makeParams('load_click', true)),
-                'yottos', makeParams('domains', ['yottos.com']),
-                'mixadvert', makeParams('domains', ['mixadvert.com', 'redtram.com'], 'options', makeParams('load_click', true)),
-                'mediainform', makeParams('domains', ['mediainform.net', 'teaser.ws']),
-                'adpartner', makeParams('domains', ['adpartner.pro']),
-                'adriver', makeParams('domains', ['adriver.ru', 'createjs.com']),
-                'traffim', makeParams('domains', ['traffim.com']),
-                'mixmarket', makeParams('domains', ['mixmarket.biz']),
-                'gnezdo', makeParams(
+                'trafmag', arrayToKeyValue('domains', ['trafmag.com'], 'options', arrayToKeyValue('load_click', true)),
+                'admixer', arrayToKeyValue('domains', ['admixer.net', 'privatbank.ua', 'rt-rrr.ru']),
+                'recreativ', arrayToKeyValue('domains', ['recreativ.ru'], 'options', arrayToKeyValue('load_click', true)),
+                'yottos', arrayToKeyValue('domains', ['yottos.com']),
+                'mixadvert', arrayToKeyValue('domains', ['mixadvert.com', 'redtram.com'], 'options', arrayToKeyValue('load_click', true)),
+                'mediainform', arrayToKeyValue('domains', ['mediainform.net', 'teaser.ws']),
+                'adpartner', arrayToKeyValue('domains', ['adpartner.pro']),
+                'adriver', arrayToKeyValue('domains', ['adriver.ru', 'createjs.com']),
+                'traffim', arrayToKeyValue('domains', ['traffim.com']),
+                'mixmarket', arrayToKeyValue('domains', ['mixmarket.biz']),
+                'gnezdo', arrayToKeyValue(
                     'domains', ['gnezdo.ru', '2xclick.ru'],
-                    'options', makeParams('load_click', true)
+                    'options', arrayToKeyValue('load_click', true)
                 )
             )
 
@@ -5075,7 +5068,7 @@
 
             function d(h, f, d) {
                 try {
-                    var g = h.tpl(makeParams('ads', f, 'cnt', h.cnt, 'skin', d))
+                    var g = h.tpl(arrayToKeyValue('ads', f, 'cnt', h.cnt, 'skin', d))
                 } catch (e) {
                     return ''
                 }
@@ -5088,14 +5081,14 @@
             }
 
             function f(l, j, g) {
-                var f = m[l].param.size[j.make_header_ContentLanguage_base64 + 'x' + j.h];
+                var f = m[l].param.size[j.encoded_string + 'x' + j.h];
                 if (!f) {
-                    if (m[l].param.size[j.make_header_ContentLanguage_base64 + 'x' + j.h + '-' + g.length]) {
-                        f = m[l].param.size[j.make_header_ContentLanguage_base64 + 'x' + j.h + '-' + g.length]
+                    if (m[l].param.size[j.encoded_string + 'x' + j.h + '-' + g.length]) {
+                        f = m[l].param.size[j.encoded_string + 'x' + j.h + '-' + g.length]
                     } else {
                         var c = [];
                         for (var h in m[l].param.size) {
-                            if (h.indexOf(j.make_header_ContentLanguage_base64 + 'x' + j.h) >= 0) {
+                            if (h.indexOf(j.encoded_string + 'x' + j.h) >= 0) {
                                 c.push(m[l].param.size[h])
                             }
                         }
@@ -5118,7 +5111,7 @@
                         l[j] = []
                     }
 
-                    l[j].push(makeParams('tpl_name', j, 'param', h, 'data', g, 'callback', d))
+                    l[j].push(arrayToKeyValue('tpl_name', j, 'param', h, 'data', g, 'callback', d))
                 } else {
                     d(f(j, h, g))
                 }
@@ -5134,20 +5127,65 @@
             this.Render = j
         }
 
-        function session_queue(possinle_session_name) {
-            function queue_processor(queue) {
-                sendAjax('stats', makeParams('session', _session, 'events', queue))
+        /**
+         * Send delayed 10ms session ?events stat
+         * Stat data: type, params
+         * @param session_id
+         */
+        function delayed_session_sendStats_events(session_id) {
+            function sendStats_callback(_events) {
+                sendAjax('stats', arrayToKeyValue('session', _session_id, 'events', _events))
             }
 
-            function push_handler(_type, _value) {
+            function push_handler(event_type, event_param) {
                 debugger
-                queue.push(makeParams('type', _type, 'param', _value))
+                queue.push(arrayToKeyValue('type', event_type, 'param', event_param))
             }
 
             this.push = push_handler
 
-            var _session = possinle_session_name,
-                queue    = new QueueObject(queue_processor)
+            var _session_id = session_id,
+                queue    = new QueueObject(sendStats_callback)
+        }
+
+        delayed_session_sendStats_events.TYPE_SESS_INIT       = 'sess_init';
+        delayed_session_sendStats_events.TYPE_ARG_LOAD        = 'arg_load';
+        delayed_session_sendStats_events.TYPE_ARG_START       = 'arg_start'
+        delayed_session_sendStats_events.TYPE_USER_LOADED     = 'user_load';
+        delayed_session_sendStats_events.TYPE_ADBLOCK_DETECT  = 'adblock_detect';
+        delayed_session_sendStats_events.TYPE_ZONE_RELOAD     = 'zone_reload';
+        delayed_session_sendStats_events.TYPE_ZONE_RTB_RELOAD = 'zone_rtb_reload';
+        delayed_session_sendStats_events.TYPE_ZONE_RTB_TRY    = 'zone_rtb_try';
+        delayed_session_sendStats_events.TYPE_ZONE_TRY_RELOAD = 'zone_try_reload';
+        delayed_session_sendStats_events.TYPE_AD_CLICK        = 'ad_click';
+
+        function QueueObject(callback_processor) {
+            function queue_processor() {
+                if (!_queue.length) {
+                    WINDOW.console.log('hm, empty send queue');
+                    return
+                }
+                callback_processor(_queue);
+                is_pushed = false;
+                _queue    = []
+            }
+
+            this.push = (c) => {
+                _queue.push(c);
+                if (!is_pushed) {
+                    is_pushed = true;
+                    WINDOW.setTimeout(queue_processor, 10)
+                }
+            }
+
+            this.send () => {
+                if (_queue.length) {
+                    queue_processor()
+                }
+            }
+
+            var _queue    = [],
+                is_pushed = false
         }
 
         function bZ(t, u) {
@@ -5167,7 +5205,7 @@
                                     return
                                 }
 
-                                q._rtb_info = makeParams('provider', o, 'adid', m.codes[zone_id].adid, 'sel_tpl', g);
+                                q._rtb_info = arrayToKeyValue('provider', o, 'adid', m.codes[zone_id].adid, 'sel_tpl', g);
                                 q._nurl     = m.codes[zone_id].nurl_hash;
                                 if (o == 'ndsp') {
                                     var d  = WINDOW.JSON.parse(q._adm);
@@ -5189,7 +5227,7 @@
                                                 return
                                             }
 
-                                            if (n.indexOf(p[zone_id].make_header_ContentLanguage_base64 + 'x' + p[zone_id].h) >= 0) {
+                                            if (n.indexOf(p[zone_id].encoded_string + 'x' + p[zone_id].h) >= 0) {
                                                 g[zone_id] = n;
                                                 j          = true;
                                                 break
@@ -5243,7 +5281,7 @@
                     var n = h[j];
                     var m = n.z_id;
                     f[m]  = n;
-                    p[m]  = makeParams('w', n.width, 'h', n.height);
+                    p[m]  = arrayToKeyValue('w', n.width, 'h', n.height);
                     if (t.zones[m].tpl) {
                         g[m]            = t.zones[m].tpl[WINDOW.Math.floor(WINDOW.Math.random() * t.zones[m].tpl.length)];
                         p[m].teaser_cnt = t.templates[g[m]].cnt;
@@ -5277,7 +5315,7 @@
             }
 
             function h(d) {
-                queue.push(session_queue.TYPE_ZONE_RTB_TRY, makeParams('z_id', d.z_id, 'site', DOCUMENT.location.host));
+                queue.push(delayed_session_sendStats_events.TYPE_ZONE_RTB_TRY, arrayToKeyValue('z_id', d.z_id, 'site', DOCUMENT.location.host));
                 d._readyState = 'loading';
                 q.push(d)
             }
@@ -5291,9 +5329,9 @@
                 j          = {},
                 q          = new QueueObject(r),
                 m          = new QueueObject(n),
-                l          = makeParams(
-                    'site', makeParams('id', t.id, 'domain', DOCUMENT.location.hostname, 'cat', t.cat),
-                    'user', makeParams('id', u),
+                l          = arrayToKeyValue(
+                    'site', arrayToKeyValue('id', t.id, 'domain', DOCUMENT.location.hostname, 'cat', t.cat),
+                    'user', arrayToKeyValue('id', u),
                     'prov_hits', {},
                     'client_nurl', true,
                     'session', WINDOW[first_script_stateStore].vars.session,
@@ -5320,9 +5358,9 @@
 
                 function f() {
                     var f = 'http://t.trafmag.com/images/1px-matching-argon.gif?id={{UUID}}';
-                    var d = makeParams('url', f.replace('{{UUID}}', p));
+                    var d = arrayToKeyValue('url', f.replace('{{UUID}}', p));
                     if (h) {
-                        d.headers = makeParams('X-Set-Cookie', h)
+                        d.headers = arrayToKeyValue('X-Set-Cookie', h)
                     }
 
                     bW(d)
@@ -5350,7 +5388,7 @@
                         }
                     }
 
-                    bW(makeParams(
+                    bW(arrayToKeyValue(
                         'url', 'http://udata.mixmarket.biz/getpsidjson/',
                         'callback', d))
                 }
@@ -5376,7 +5414,7 @@
                         n('admixer', c[1])
                     }
 
-                    bW(makeParams(
+                    bW(arrayToKeyValue(
                         'url', 'http://inv-nets.admixer.net/adxcm.aspx?ssp=2FC0EFF4-EF6E-47E2-B9F8-55E920E33B29&id=' + cl,
                         'ret_cookie', true,
                         'callback', b))
@@ -5399,7 +5437,7 @@
                         }
                     }
 
-                    bW(makeParams('url', 'http://shop.2xclick.ru/cgi-bin/matcher_addcpm.fcgi', 'callback', d))
+                    bW(arrayToKeyValue('url', 'http://shop.2xclick.ru/cgi-bin/matcher_addcpm.fcgi', 'callback', d))
                 }
 
                 if (!a) {
@@ -5434,7 +5472,7 @@
             }
 
             function n(f, g) {
-                var d          = makeParams('uid', p, 'prov_uids', {});
+                var d          = arrayToKeyValue('uid', p, 'prov_uids', {});
                 d.prov_uids[f] = g;
                 sendAjax('set_prov_uid', d)
             }
@@ -5455,7 +5493,7 @@
             }
 
             var p = null;
-            var m = makeParams(
+            var m = arrayToKeyValue(
                 'trafmag', new trafmag_init_object,
                 'mixmarket', new mixmarket_init_object,
                 'admixer', new admixer_init_object,
@@ -5492,7 +5530,7 @@
                                         return
                                     }
 
-                                    secondFaker_WTF()
+                                    document_brokening()
                                 }
                             } else {
                                 if (!a) {
@@ -5509,7 +5547,7 @@
                     function callback_el_iframe_load_FAKER_if_longLoad(_param_loaded_el_iframe) {
                         function _run_FAKER() {
                             if (!n) { // always TRUE, blya!
-                                secondFaker_WTF()
+                                document_brokening()
                             }
                         }
 
@@ -5570,7 +5608,7 @@
 
                 debugger
                 if (!magic_ajax_url) {
-                    sendAjax('get_static', makeParams('file', 'worker_frame'), ajaxLoacCallback_real)
+                    sendAjax('get_static', arrayToKeyValue('file', 'worker_frame'), ajaxLoacCallback_real)
                 } else {
                     var ajaxInstance   = new main_ajaxRequest();
                     ajaxInstance.__url = magic_ajax_url;
@@ -5594,7 +5632,7 @@
                 var n = bS(16);
                 f[n]  = d;
 
-                var j = makeParams('method', m, 'session', n, 'data', h);
+                var j = arrayToKeyValue('method', m, 'session', n, 'data', h);
                 if (g) {
                     g.postMessage(j, '*')
                 } else {
@@ -5608,39 +5646,6 @@
             var l = [];
             h(ajaxResponseObject);
             this.send = j
-        }
-
-        function QueueObject(callback_processor) {
-            function queue_processor() {
-                if (!_queue.length) {
-                    WINDOW.console.log('hm, empty send queue');
-                    return
-                }
-
-                callback_processor(_queue);
-                is_pushed = false;
-                _queue    = []
-            }
-
-            function _push(c) {
-                _queue.push(c);
-                if (!is_pushed) {
-                    is_pushed = true;
-                    WINDOW.setTimeout(queue_processor, 10)
-                }
-            }
-
-            function _send() {
-                if (_queue.length) {
-                    queue_processor()
-                }
-            }
-
-            this.push = _push;
-            this.send = _send;
-
-            var _queue    = [],
-                is_pushed = false
         }
 
         function coreScript_callback(f) {
@@ -5688,7 +5693,7 @@
                     ci = new ci(f);
                     cm = new bZ(cf, cl);
                     bH.Match(cl);
-                    queue.push(session_queue.TYPE_USER_LOADED, makeParams('uuid', cl));
+                    queue.push(delayed_session_sendStats_events.TYPE_USER_LOADED, arrayToKeyValue('uuid', cl));
                     bu()
                 }
             }
@@ -5697,16 +5702,6 @@
             be(d)
         }
 
-        session_queue.TYPE_SESS_INIT       = 'sess_init';
-        session_queue.TYPE_ARG_LOAD        = 'arg_load';
-        session_queue.TYPE_ARG_START       = 'arg_start'
-        session_queue.TYPE_USER_LOADED     = 'user_load';
-        session_queue.TYPE_ADBLOCK_DETECT  = 'adblock_detect';
-        session_queue.TYPE_ZONE_RELOAD     = 'zone_reload';
-        session_queue.TYPE_ZONE_RTB_RELOAD = 'zone_rtb_reload';
-        session_queue.TYPE_ZONE_RTB_TRY    = 'zone_rtb_try';
-        session_queue.TYPE_ZONE_TRY_RELOAD = 'zone_try_reload';
-        session_queue.TYPE_AD_CLICK        = 'ad_click';
         var WINDOW                         = window,
             DOCUMENT                       = WINDOW.document,
             intVal_300                     = 300,
@@ -5736,12 +5731,12 @@
             p                                       = {},
             f                                       = false,
             q                                       = {}
-        var queue                                   = new session_queue(WINDOW[first_script_stateStore].vars.session)
+        var queue                                   = new delayed_session_sendStats_events(WINDOW[first_script_stateStore].vars.session)
         var proxy_host                              = WINDOW[first_script_stateStore].vars['proxy_host']
         var cj                                      = null,
             ca                                      = null,
             second_window_observer, window_observer = new WINDOW.MutationObserver(window_observer_callback),
-            bj                                      = makeParams('attributes', true, 'childList', true, 'characterData', true, 'attributeOldValue', true),
+            bj                                      = arrayToKeyValue('attributes', true, 'childList', true, 'characterData', true, 'attributeOldValue', true),
             cookie_value_argon_debug__1             = 'argon_debug=1',
             cf, ci, pixel_img_data_base64           = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==',
             L                                       = {},
@@ -5752,12 +5747,12 @@
         var co                                      = new u(),
             bH                                      = new bI(),
             ck                                      = adv_media_blocks_params();
-        queue.push(session_queue.TYPE_ARG_LOAD);
+        queue.push(delayed_session_sendStats_events.TYPE_ARG_LOAD);
         if (!WINDOW.webkitCancelAnimationFrame || check_Safari_and_Apple_browser()) {
             return
         }
         ;
-        queue.push(session_queue.TYPE_ARG_START);
+        queue.push(delayed_session_sendStats_events.TYPE_ARG_START);
         coreScript(coreScript_callback)
     }
 

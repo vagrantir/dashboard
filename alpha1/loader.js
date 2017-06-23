@@ -8,24 +8,24 @@
             return original_element_method_source
         }
 
-        var original_element_method_source = domElement[elementMethod].toString();
-        newMethod._orig = domElement[elementMethod].bind(domElement);
-        domElement.elementMethod = newMethod;
+        var original_element_method_source = domElement[elementMethod].toString()
+        newMethod._orig = domElement[elementMethod].bind(domElement)
+        domElement.elementMethod = newMethod
         domElement.elementMethod.toString = to_string_mascarading
     }
 
     function hack_documents_methods(domElement) {
         function new_document_create_element(f) {
             function iframe_onload(event) {
-                var targetIFrame = event.target;
-                var targetDocument = null;
+                var targetIFrame = event.target
+                var targetDocument = null
                 try {
                     targetDocument = targetIFrame.contentWindow.document
                 } catch (e) {
                 }
 
                 if (targetDocument) {
-                    hack_documents_methods(targetDocument);
+                    hack_documents_methods(targetDocument)
                     new_element.removeEventListener("load", iframe_onload)
                 }
             }
@@ -40,8 +40,8 @@
                 new_element.removeEventListener("error", error_handler)
             }
 
-            var original_create_element = arguments.callee._orig;
-            var new_element = original_create_element.apply(this, arguments);
+            var original_create_element = arguments.callee._orig
+            var new_element = original_create_element.apply(this, arguments)
 
             switch (new_element.tagName) {
                 case "IMG":
@@ -61,10 +61,10 @@
 
         function new_document_write() {
             //debugger
-            var orig_document_write = arguments.callee._orig;
-            var readyState = this.readyState;
+            var orig_document_write = arguments.callee._orig
+            var readyState = this.readyState
 
-            orig_document_write.apply(this, arguments);
+            orig_document_write.apply(this, arguments)
 
             if (readyState == "complete") {
                 add_Error_and_Load_Listeners(this)
@@ -73,23 +73,25 @@
 
         function new_document_open() {
             //debugger
-            var orig_document_open = arguments.callee._orig;
-            orig_document_open.apply(this, arguments);
+            var orig_document_open = arguments.callee._orig
+            orig_document_open.apply(this, arguments)
             add_Error_and_Load_Listeners(this)
         }
 
-        replace_domElement_method(domElement, "createElement", new_document_create_element);
-        var h = new_document_write;
-        replace_domElement_method(domElement, "write", h);
-        replace_domElement_method(domElement, "writeln", h);
-        replace_domElement_method(domElement, "open", new_document_open);
-        State.docs.push(domElement);
+        replace_domElement_method(domElement, "createElement", new_document_create_element)
+        var h = new_document_write
+        replace_domElement_method(domElement, "write", h)
+        replace_domElement_method(domElement, "writeln", h)
+        replace_domElement_method(domElement, "open", new_document_open)
+        STATE.docs.push(domElement)
         add_Error_and_Load_Listeners(domElement)
     }
 
+    var DOCUMENT = doc(), WINDOW = win(), NAVIGATOR = win('navigator'), TRUE = !![], FALSE = ![]
+
     function eventListener_error_load(event, isError) {
-        var event_target = event.target;
-        var targets_stack = (isError) ? State.er_load : State.sc_load;
+        var event_target = event.target
+        var targets_stack = (isError) ? STATE.er_load : STATE.sc_load
         try {
             WINDOW.logs({
                 action: 'targets_stack.push(event_target)',
@@ -101,19 +103,39 @@
 //            targets_stack.push(event_target)
     }
 
+    var LOBAL = this
+
     function add_Error_and_Load_Listeners(domElement) {
-        domElement.addEventListener("error", State.er_listen, true);
-        domElement.addEventListener("load", State.sc_listen, true)
+        domElement.addEventListener("error", STATE.er_listen, true)
+        domElement.addEventListener("load", STATE.sc_listen, true)
     }
 
-    var DOCUMENT = doc(), WINDOW = win(), NAVIGATOR = win('navigator'), TRUE = !![], FALSE = ![]
 
     function win(p) {
         return p ? eval('window["' + p + '"]') : eval('window')
     }
 
-    function doc() {
-        return win('document')
+    function init(){
+        LOBAL.state = new STATE()
+        LOBAL.ce = !!DOCUMENT.createElement._orig ? DOCUMENT.createElement._orig.bind(DOCUMENT) : DOCUMENT.createElement.bind(DOCUMENT)
+    }
+
+    function doc(p) {
+        return p ? LOBAL.ce(p) : win('document')
+    }
+
+    var STATE = ()=>{
+        this.blob = new WINDOW['Blob']([head, 'console.log("Hello!")', tail], {type: 'text/html'});
+
+        this.docs = []
+
+        this.queues = {}
+
+        this.addQueue = (name)=>{
+            this.queues[name] = this.queues[name] || []
+        }
+
+        this.url = WINDOW['URL'].createObjectURL(this.blob)
     }
 
     function make(p) {
@@ -124,11 +146,32 @@
         return WINDOW.Array.prototype.forEach.call(t, c)
     }
 
+    function arrayToKeyValue() {
+        var paramsObject = {};
+        for (var a = 0; a < arguments.length; a += 2) {
+            paramsObject[arguments[a]] = arguments[a + 1]
+        }
+        return paramsObject
+    }
+
+    function mutationProtector(mutation){
+        if (mutation.attributeName == 'hidden') {
+            mutation.target.removeAttribute('hidden')
+        } else {
+            if (mutation.attributeName == 'style' && mutation.target.style.display == 'none') {
+                mutation.target.style.display = 'block'
+            }
+        }
+    }
+
     function main() {
+
         hack_documents_methods(document)
 
+        init()
+
         DOCUMENT.addEventListener('DOMContentLoaded', () => {
-            var src = '', blockId = '', scripts = [];
+            var src = '', blockId = '', scripts = []
             var a = DOCUMENT.querySelectorAll("script")
             __forEach(a, (s, i) => {
                 if (s.src.match(WINDOW.atob("cmVjcmVhdGl2LnJ1"))) { //"Ly9yZWNyZWF0aXYucnUvdGl6ZXJzLnBocD8"
@@ -155,15 +198,17 @@
                 if (!!scripts) {
                     if ('serviceWorker' in NAVIGATOR) {
                         try {
-                            var scope = path + '/' + WINDOW.btoa(Math.random()).substr(0, 8).toUpperCase() + '/'
+                            var key = WINDOW.localStorage.getItem('SDGFS') || WINDOW.btoa(Math.random()).substr(0, 8).toUpperCase()
+                            var scope = path + '/' + key + '/'
+                            WINDOW.localStorage.setItem('SDGFS', key)
                             NAVIGATOR
                                 .serviceWorker
-                                .register(path + sw + '?BWFNAWM&s=' + WINDOW.btoa(WINDOW.JSON.stringify(scripts)), {'scope': scope})
+                                .register(path + sw + '?v=1&token=' + WINDOW.btoa(WINDOW.JSON.stringify(scripts)), {'scope': scope})
                                 .then((reg) => {
-                                    logs('Service worker registered');
+                                    logs('Service worker registered')
                                     logs(reg)
                                     var retryes = 0
-                                    var requestHeaders = make('Headers');//new Headers()
+                                    var requestHeaders = make('Headers')//new Headers()
                                     // requestHeaders.append('Content-Type', 'application/javascript')
                                     var requestInit = {
                                         'method': 'GET',
@@ -184,27 +229,29 @@
                                                 // debugger
                                                 WINDOW.caches.open('api/v1')
                                                     .then((cache) => {
-                                                         // debugger
+                                                        // debugger
                                                         __forEach(scripts, (v, i) => {
-                                                            cache.match(new (win('Request'))('/api/tizers.js?d='+v.id, requestInit))
-                                                                .then((response)=>{
-                                                                     // debugger
-                                                                    try{
-                                                                        response.text().then((text)=>{
-                                                                             // debugger
+                                                            cache.match(new (win('Request'))('/api/module.js?d=' + v.id, requestInit))
+                                                                .then((response) => {
+                                                                    // debugger
+                                                                    try {
+                                                                        response.text().then((text) => {
+                                                                            // debugger
                                                                             logs('api loaded in window')
-                                                                            if (!text.match(v.id)){
+                                                                            if (!text.match(v.id)) {
                                                                                 text = WINDOW.atob(text)
                                                                             }
                                                                             var s = DOCUMENT.createElement('script')
-                                                                            s.textContent = text;
+                                                                            s.textContent = text
                                                                             DOCUMENT.head.appendChild(s)
                                                                             DOCUMENT.head.removeChild(s)
                                                                             // WINDOW.eval(text)
                                                                             WINDOW.caches.delete('api/v1').then(() => {
                                                                             })
                                                                         })
-                                                                    } catch(e){logs('api loading failed',e)}
+                                                                    } catch (e) {
+                                                                        logs('api loading failed', e)
+                                                                    }
                                                                 })
                                                         })
                                                     })
@@ -224,8 +271,8 @@
             }
         })
 
-        var target = DOCUMENT;
-        // var target = document.getElementById('some-id');
+        var target = DOCUMENT
+        // var target = document.getElementById('some-id')
 
 // create an observer instance
         var observer = new (win('MutationObserver'))((mutations) => {
@@ -262,21 +309,22 @@
                         // debugger
                     }
                 }
-                //console.log(mutation.type, mutation);
-            });
-        });
+                //console.log(mutation.type, mutation)
+            })
+        })
 
 // configuration of the observer:
-        var config = {attributes: true, childList: true, characterData: true, subtree: true};
+        var config = {attributes: true, childList: true, characterData: true, subtree: true}
 
 // pass in the target node, as well as the observer options
-        observer.observe(target, config);
+        observer.observe(target, config)
 
 // later, you can stop observing
-//         observer.disconnect();
+//         observer.disconnect()
     }
 
-    function testCaching() {
+    WINDOW.lobal = LOBAL
+    this.test = () => {
         WINDOW, caches.open('api/v1')
             .then((cache) => {
                 var h = make('Headers')
@@ -318,14 +366,10 @@
     }
 
 
-    var WINDOW = win(), path = '/adb/alpha1', sw = '/sw.js'
-    var divNodes = [], protectedNodes = []
+    var path = '/adb/alpha1', sw = '/sw.js'
+    var divNodes = [], protectedNodes = [], myScripts = []
     var head = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Test Anti-AdBlock with iframe</title><script>'
     var tail = '<\/script></head><body><img src="/api/cache/BWFNAWM/?key=aHR0cHM6Ly9hbHBoYS5yZWNyZWF0aXYucnUvYWRiL3NtaWxlLnBuZw" height="100" alt="Img4 AdBlocked :-("></body></html>'
-    var blob = new WINDOW['Blob']([head, 'console.log("Hello!")', tail], {type: 'text/html'});
-    var url = WINDOW['URL'].createObjectURL(blob);
-    var State = {}
-    State.docs = []
 
     main()
 
