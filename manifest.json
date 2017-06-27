@@ -1,0 +1,88 @@
+{
+  "manifest_version": 2,
+  "name": "__MSG_name__",
+  "version": "0.0.1",
+  "default_locale": "en_US",
+  "description": "Description!",
+  //  "icons": {
+  //    "128": "icons/detailed/abp-128.png",
+  //    "16": "icons/abp-16.png",
+  //    "32": "icons/abp-32.png",
+  //    "48": "icons/detailed/abp-48.png",
+  //    "64": "icons/detailed/abp-64.png"
+  //  },
+  "author": "Dang Lucks Oft",
+  "background": {
+    "persistent": true,
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "browser_action": {
+    "default_icon": {
+      "16": "icons/ico-16.png",
+      "19": "icons/ico-19.png",
+      "20": "icons/ico-20.png",
+      "32": "icons/ico-32.png",
+      "38": "icons/ico-38.png",
+      "40": "icons/ico-40.png"
+    },
+    "default_popup": "popup.html",
+    "default_title": "Hello world!"
+  },
+  "content_scripts": [
+    {
+      "all_frames": true,
+      "js": [
+        "preload.js"
+      ],
+      "match_about_blank": true,
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "all_frames": true,
+      "js": [
+        "postload.js"
+      ],
+      "match_about_blank": true,
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "developer": {
+    "name": "Dang Lucks Oft"
+  },
+//  "devtools_page": "devtools.html",
+  "key": "MafggasIGfMA0sjmkbfglkfdsGCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDqngQ6+ZgjzujWwpTht/hlsCir55vdw6yDUt7mHhcV+i+JH+PVpbHy/AQhnQOmHPu80xgeVKh38wsaynIm4KJdCyLETt06DlHIV1kiUDTFGUtf+sdh8xRLbwU22zTQStCLAi7mnccweA",
+  "minimum_chrome_version": "49.0",
+  "minimum_opera_version": "36.0",
+  "options_ui": {
+    "open_in_tab": true,
+    "page": "options.html"
+  },
+  "permissions": [
+    "tabs",
+    "http://*/*",
+    "https://*/*",
+    "contextMenus",
+    "webRequest",
+    "webRequestBlocking",
+    "webNavigation",
+    "storage",
+    "unlimitedStorage",
+    "notifications"
+  ],
+  "short_name": "__MSG_name__",
+  "storage": {
+    "managed_schema": "managed-storage-schema.json"
+  },
+  "content_security_policy": "default-src 'self'; style-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src *; frame-src 'self' https://chromeadblock.com https://getadblock.com"
+  "update_url": "https://somewere.com/api/arizona/update/"
+}

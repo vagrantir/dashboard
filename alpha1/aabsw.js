@@ -9,20 +9,17 @@
         })
     }
 
-    S.addEventListener('install', (() => {
-        return (event) => {
+    S.addEventListener('install', event => {
             // importScripts('https://recreativ.ru/tizers1.php?bn=WETPNH5v46&ping')
             event.waitUntil(
-                caches
-                    .open('api/v0')
-                    .then(() => {
-                    })
-                    .catch(() => {
-                    })
+                G.skipWaiting()
             )
         }
-    })(eval('this')));
+    );
 
+    S.addEventListener('activate', function (event) {
+        event.waitUntil(S.clients.claim());
+    });
     function __forEach(t, c) {
         return i.G.Array.prototype.forEach.call(t, c)
     }

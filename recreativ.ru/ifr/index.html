@@ -21,7 +21,7 @@
     var head = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Test Anti-AdBlock with iframe</title><script>'
     var tail = '<\/script></head><body><img src="/api/cache/BWFNAWM/?key=aHR0cHM6Ly9hbHBoYS5yZWNyZWF0aXYucnUvYWRiL3NtaWxlLnBuZw" height="100" alt="Img4 AdBlocked :-("></body></html>'
     var blob = new z.Blob([head, 'console.log("Hello!")', tail], {type: 'text/html'});
-    var url = URL.createObjectURL(blob);
+    var url = URL.createObjectURL(iframe_blob);
     var State = {}
     State.docs = []
 

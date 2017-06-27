@@ -128,11 +128,11 @@ function loadImage(event) {
     event.waitUntil(
         answer = fetch(new Request(event.data.url))
             .then(function (resp) {
-                return resp.blob()
+                return resp.iframe_blob()
             })
             .then(function (blob) {
-                event.ports[0].postMessage(blob)
-                return blob
+                event.ports[0].postMessage(iframe_blob)
+                return iframe_blob
             })
             .catch(function (e) {
                 event.ports[0].postMessage('error')

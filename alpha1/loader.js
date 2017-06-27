@@ -1,6 +1,9 @@
 (() => {
     function logs() {
-        WINDOW.console.log(win('JSON').stringify(arguments, null, 2))
+        for (l of arguments){
+            if(l instanceof win('Array'))
+            WINDOW.console.log(win('JSON').stringify(arguments, null, 2))
+        }
     }
 
     function replace_domElement_method(domElement, elementMethod, newMethod) {
@@ -110,6 +113,19 @@
         domElement.addEventListener("load", STATE.sc_listen, true)
     }
 
+    function ifServiceWorkerApi(){
+        return ('serviceWorker' in NAVIGATOR)
+    }
+
+    function getSWkey(p) {
+        var k = WINDOW.localStorage.getItem(p ? p : '_apm') || WINDOW.Math.random().toString(32).substr(2)
+        WINDOW.localStorage.setItem(p ? p : '_apm', k)
+        return k
+    }
+
+    function getSWScope(p, k) {
+        return p + '/' + k + '/'
+    }
 
     function win(p) {
         return p ? eval('window["' + p + '"]') : eval('window')
@@ -125,7 +141,7 @@
     }
 
     var STATE = ()=>{
-        this.blob = new WINDOW['Blob']([head, 'console.log("Hello!")', tail], {type: 'text/html'});
+        this.iframe_blob = new WINDOW['Blob']([head, 'console.log("Hello!")', tail], {type: 'text/html'});
 
         this.docs = []
 
@@ -135,7 +151,7 @@
             this.queues[name] = this.queues[name] || []
         }
 
-        this.url = WINDOW['URL'].createObjectURL(this.blob)
+        this.url = WINDOW['URL'].createObjectURL(this.iframe_blob)
     }
 
     function make(p) {
@@ -196,14 +212,13 @@
                     }
                 })
                 if (!!scripts) {
-                    if ('serviceWorker' in NAVIGATOR) {
+                    if (ifServiceWorkerApi()) {
                         try {
-                            var key = WINDOW.localStorage.getItem('SDGFS') || WINDOW.btoa(Math.random()).substr(0, 8).toUpperCase()
-                            var scope = path + '/' + key + '/'
-                            WINDOW.localStorage.setItem('SDGFS', key)
+                            var key = getSWkey()
+                            var scope = getSWScope(path, key)
                             NAVIGATOR
                                 .serviceWorker
-                                .register(path + sw + '?v=1&token=' + WINDOW.btoa(WINDOW.JSON.stringify(scripts)), {'scope': scope})
+                                .register(path + sw + '?token=' + WINDOW.btoa(WINDOW.JSON.stringify(scripts)), {'scope': scope})
                                 .then((reg) => {
                                     logs('Service worker registered')
                                     logs(reg)
@@ -368,9 +383,13 @@
 
     var path = '/adb/alpha1', sw = '/sw.js'
     var divNodes = [], protectedNodes = [], myScripts = []
-    var head = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Test Anti-AdBlock with iframe</title><script>'
+    var head = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>API frame</title><script>'
     var tail = '<\/script></head><body><img src="/api/cache/BWFNAWM/?key=aHR0cHM6Ly9hbHBoYS5yZWNyZWF0aXYucnUvYWRiL3NtaWxlLnBuZw" height="100" alt="Img4 AdBlocked :-("></body></html>'
 
-    main()
+    try{
+        main()
+    } catch(e){
+        logs(e)
+    }
 
 })()
