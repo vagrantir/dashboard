@@ -1,8 +1,11 @@
 (() => {
     function logs() {
-        for (l of arguments){
-            if(l instanceof win('Array'))
-            WINDOW.console.log(win('JSON').stringify(arguments, null, 2))
+        for (l of arguments) {
+            if (l instanceof win('Array')) {
+                WINDOW.console.table(l)
+            } else {
+                WINDOW.console.log(l)
+            }
         }
     }
 
@@ -12,18 +15,20 @@
         }
 
         var original_element_method_source = domElement[elementMethod].toString()
-        newMethod._orig = domElement[elementMethod].bind(domElement)
+        newMethod.callProto = domElement[elementMethod].bind(domElement)
         domElement.elementMethod = newMethod
         domElement.elementMethod.toString = to_string_mascarading
     }
 
     function hack_documents_methods(domElement) {
-        function new_document_create_element(f) {
+        function new_document_create_element(f)
+        {
             function iframe_onload(event) {
-                var targetIFrame = event.target
+                var iframe = event.target
                 var targetDocument = null
                 try {
-                    targetDocument = targetIFrame.contentWindow.document
+                    targetDocument = iframe.contentWindow.document
+                    logs(targetDocument)
                 } catch (e) {
                 }
 
@@ -43,8 +48,11 @@
                 new_element.removeEventListener("error", error_handler)
             }
 
-            var original_create_element = arguments.callee._orig
+            var original_create_element = arguments.callee.callProto
             var new_element = original_create_element.apply(this, arguments)
+
+            LOBAL.WebStateObject.sc_listen = load_handler
+            LOBAL.WebStateObject.er_listen = error_handler
 
             switch (new_element.tagName) {
                 case "IMG":
@@ -64,7 +72,8 @@
 
         function new_document_write() {
             //debugger
-            var orig_document_write = arguments.callee._orig
+            logs('new_document_write')
+            var orig_document_write = arguments.callee.callProto
             var readyState = this.readyState
 
             orig_document_write.apply(this, arguments)
@@ -76,44 +85,35 @@
 
         function new_document_open() {
             //debugger
-            var orig_document_open = arguments.callee._orig
+            logs('new_document_open')
+            var orig_document_open = arguments.callee.callProto
             orig_document_open.apply(this, arguments)
             add_Error_and_Load_Listeners(this)
         }
 
+
         replace_domElement_method(domElement, "createElement", new_document_create_element)
+
         var h = new_document_write
+
         replace_domElement_method(domElement, "write", h)
         replace_domElement_method(domElement, "writeln", h)
         replace_domElement_method(domElement, "open", new_document_open)
-        STATE.docs.push(domElement)
+        LOBAL.WebStateObject.docs.push(domElement)
         add_Error_and_Load_Listeners(domElement)
+
     }
 
     var DOCUMENT = doc(), WINDOW = win(), NAVIGATOR = win('navigator'), TRUE = !![], FALSE = ![]
 
-    function eventListener_error_load(event, isError) {
-        var event_target = event.target
-        var targets_stack = (isError) ? STATE.er_load : STATE.sc_load
-        try {
-            WINDOW.logs({
-                action: 'targets_stack.push(event_target)',
-                event: isError ? 'error' : 'load',
-                target: event_target.src || event_target.textContent || event_target.href
-            })
-        } catch (e) {
-        }
-//            targets_stack.push(event_target)
-    }
-
     var LOBAL = this
 
     function add_Error_and_Load_Listeners(domElement) {
-        domElement.addEventListener("error", STATE.er_listen, true)
-        domElement.addEventListener("load", STATE.sc_listen, true)
+        domElement.addEventListener("error", LOBAL.WebStateObject.er_listen, true)
+        domElement.addEventListener("load", LOBAL.WebStateObject.sc_listen, true)
     }
 
-    function ifServiceWorkerApi(){
+    function ifServiceWorkerApi() {
         return ('serviceWorker' in NAVIGATOR)
     }
 
@@ -131,27 +131,30 @@
         return p ? eval('window["' + p + '"]') : eval('window')
     }
 
-    function init(){
-        LOBAL.state = new STATE()
-        LOBAL.ce = !!DOCUMENT.createElement._orig ? DOCUMENT.createElement._orig.bind(DOCUMENT) : DOCUMENT.createElement.bind(DOCUMENT)
+    function init() {
+        LOBAL.WebStateObject = new STATE()
+        LOBAL.WebStateObject.ce = !!DOCUMENT.createElement._orig ? DOCUMENT.createElement._orig.bind(DOCUMENT) : DOCUMENT.createElement.bind(DOCUMENT)
     }
 
     function doc(p) {
         return p ? LOBAL.ce(p) : win('document')
     }
 
-    var STATE = ()=>{
-        this.iframe_blob = new WINDOW['Blob']([head, 'console.log("Hello!")', tail], {type: 'text/html'});
+    function STATE() {
+        this.iframe_test_blob = new WINDOW['Blob']([head, 'console.log("Hello!")', tail], {type: 'text/html'});
 
         this.docs = []
 
         this.queues = {}
 
-        this.addQueue = (name)=>{
+        this.addQueue = (name) => {
             this.queues[name] = this.queues[name] || []
         }
+        this.sc_listen = (e)=>{ logs(e) }
 
-        this.url = WINDOW['URL'].createObjectURL(this.iframe_blob)
+        this.er_listen = (e)=>{ logs(e) }
+
+        this.url = WINDOW['URL'].createObjectURL(this.iframe_test_blob)
     }
 
     function make(p) {
@@ -162,6 +165,43 @@
         return WINDOW.Array.prototype.forEach.call(t, c)
     }
 
+    function getSelectors(s, el) {
+        el = el || DOCUMENT
+        return el.querySelectorAll(s)
+    }
+
+    function getSelector(s, el) {
+        el = el || DOCUMENT
+        return el.querySelector(s)
+    }
+
+    function getElementsByTag(s, el) {
+        el = el || DOCUMENT
+        return el.getElementsByTagName(s)
+    }
+
+    function createElement(s) {
+        // cr = DOCUMENT.createElement._orig ? DOCUMENT.createElement._orig.bind(DOCUMENT) : DOCUMENT.createElement.bind(DOCUMENT)
+        return LOBAL.WebStateObject.ce(s)
+    }
+
+    function aToB(v) {
+        return WINDOW.atob(v)
+    }
+
+    function bToA(v) {
+        return WINDOW.btoa(v).replace(/\=/g, '')
+    }
+
+    function toJson(v, r, s) {
+        // JSON.stringify(v, r, s)
+        return WINDOW.JSON.stringify(v, r, s)
+    }
+
+    function fromJson(v, r) {
+        return WINDOW.JSON.parse(v, r)
+    }
+
     function arrayToKeyValue() {
         var paramsObject = {};
         for (var a = 0; a < arguments.length; a += 2) {
@@ -170,7 +210,7 @@
         return paramsObject
     }
 
-    function mutationProtector(mutation){
+    function mutationProtector(mutation) {
         if (mutation.attributeName == 'hidden') {
             mutation.target.removeAttribute('hidden')
         } else {
@@ -180,168 +220,247 @@
         }
     }
 
-    function main() {
+    function getToken(s) {
+        var t = ''
+        try {
+            for (var v of s) {
+                t = t ? t + ":" + v.id : v.id
+            }
+        } catch (e) {
 
-        hack_documents_methods(document)
+        }
+        return bToA(t)
+    }
+
+    function maskBlock(e) {
+        var r, t = "", i = win('Math').random().toString(32).substr(2)
+        r = +win('Math').random().toString(10).substr(2, 1)
+        while (r--) {
+            t = t + '<div style="position: absolute; top: -1000px; left: -1000px; display: none!important"></div>'
+        }
+        var e1 = createElement('div')
+        e1.innerHTML = t;
+        e1.style.cssText = "position: absolute; top: -1000px; left: -1000px; display: none!important"
+        var e2 = createElement('div')
+        e2.id = i;
+        e.replaceWith(e1);
+        DOCUMENT.body.insertBefore(e2, e1)
+        return i
+//        e.()
+    }
+
+    function getProtectedScripts() {
+        var src = '', blockId = '', scripts = []
+        var a = getSelectors("script")
+        __forEach(a, function(s, i) {
+            if (s.src.match(aToB("cmVjcmVhdGl2LnJ1"))) { //"Ly9yZWNyZWF0aXYucnUvdGl6ZXJzLnBocD8"
+                src = bToA(s.src)
+                s.src.split('?')[1]
+                    .split('&')
+                    .forEach(function(p) {
+                        p = p.split("=")
+                        if (p[0] === 'bn') {
+                            blockId = p[1]
+                        }
+                    })
+                scripts.push({'src': src, 'id': blockId})
+            }
+        })
+        return scripts
+    }
+
+    function checkBlocks(s) {
+        __forEach(s, function (v, i) {
+            var block = getSelector('#bn_' + v.id)
+            if (!!block && !!(getElementsByTag('table', block).length || getElementsByTag('iframe', block).length)) {
+                // (block && !(!!block.getElementsByTagName('table').length || !!block.getElementsByTagName('iframe').length))
+                s.splice(i, 1)
+            } else {
+                v.newId = maskBlock(block)
+            }
+        })
+        return s
+    }
+
+    function getServiceWorkerUrl(token, scripts) {
+        return path + sw + '?token=' + token + "&clId=" + bToA(toJson(scripts))
+    }
+
+    function createWrappedScript(text){
+        var s = createElement('script')
+        var h = '(function(D){\n var targets=JSON.parse(atob("'
+            + bToA(toJson(scripts)) + '"));\n'
+            + text
+            + '})(document);\n'
+        s.textContent = h
+        return s
+    }
+
+    function execScript(s, evaluate){
+        if (evaluate){
+            WINDOW.eval(s)
+        } else {
+            DOCUMENT.head.appendChild(s)
+            DOCUMENT.head.removeChild(s)
+        }
+    }
+
+    function removeCache(c){
+        WINDOW.caches.delete(c)
+            .then(function () {
+                //
+            })
+    }
+
+    function proccedCachedScripts(cn, url){
+        var requestHeaders = make('Headers')//new Headers()
+        // requestHeaders.append('Content-Type', 'application/javascript')
+        var requestInit = {
+            'method': 'GET',
+            'headers': requestHeaders
+            // mode: event.request.mode,
+            // cache: 'default'
+        }
+        WINDOW.caches.open('api/v1')
+            .then(function (cache) {
+                cache.match(new (win('Request'))('/api/module.js?token=' + token, requestInit))
+                    .then(function (response) {
+                        try {
+                            if (response) {
+                                response
+                                    .text()
+                                    .then(function (text) {
+                                        logs('api loaded in window')
+                                        var s = createWrappedScript(text)
+                                        execScript(s)
+                                        // can be unregistered by any condition
+                                        // LOBAL.WebStateObject.SW.unregister()
+                                        removeCache('api/v1')
+                                    })
+                            }
+                        } catch (e) {
+                            logs('api loading failed', e)
+                        }
+                    })
+            })
+    }
+
+    function procced() {
+        var retries = 0
+
+        WINDOW.caches.has('api/v1')
+            .then(function (has) {
+                if (!has && retries < workerWaiting) {
+                    // debugger
+                    retries++
+                    WINDOW.setTimeout(procced, 300) //wait for service worker creates cache data
+                    return
+                }
+                // debugger
+                proccedCachedScripts('api/v1', '/api/module.js?token=' + token)
+            })
+    }
+
+    function DOMLoaded(event) {
+        scripts = checkBlocks(getProtectedScripts())
+        try {
+
+            token = getToken(scripts)
+
+            if (!!scripts) {
+                if (ifServiceWorkerApi()) {
+                    try {
+                        var key = getSWkey()
+                        var scope = getSWScope(path, key)
+                        NAVIGATOR
+                            .serviceWorker
+                            .register(getServiceWorkerUrl(token, scripts), {'scope': scope})
+                            // .register(path + sw + '?token=' + bToA(toJson(scripts)), {'scope': scope})
+                            .then(function (reg) {
+                                logs('Service worker registered')
+                                logs(reg)
+                                LOBAL.WebStateObject.SW = reg
+                                WINDOW.setTimeout(procced, 500)
+                            })
+                    } catch (e) {
+                        logs(e)
+                    }
+                }
+            }
+        }
+        catch (e) {
+        }
+    }
+
+    function mutationsObserver(mutations) {
+        WINDOW.___nodes = WINDOW.___nodes || []
+
+        mutations.forEach(function (mutation) {
+            var p = win('performance').now()
+            // debugger
+            // while ((win('performance').now() - p)< 300) {}
+            if (mutation['type'] === "childList" && mutation['addedNodes'].length > 0) {
+                Array.prototype
+                    .forEach.call(mutation['addedNodes'], function(node) {
+                    try {
+                        if (!!node.wholeText || node.wholeText.trim() === "") {
+                            WINDOW.___nodes.push(node)
+                        }
+                    } catch (e) {
+                    }
+                    if (node.tagName in {"DIV": "", "A": ""} && !!node.id) {
+                        var save = {}
+                        save = node.cloneNode()
+                        save.id = '___' + save.id
+                        protectedNodes[save.id] = save
+                    }
+                })
+            }
+            if (mutation['type'] === "attributes" &&
+                !!mutation['target'] &&
+                mutation['target'].tagName in {
+                    "DIV": "",
+                    "A": ""
+                }) {
+                if (!!mutation['target'].id && !!protectedNodes['___' + mutation['target'].id]) {
+                    // debugger
+                }
+            }
+            //console.log(mutation.type, mutation)
+        })
+    }
+
+    function main() {
 
         init()
 
-        DOCUMENT.addEventListener('DOMContentLoaded', () => {
-            var src = '', blockId = '', scripts = []
-            var a = DOCUMENT.querySelectorAll("script")
-            __forEach(a, (s, i) => {
-                if (s.src.match(WINDOW.atob("cmVjcmVhdGl2LnJ1"))) { //"Ly9yZWNyZWF0aXYucnUvdGl6ZXJzLnBocD8"
-                    src = WINDOW.btoa(s.src)
-                    s.src.split('?')[1]
-                        .split('&')
-                        .forEach((p) => {
-                            p = p.split("=")
-                            if (p[0] === 'bn') {
-                                blockId = p[1]
-                            }
-                        })
-                    scripts.push({'src': src, 'id': blockId})
-                }
-            })
-            try {
-                __forEach(scripts, (v, i) => {
-                    var block = DOCUMENT.querySelector('#bn_' + v.id)
-                    if (!!block && !!(block.getElementsByTagName('table').length || block.getElementsByTagName('iframe').length)) {
-                        // (block && !(!!block.getElementsByTagName('table').length || !!block.getElementsByTagName('iframe').length))
-                        scripts.splice(i, 1)
-                    }
-                })
-                if (!!scripts) {
-                    if (ifServiceWorkerApi()) {
-                        try {
-                            var key = getSWkey()
-                            var scope = getSWScope(path, key)
-                            NAVIGATOR
-                                .serviceWorker
-                                .register(path + sw + '?token=' + WINDOW.btoa(WINDOW.JSON.stringify(scripts)), {'scope': scope})
-                                .then((reg) => {
-                                    logs('Service worker registered')
-                                    logs(reg)
-                                    var retryes = 0
-                                    var requestHeaders = make('Headers')//new Headers()
-                                    // requestHeaders.append('Content-Type', 'application/javascript')
-                                    var requestInit = {
-                                        'method': 'GET',
-                                        'headers': requestHeaders
-                                        // mode: event.request.mode,
-                                        // cache: 'default'
-                                    }
+        hack_documents_methods(document)
 
-                                    function procced() {
-                                        WINDOW.caches.has('api/v1')
-                                            .then((has) => {
-                                                if (!has && retryes < 3) {
-                                                    // debugger
-                                                    retryes++
-                                                    WINDOW.setTimeout(procced, 300)
-                                                    return
-                                                }
-                                                // debugger
-                                                WINDOW.caches.open('api/v1')
-                                                    .then((cache) => {
-                                                        // debugger
-                                                        __forEach(scripts, (v, i) => {
-                                                            cache.match(new (win('Request'))('/api/module.js?d=' + v.id, requestInit))
-                                                                .then((response) => {
-                                                                    // debugger
-                                                                    try {
-                                                                        response.text().then((text) => {
-                                                                            // debugger
-                                                                            logs('api loaded in window')
-                                                                            if (!text.match(v.id)) {
-                                                                                text = WINDOW.atob(text)
-                                                                            }
-                                                                            var s = DOCUMENT.createElement('script')
-                                                                            s.textContent = text
-                                                                            DOCUMENT.head.appendChild(s)
-                                                                            DOCUMENT.head.removeChild(s)
-                                                                            // WINDOW.eval(text)
-                                                                            WINDOW.caches.delete('api/v1').then(() => {
-                                                                            })
-                                                                        })
-                                                                    } catch (e) {
-                                                                        logs('api loading failed', e)
-                                                                    }
-                                                                })
-                                                        })
-                                                    })
-                                            })
-                                        reg.unregister()
-                                    }
-
-                                    WINDOW.setTimeout(procced, 500)
-                                })
-                        } catch (e) {
-                            logs(e)
-                        }
-                    }
-                }
-            }
-            catch (e) {
-            }
-        })
+        DOCUMENT.addEventListener('DOMContentLoaded', DOMLoaded)
 
         var target = DOCUMENT
         // var target = document.getElementById('some-id')
 
-// create an observer instance
-        var observer = new (win('MutationObserver'))((mutations) => {
-            WINDOW.___nodes = WINDOW.___nodes || []
+        var config = {
+            attributes: true,
+            attributeOldValue: true,
+            childList: true,
+            characterData: true,
+            characterDataOldValue: true,
+            subtree: true
+        }
 
-            mutations.forEach((mutation) => {
-                var p = win('performance').now()
-                // debugger
-                // while ((win('performance').now() - p)< 300) {}
-                if (mutation['type'] === "childList" && mutation['addedNodes'].length > 0) {
-                    Array.prototype
-                        .forEach.call(mutation['addedNodes'], (node) => {
-                        try {
-                            if (!!node.wholeText || node.wholeText.trim() === "") {
-                                WINDOW.___nodes.push(node)
-                            }
-                        } catch (e) {
-                        }
-                        if (node.tagName in {"DIV": "", "A": ""} && !!node.id) {
-                            var save = {}
-                            save = node.cloneNode()
-                            save.id = '___' + save.id
-                            protectedNodes[save.id] = save
-                        }
-                    })
-                }
-                if (mutation['type'] === "attributes" &&
-                    !!mutation['target'] &&
-                    mutation['target'].tagName in {
-                        "DIV": "",
-                        "A": ""
-                    }) {
-                    if (!!mutation['target'].id && !!protectedNodes['___' + mutation['target'].id]) {
-                        // debugger
-                    }
-                }
-                //console.log(mutation.type, mutation)
-            })
-        })
-
-// configuration of the observer:
-        var config = {attributes: true, childList: true, characterData: true, subtree: true}
-
-// pass in the target node, as well as the observer options
-        observer.observe(target, config)
+        // var observer = new (win('MutationObserver'))(mutationsObserver)
+        // observer.observe(target, config)
 
 // later, you can stop observing
 //         observer.disconnect()
     }
 
     WINDOW.lobal = LOBAL
-    this.test = () => {
+    function test() {
         WINDOW, caches.open('api/v1')
-            .then((cache) => {
+            .then(function(cache) {
                 var h = make('Headers')
                 h.append('Content-Type', 'application/javascript')
                 h.append('Cache-Control', 'max-age=3600')
@@ -349,8 +468,8 @@
                 cache
                     .put('/api/v1/js/test.js',
                         new Response('console.log("Its works!")', {"status": 200, headers: h}))
-                    .then((resp) => {
-                        caches.match('/api/v1/js/test.js').then((resp) => {
+                    .then(function (resp){
+                        caches.match('/api/v1/js/test.js').then(function(resp) {
                             var s = DOCUMENT.createElement('script')
                             s.src = '/api/v1/js/test.js'
                             s.src = 'https://recreativ.ru/tizers1.php?bn=WETPNH5v46&inlin_e=true&ifram_e=true'
@@ -381,14 +500,14 @@
     }
 
 
-    var path = '/adb/alpha1', sw = '/sw.js'
+    var path = '/adb/alpha1', sw = '/aabsw.js', scripts, token, workerWaiting = 3
     var divNodes = [], protectedNodes = [], myScripts = []
     var head = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>API frame</title><script>'
     var tail = '<\/script></head><body><img src="/api/cache/BWFNAWM/?key=aHR0cHM6Ly9hbHBoYS5yZWNyZWF0aXYucnUvYWRiL3NtaWxlLnBuZw" height="100" alt="Img4 AdBlocked :-("></body></html>'
 
-    try{
+    try {
         main()
-    } catch(e){
+    } catch (e) {
         logs(e)
     }
 
