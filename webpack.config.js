@@ -64,10 +64,10 @@ module.exports = (options = {}) => ({
     },
     plugins:[
         new webpack.LoaderOptionsPlugin({
-            minimize: true,
-            debug: true,
-            options: {
-            }
+            minimize: "true",
+            debug: "true",
+            // options: {
+            // }
         }),
         new webpack.optimize.UglifyJsPlugin({
             compress: {

@@ -7,14 +7,14 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>RECREATIV advertiser dashboard</title>
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">-->
 
     <!-- Material Design fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">-->
+    <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
 
     <!-- Bootstrap -->
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">-->
 
     <!--<link href="src/md/css/bootstrap-material-design.css" rel="stylesheet">-->
     <!--<link href="src/md/css/ripples.min.css" rel="stylesheet">-->
@@ -25,7 +25,7 @@
     <!-- Material Design Bootstrap -->
     <!--<link href="css/mdb-full.css" rel="stylesheet">-->
     <!-- Your custom styles (optional) -->
-    <link href="css/style.css" rel="stylesheet">
+    <!--<link href="css/style.css" rel="stylesheet">-->
 
     <!--
     <link href="http://dev.rcrtv.net/static/advertiser/css/layout.css" rel="stylesheet">
@@ -35,63 +35,8 @@
 </head>
 
 <body>
-<div class="navbar navbar-danger">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                    data-target=".navbar-responsive-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="javascript:void(0)">Brand</a>
-        </div>
-        <div class="navbar-collapse collapse navbar-responsive-collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="#">Обзор</a></li>
-                <li><a href="#">Компании</a></li>
-                <li><a href="#">Настройки</a></li>
-                <li><a href="#">Статистика</a></li>
-            </ul>
-            <form class="navbar-form navbar-left">
-                <div class="form-group">
-                    <input type="text" class="form-control col-md-8" placeholder="Search">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 <div class="container-fluid" id="app">
-    <div class="row">
-        <div class="col-lg-2 col-sm-4 col-xs-12">
-            <period-selector :period-data="periods"
-                             :kind-data="statisticsKinds"
-                             :context-data="statisticsContext"
-            ></period-selector>
-        </div>
-        <main class="col-lg-10 col-sm-8 col-xs-12">
-            <div class="row">
-                <kpi-widget classes="col-xs-12 kpi" :kpis="kpis"
-                            :charts-data="dashboard.charts"></kpi-widget>
-            </div>
-            <div class="col-md-12 card">
-                <table-statistics :table-data="dashboard.detailed"></table-statistics>
-            </div>
-            <div class="row">
-                <div class="bs-component card">
-                </div>
-            </div>
-            <!--<div class="col-md-12">-->
-            <!--<period-selector :period-data="periods"-->
-            <!--:kind-data="statisticsKinds"-->
-            <!--:context-data="statisticsContext"-->
-            <!--&gt;</period-selector>-->
-            <!--</div>-->
-
-        </main>
-    </div>
 </div>
-<footer></footer>
 <!-- Vue templates -->
 <script type="text/x-template" id="tpl-kpi-widget">
     <div :class="classes" :id="cssId">
