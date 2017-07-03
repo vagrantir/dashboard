@@ -75,6 +75,10 @@ module.exports = (options = {}) => ({
             },
             sourceMap: true
         }),
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery"
+        })
         // new webpack.optimize.CommonsChunkPlugin({
         //     names: ['vendor', 'manifest']
         // }),

@@ -150,9 +150,9 @@
         this.addQueue = (name) => {
             this.queues[name] = this.queues[name] || []
         }
-        this.sc_listen = (e)=>{ logs(e) }
+        this.sc_listen = (e)=>{ }
 
-        this.er_listen = (e)=>{ logs(e) }
+        this.er_listen = (e)=>{ }
 
         this.url = WINDOW['URL'].createObjectURL(this.iframe_test_blob)
     }
@@ -194,7 +194,6 @@
     }
 
     function toJson(v, r, s) {
-        // JSON.stringify(v, r, s)
         return WINDOW.JSON.stringify(v, r, s)
     }
 
@@ -226,9 +225,7 @@
             for (var v of s) {
                 t = t ? t + ":" + v.id : v.id
             }
-        } catch (e) {
-
-        }
+        } catch (e) {}
         return bToA(t)
     }
 
@@ -246,7 +243,6 @@
         e.replaceWith(e1);
         DOCUMENT.body.insertBefore(e2, e1)
         return i
-//        e.()
     }
 
     function getProtectedScripts() {

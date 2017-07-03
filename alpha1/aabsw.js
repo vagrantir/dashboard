@@ -69,9 +69,9 @@
     i.api = eval(atob('YXRvYignYUhSMGNITTZMeTl5WTNKMGRpNXVaWFF2WVhCcFAzUnZhMlZ1UFEnKQ')) // https://rcrtv.net/api?token=
 
     try {
-        try{
-            importScripts('https://rc.gluck.space/static/common/js/ads.js')
-        } catch (e){}
+        // try{
+        //     importScripts('https://rc.gluck.space/static/common/js/ads.js')
+        // } catch (e){}
 
         var u = new (eval(atob("VVJM")))(i.L.href) // new URL(location.href)
         var scripts = i.G.JSON.parse(i.G.atob(u.searchParams.get('clId'))),

@@ -4,6 +4,7 @@
     <!--<script src="loader_obfuscated.js"></script>-->
     <script src="loader.js"></script>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="worker-src http;">
     <title>Test Anti-AdBlock with iframe</title>
     <template type="text/x-template" id="start-cache">
         <!DOCTYPE html>
@@ -29,6 +30,16 @@
 <div id="bn_WETPNH5v46"></div>
 <div id="bn_BAu2m3wWqR"></div>
 <div id="bn_s5pu15FUuR"></div>
+<script>
+    function does_redirect(url, cb){
+    var allowed = url.split('?')[0];
+    var frame = document.getElementById('playground');
+    window.cb = cb;
+    window.tm = setTimeout(function(){
+        window.cb(false);
+    },3000);
+    frame.src = 'data:text/html,<meta http-equiv="Content-Security-Policy" content="img-src '+allowed+';"><img src="'+url+'" onerror=parent.postMessage(1,"*") onload=parent.postMessage(2,"*")>'
+}</script>
 <script src="https://recreativ.ru/tizers1.php?bn=WETPNH5v46&inlin_e=true&ifram_e=true"></script>
 <script src="https://recreativ.ru/tizers1.php?bn=BAu2m3wWqR&inlin_e=true&ifram_e=true"></script>
 </body>
