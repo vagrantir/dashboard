@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <div class="navbar navbar-danger">
+        <div class="navbar">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -28,78 +28,47 @@
         </div>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-xs-12 text-center"><h1>{{ msg }}</h1>
+                <div class="col-xs-12">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" :data-target="htmlLoaderId">
+                        Load HTML
+                    </button>
                 </div>
-                <div class="col-lg-10 col-md-9 col-xs-12">
+            </div>
+            <div class="row">
+                <main class="col-lg-10 col-md-9 col-xs-12">
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            Basic panel
+                            Place template editor here
                         </div>
+                        <div class="panel-footer">Bottom buttons</div>
                     </div>
-
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Panel heading</div>
-                        <div class="panel-body">
-                            Panel content
-                        </div>
-                    </div>
-
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            Panel content
-                        </div>
-                        <div class="panel-footer">Panel footer</div>
-                    </div>                </div>
-                <div class="col-lg-2 col-md-3 col-xs-12 bg-color-grey"></div>
-                <!--<div class="col-lg-2 col-sm-4 col-xs-12">-->
-                    <!--<period-selector :period-data="periods"-->
-                                     <!--:kind-data="statisticsKinds"-->
-                                     <!--:context-data="statisticsContext"-->
-                    <!--&gt;</period-selector>-->
-                <!--</div>-->
-                <!--<main class="col-lg-10 col-sm-8 col-xs-12">-->
-                    <!--<div class="row">-->
-                        <!--<kpi-widget classes="col-xs-12 kpi" :kpis="kpis"-->
-                                    <!--:charts-data="dashboard.charts"></kpi-widget>-->
-                    <!--</div>-->
-                    <!--<div class="col-md-12 card">-->
-                        <!--<table-statistics :table-data="dashboard.detailed"></table-statistics>-->
-                    <!--</div>-->
-                    <!--<div class="row">-->
-                        <!--<div class="bs-component card">-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--&lt;!&ndash;<div class="col-md-12">&ndash;&gt;-->
-                    <!--&lt;!&ndash;<period-selector :period-data="periods"&ndash;&gt;-->
-                    <!--&lt;!&ndash;:kind-data="statisticsKinds"&ndash;&gt;-->
-                    <!--&lt;!&ndash;:context-data="statisticsContext"&ndash;&gt;-->
-                    <!--&lt;!&ndash;&gt;</period-selector>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-
-                <!--</main>-->
+                </main>
+                <aside class="col-lg-2 col-md-3 col-xs-12 bg-color-grey">
+                    <property-editor></property-editor>
+                </aside>
             </div>
         </div>
         <footer></footer>
+        <html-loader :show="showLoader" :loader="loader">123</html-loader>
         <!--<img src="./assets/logo.png">-->
         <!--<el-button @click.native="startHacking">Let's do it</el-button>-->
     </div>
 </template>
 
 <script>
+    import HtmlLoader from './components/adBlockTemplator/htmlLoader/htmlLoader.vue'
+    import PropertyEditor from './components/adBlockTemplator/propertyEditor/propertyEditor.vue'
+
     export default {
+        components: {HtmlLoader, PropertyEditor},
         data () {
             return {
-                msg: 'Use Vue 2.0 Today!'
+                msg: 'Use Vue 2.0 Today!',
+                showLoader: false,
+                loaded: this.loadHtml
             }
         },
         methods: {
-            startHacking () {
-                this.$notify({
-                    title: 'It Works',
-                    message: 'We have laid the groundwork for you. Now it\'s your time to build something epic!',
-                    duration: 6000
-                })
-            }
         }
     }
 </script>
