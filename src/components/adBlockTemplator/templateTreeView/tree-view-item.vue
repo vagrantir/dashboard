@@ -28,10 +28,9 @@
 <template>
     <li :id="id">
         <div class="tree-view-item" :class="{bold: isFolder, selected: isSelected}" @click.prevent.stop.self="click"
-             @dblclick.prevent.stop.self="dblClick"
              @mouseover.prevent="mouseover" @mouseout.prevent="mouseout">
             <span v-if="isFolder">{{open ? '-' : '+'}}</span>
-            <span>{{model.tagName}} &nbsp; ({{childs}})</span>
+            <span @click.prevent.stop.self="dblClick">{{model.tagName}} &nbsp; ({{childs}})</span>
         </div>
         <ul v-show="open" v-if="isFolder">
             <tree-view-item ref="treeViewItem" v-for="model in model.children" :model="model"></tree-view-item>
