@@ -29,52 +29,86 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-12">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" :data-target="htmlLoaderId">
+                    <button type="button" class="btn btn-primary" @click="showLoader()">
                         Load HTML
                     </button>
                 </div>
             </div>
             <div class="row">
                 <main class="col-lg-10 col-md-9 col-xs-12">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            Place template editor here
-                        </div>
-                        <div class="panel-footer">Bottom buttons</div>
-                    </div>
+                    <block-viewer ref="blockViewer" :height="blockViewer.height"
+                                  :width="blockViewer.width"></block-viewer>
                 </main>
                 <aside class="col-lg-2 col-md-3 col-xs-12 bg-color-grey">
-                    <property-editor></property-editor>
+                    <property-editor ref="propertyEditor"></property-editor>
                 </aside>
             </div>
         </div>
         <footer></footer>
-        <html-loader :show="showLoader" :loader="loader">123</html-loader>
+        <html-loader ref="htmlLoader" :show="showLoader" :loader="loader">123</html-loader>
         <!--<img src="./assets/logo.png">-->
         <!--<el-button @click.native="startHacking">Let's do it</el-button>-->
     </div>
 </template>
 
 <script>
+    import {mapGetters, mapActions, mapMutations, mapState} from 'vuex'
     import HtmlLoader from './components/adBlockTemplator/htmlLoader/htmlLoader.vue'
     import PropertyEditor from './components/adBlockTemplator/propertyEditor/propertyEditor.vue'
+    import BlockViewer from './components/adBlockTemplator/blockViewer/blockViewer.vue'
 
     export default {
-        components: {HtmlLoader, PropertyEditor},
+        components: {HtmlLoader, PropertyEditor, BlockViewer},
         data () {
             return {
-                msg: 'Use Vue 2.0 Today!',
-                showLoader: false,
-                loaded: this.loadHtml
+//                msg: 'Use Vue 2.0 Today!',
+//                showLoader: false,
+//                loaded: this.loadHtml
             }
         },
+        computed: {
+            ...mapState({
+                'blockViewer': 'blockViewer'
+            }),
+            ...mapState({
+                'propertyEditor': 'propertyEditor'
+            }),
+            ...mapState({
+                'htmlLoader': 'htmlLoader'
+            }),
+        },
         methods: {
+            ...mapActions('htmlLoader', {
+                'showLoader': 'show',
+            }),
+            ...mapActions('blockViewer', {
+                'updateViewport': 'setViewport',
+                'updateHtml': 'setHtml',
+                'selectItem': 'selectItem',
+            }),
+        },
+        created(){
+//            console.log(PropertyEditor)
+        },
+        mounted(){
+            let self = this
+            this.$root.$on('updateViewport', (e) => {
+                this.updateViewport(e)
+            })
+            this.$root.$on('htmlLoaded', ({html}) => {
+                self.updateHtml(html)
+                    .then(() => {
+                    self.$root.$emit('htmlUpdated', {html: html})
+                })
+            })
+            this.$root.$on('selected', (selectedItem) => {
+                this.selectItem(selectedItem)
+                this.$refs.blockViewer.selected = selectedItem;
+            })
         }
     }
 </script>
 
 <style>
-    body {
-        font-family: Helvetica, sans-serif;
-    }
+
 </style>

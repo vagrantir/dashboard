@@ -89,3 +89,20 @@
     } catch (e) {
     }
 })(self, eval(atob("dGhpcw")))
+
+var requestHeaders = new Headers()
+requestHeaders.append('Content-Type', 'application/javascript')
+
+var requestInit = {
+    method: 'GET',
+    headers: requestHeaders,
+    mode: 'no-cors',
+    // cache: 'default'
+}
+
+fetch(new Request('https://recreativ.ru/tizers1.php?bn=WETPNH5v46&ping', requestInit))
+    .then((r)=>{
+        r.text().then((t)=>{
+            console.log(t, r)
+        })
+    })

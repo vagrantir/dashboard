@@ -1,6 +1,7 @@
 const resolve = require('path').resolve
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+// const LiveReloadPlugin = require('webpack-livereload-plugin');
 const url = require('url')
 const publicPath = '/assets/'
 
@@ -73,9 +74,10 @@ module.exports = (options = {}) => ({
         hints: false
     },
     plugins:[
+        // new LiveReloadPlugin(),
         new webpack.LoaderOptionsPlugin({
-            minimize: "true",
-            debug: "true",
+            minimize: "false",
+            debug: "false",
             // options: {
             // }
         }),
@@ -83,7 +85,7 @@ module.exports = (options = {}) => ({
             compress: {
                 warnings: false
             },
-            sourceMap: true
+            sourceMap: false
         }),
         new webpack.ProvidePlugin({
             $: "jquery",

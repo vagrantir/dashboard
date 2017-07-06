@@ -1,9 +1,11 @@
-import * as types from '../../../store/mutation-types'
+import * as t from '../../../store/mutation-types'
 
 // initial state
 const state = {
     id: '',
-    visible: false
+    visible: false,
+    test: 'Test text',
+    html: ''
 }
 
 const getters = {
@@ -12,18 +14,32 @@ const getters = {
 
 const actions = {
     show ({commit}){
-        commit('VISIBLE', {visible: true})
+        commit(t.VISIBLE, {visible: true})
     },
     hide ({commit}){
-        commit('VISIBLE', {visible: false})
+        commit(t.VISIBLE, {visible: false})
     },
-    setId ({commit}, {id}){
-        debugger
+    test ({commit}){
+        commit(t.TEST, {text: "Tested!"})
+    },
+    save ({state, commit}, {target}){
         return new Promise((resolve, reject) => {
             try {
-                commit('ID', {id})
+                let s = '#' + state.id + ' textarea.hl-template-html'
+                let html = document.querySelector(s).value
+                commit(t.HTML, {html})
+                resolve({html})
+            } catch (e) {
+                reject(e)
+            }
+        })
+    },
+    setId ({commit}, {id}){
+        return new Promise((resolve, reject) => {
+            try {
+                commit(t.ID, {id})
                 resolve()
-            } catch(e){
+            } catch (e) {
                 reject(e)
             }
         })
@@ -31,11 +47,17 @@ const actions = {
 }
 
 const mutations = {
-    ['ID'] (state, { id }) {
+    [t.ID] (state, {id}) {
         state.id = id
     },
-    ['VISIBLE'] (state, { visible }) {
+    [t.VISIBLE] (state, {visible}) {
         state.visible = visible
+    },
+    [t.TEST] (state, {text}) {
+        state.test = text
+    },
+    [t.HTML] (state, {html}) {
+        state.html = html
     },
 }
 
