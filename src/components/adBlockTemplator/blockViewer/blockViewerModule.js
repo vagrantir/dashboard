@@ -42,7 +42,14 @@ const actions = {
         }
         commit(t.SELECT, item.id)
         if (item){
-            item.model.classList.add('selected-item')
+            if (item.model.tagName == 'IMG'){
+                item.model.classList.add('selected-item')
+                item.model.classList.add('animated')
+                item.model.classList.add('infinite')
+                item.model.classList.add('flash')
+            } else {
+                item.model.classList.add('selected-item')
+            }
         }
     },
     initRoot ({state, commit}, rootEl){
@@ -68,13 +75,13 @@ const actions = {
             }
         })
     },
-    setHtml ({state, commit, dispatch}, html){
+    setHtml ({state, commit, dispatch}, payload){
         return new Promise((resolve, reject) => {
             try {
-                commit(t.HTML, html)
-                state.root.innerHTML = html
+                commit(t.HTML, payload.html)
+                state.root.appendChild(payload.el)
                 dispatch('updateRoot', state.root)
-                resolve(html)
+                resolve(payload)
             } catch (e) {
                 reject(e)
             }

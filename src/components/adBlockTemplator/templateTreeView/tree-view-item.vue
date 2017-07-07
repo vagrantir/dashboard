@@ -1,39 +1,64 @@
 <style>
+    .li-wrapper {
+        position: relative;
+    }
+
     .tree-view-item {
         padding: 5px 10px;
         margin: 2px;
         border: 1px solid #f0f0f0;
         box-shadow: 2px 1px 2px #f0f0f0;
     }
-    .tree-view-item:hover{
+
+    .tree-view-item:hover {
         background-color: antiquewhite;
         cursor: pointer;
-
     }
-    .tree-view-item.selected:hover{
+
+    .tree-view-item > span:first-child + span:hover {
+        cursor: help;
+    }
+
+    .tree-view-item.selected:hover {
         background-color: antiquewhite;
     }
 
     .tree-view-item.selected {
         background-color: cornflowerblue;
         color: white;
-        opacity: 0.9;
+        opacity: 0.7;
     }
 
     .tree-view-item.bold {
         font-weight: 900;
     }
+
+    .tree-view-item + ul {
+        visibility: hidden;
+        height: 0px;
+        opacity: 0;
+        transition: visibility 0s, opacity 0.2s linear;
+    }
+
+    .tree-view-item + ul.open {
+        height: initial;
+        visibility: visible;
+        opacity: 1;
+    }
 </style>
 
 <template>
-    <li :id="id">
-        <div class="tree-view-item" :class="{bold: isFolder, selected: isSelected}" @click.prevent.stop.self="click"
+    <li :id="id" class="li-wrapper" v-show="!!opened">
+        <div class="tree-view-item"
+             :class="{bold: isFolder, selected: isSelected, 'open': isOpen, 'el-folder':isFolder}"
+             @click.prevent.stop.self="click"
              @mouseover.prevent="mouseover" @mouseout.prevent="mouseout">
-            <span v-if="isFolder">{{open ? '-' : '+'}}</span>
+            <span v-if="isFolder">{{isOpen ? '-' : '+'}}</span>
             <span @click.prevent.stop.self="dblClick">{{model.tagName}} &nbsp; ({{childs}})</span>
         </div>
-        <ul v-show="open" v-if="isFolder">
-            <tree-view-item ref="treeViewItem" v-for="model in model.children" :model="model"></tree-view-item>
+        <ul :class="{'open': isOpen}" v-if="isFolder">
+            <tree-view-item ref="treeViewItem" v-for="model in model.children" :model="model"
+                            :opened="open"></tree-view-item>
         </ul>
     </li>
 </template>
@@ -62,6 +87,9 @@
                     this.model.children &&
                     this.model.children.length
             },
+            isOpen(){
+                return !!this.opened && this.open
+            },
             isSelected() {
                 return (this.selectedItem === this.id)
             },
@@ -73,20 +101,22 @@
             ])
         },
         props: {
-            model: [Object, HTMLDivElement, HTMLElement]
+            model: [Object, HTMLDivElement, HTMLElement],
+            opened: [Boolean, String]
         },
         methods: {
             click: function (event) {
                 if (this.isFolder) {
-                    this.open = !this.open
+                    this.open = !!this.opened ? !this.open : !!this.opened
                 }
             },
             dblClick: function () {
+                document.querySelectorAll('.selected-item').forEach(el=>{el.classList.remove('selected-item')})
                 this.$root.$emit('selected', this)
             },
             mouseover: function () {
                 var s = this
-                _.debounce(()=>{
+                _.debounce(() => {
                     console.log(s)
                     this.model.classList.remove('animated')
                     this.model.classList.remove('flash')

@@ -4,7 +4,6 @@ import * as t from '../../../store/mutation-types'
 const state = {
     id: '',
     visible: false,
-    test: 'Test text',
     html: ''
 }
 
@@ -19,14 +18,9 @@ const actions = {
     hide ({commit}){
         commit(t.VISIBLE, {visible: false})
     },
-    test ({commit}){
-        commit(t.TEST, {text: "Tested!"})
-    },
-    save ({state, commit}, {target}){
+    save ({state, commit}, {html}){
         return new Promise((resolve, reject) => {
             try {
-                let s = '#' + state.id + ' textarea.hl-template-html'
-                let html = document.querySelector(s).value
                 commit(t.HTML, {html})
                 resolve({html})
             } catch (e) {
@@ -52,9 +46,6 @@ const mutations = {
     },
     [t.VISIBLE] (state, {visible}) {
         state.visible = visible
-    },
-    [t.TEST] (state, {text}) {
-        state.test = text
     },
     [t.HTML] (state, {html}) {
         state.html = html

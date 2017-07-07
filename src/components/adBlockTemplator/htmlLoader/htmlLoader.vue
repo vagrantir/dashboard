@@ -109,7 +109,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" @click="hide()">Cancel</button>
                     <button type="button" class="btn btn-primary"
-                            @click="save($event).then(afterSave)">OK
+                            @click="click">OK
                     </button>
                 </div>
             </div>
@@ -140,9 +140,16 @@
                 'save',
                 'setId',
             ]),
+            click(event){
+                let s = '#' + this.id + ' textarea.hl-template-html'
+                let html = document.querySelector(s).value
+                this.save(html).then(this.afterSave({html}))
+            },
             afterSave({html}){
+                let el = document.createRange().createContextualFragment(html)
+                console.log(el)
+                this.$root.$emit('htmlLoaded', {html, el})
                 this.hide()
-                this.$root.$emit('htmlLoaded', {html})
             }
         },
         created () {

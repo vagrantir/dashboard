@@ -95,10 +95,10 @@
             this.$root.$on('updateViewport', (e) => {
                 this.updateViewport(e)
             })
-            this.$root.$on('htmlLoaded', ({html}) => {
-                self.updateHtml(html)
+            this.$root.$on('htmlLoaded', (payload) => {
+                self.updateHtml(payload)
                     .then(() => {
-                    self.$root.$emit('htmlUpdated', {html: html})
+                    self.$root.$emit('htmlUpdated', payload)
                 })
             })
             this.$root.$on('selected', (selectedItem) => {
