@@ -65,11 +65,11 @@ module.exports = (options = {}) => ({
             '~': resolve(__dirname, 'src')
         }
     },
-    devServer: {
-        historyApiFallback: true,
-        noInfo: true
-    },
-    devtool: options.dev ? '#eval-source-map' : '#source-map',
+    // devServer: {
+    //     historyApiFallback: true,
+    //     noInfo: true
+    // },
+    // devtool: options.dev ? '#eval-source-map' : '#source-map',
     performance: {
         hints: false
     },

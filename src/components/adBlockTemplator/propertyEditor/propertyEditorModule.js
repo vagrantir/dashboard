@@ -6,6 +6,8 @@ const state = {
     height: '900px',
     width: '300px',
     background: '#225588',
+    styleText:'',
+    element: null
 }
 
 const getters = {
@@ -47,6 +49,16 @@ const actions = {
             }
         })
     },
+    setElement ({commit}, el){
+        return new Promise((resolve, reject) => {
+            try {
+                commit(t.ELEMENT, el)
+                resolve(el)
+            } catch(e){
+                reject(e)
+            }
+        })
+    },
     setId ({commit}, {id}){
         return new Promise((resolve, reject) => {
             try {
@@ -71,6 +83,9 @@ const mutations = {
     },
     [t.BACKGROUND] (state, { background }) {
         state.background = background
+    },
+    [t.ELEMENT] (state, el) {
+        state.element = {} //el
     },
 }
 

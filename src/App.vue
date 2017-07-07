@@ -53,12 +53,12 @@
 
 <script>
     import {mapGetters, mapActions, mapMutations, mapState} from 'vuex'
-    import HtmlLoader from './components/adBlockTemplator/htmlLoader/htmlLoader.vue'
-    import PropertyEditor from './components/adBlockTemplator/propertyEditor/propertyEditor.vue'
-    import BlockViewer from './components/adBlockTemplator/blockViewer/blockViewer.vue'
+//    import HtmlLoader from './components/adBlockTemplator/htmlLoader/htmlLoader.vue'
+//    import PropertyEditor from './components/adBlockTemplator/propertyEditor/propertyEditor.vue'
+//    import BlockViewer from './components/adBlockTemplator/blockViewer/blockViewer.vue'
 
     export default {
-        components: {HtmlLoader, PropertyEditor, BlockViewer},
+//        components: {HtmlLoader, PropertyEditor, BlockViewer},
         data () {
             return {
 //                msg: 'Use Vue 2.0 Today!',

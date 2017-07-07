@@ -124,7 +124,8 @@
         name: 'html-loader',
         data () {
             return {
-                id: 'hl-' + window.Math.random().toString(32).substr(2)
+                id: 'hl-' + window.Math.random().toString(32).substr(2),
+                searchString: /\<([\w\-]+)(\s*|[\s*\>])+((([\w\-]+)(\=\"([\w\s\:\!\;\.\,\-\_\%\/\#]*)\"(\s*|[\s*\>])+)*)+)?\>*/
             }
         },
         computed: {
@@ -143,6 +144,7 @@
             click(event){
                 let s = '#' + this.id + ' textarea.hl-template-html'
                 let html = document.querySelector(s).value
+                this.parseHtml(html)
                 this.save(html).then(this.afterSave({html}))
             },
             afterSave({html}){
@@ -150,6 +152,13 @@
                 console.log(el)
                 this.$root.$emit('htmlLoaded', {html, el})
                 this.hide()
+            },
+            parseHtml(html){
+                var result = {el:{}, children:[]}
+                html = html.trim()
+                var r = new RegExp(this.searchString, 'g')
+                var match = r.exec(html)
+                console.log('parse:', match, r)
             }
         },
         created () {

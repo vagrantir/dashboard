@@ -1,5 +1,5 @@
 import './utils/dateUtils'
-import jQuery from 'jquery'
+// import jQuery from 'jquery'
 // import Chart from 'chart.js'
 // import axios from 'axios'
 // import 'bootstrap'
@@ -14,8 +14,15 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import App from './App.vue'
 import store from './store/store'
+import HtmlLoader from './components/adBlockTemplator/htmlLoader/htmlLoader.vue'
+import PropertyEditor from './components/adBlockTemplator/propertyEditor/propertyEditor.vue'
+import BlockViewer from './components/adBlockTemplator/blockViewer/blockViewer.vue'
+
 import TreeViewItem from './components/adBlockTemplator/templateTreeView/tree-view-item.vue'
 
+Vue.component('html-loader', HtmlLoader)
+Vue.component('property-editor', PropertyEditor)
+Vue.component('block-viewer', BlockViewer)
 Vue.component('tree-view-item', TreeViewItem)
 Vue.use(Vuex)
 // Vue.use(ElementUI)

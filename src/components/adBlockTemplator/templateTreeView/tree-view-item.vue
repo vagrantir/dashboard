@@ -55,10 +55,10 @@
              :class="{bold: isFolder, selected: isSelected, 'open': isOpen, 'el-folder':isFolder}"
              @mouseover.prevent="mouseover" @mouseout.prevent="mouseout"
              @click.prevent.stop="click"
-             @click.prevent.stop.ctrl="dblClick">
+             @click.prevent.stop.ctrl="selectItem">
             <span v-if="isFolder">{{isOpen ? '-' : '+'}}</span>
             <span @click.prevent.stop="click"
-                  @click.prevent.stop.ctrl="dblClick">
+                  @click.prevent.stop.ctrl="selectItem">
                 {{selectorString}} &nbsp; {{isFolder ? '(' + childs + ')' : ''}}
             </span>
         </div>
@@ -125,28 +125,26 @@
                     this.open = !!this.opened ? !this.open : !!this.opened
                 }
             },
-            dblClick: function () {
+            selectItem: function () {
                 document.querySelectorAll('.selected-item').forEach(el => {
                     el.classList.remove('selected-item')
                 })
                 this.$root.$emit('selected', this)
+                debugger
+                console.log(this.model)
+                this.setPropertyEditorElement(this.model)
             },
             mouseover: function () {
-                var s = this
-                _.debounce(() => {
-                    console.log(s)
-                    this.model.classList.remove('animated')
-                    this.model.classList.remove('flash')
-                    s.model.classList.add('flash')
-                    s.model.classList.add('animated')
-                }, 200)
-                s.model.classList.add('flash')
-                s.model.classList.add('animated')
+                this.model.classList.add('flash')
+                this.model.classList.add('animated')
             },
             mouseout: function () {
                 this.model.classList.remove('animated')
                 this.model.classList.remove('flash')
             },
+            ...mapActions('propertyEditor',{
+                setPropertyEditorElement:'setElement'
+            })
         },
 //        beforeCreate: function () {
 //            this.$options.components.TreeViewItem = require('./tree-view-item.vue')
