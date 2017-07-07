@@ -9,7 +9,7 @@
 
     .flex-item:nth-child(1) {
         order: 0;
-        flex: 0 1 50%;
+        flex: 0 0 100%;
         align-self: auto;
         overflow: auto;
     }
@@ -56,29 +56,29 @@
 
     .flex-item:nth-child(2) {
         order: 0;
-        flex: 0 1 50%;
+        flex: 0 0 100%;
         align-self: auto;
         overflow: auto;
         position: relative;
     }
 
     .blockTreeview {
-        border: solid 1px #f0f0f0;
-        border-radius: 2px;
-        background-color: #ffffff;
-        margin: 10px auto;
-        padding: 20px;
-        /*box-shadow: 1px 2px 2px 0px #eeeeee;*/
-        width: 95%;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        /*min-height: 100px;*/
-        /*float: left;*/
+        /*border: solid 1px #f0f0f0;*/
+        /*border-radius: 2px;*/
+        /*background-color: #ffffff;*/
+        /*margin: 10px auto;*/
+        /*padding: 20px;*/
+        /*!*box-shadow: 1px 2px 2px 0px #eeeeee;*!*/
+        /*width: 95%;*/
+        /*position: absolute;*/
+        /*top: 0;*/
+        /*bottom: 0;*/
+        /*!*min-height: 100px;*!*/
+        /*!*float: left;*!*/
     }
 
     .blockTreeview ul {
-        padding-left: 5px;
+        padding-left: 10px;
     }
 
     .blockTreeview ul li {
@@ -88,17 +88,23 @@
 <template>
     <div :id="id" class="panel panel-default">
         <div class="panel-body">
-            <div class="flex-container" :style="'flex-direction: '+(isVertical ? 'row;' : 'column;')">
-                <div class="flex-item" __style="overflow: scroll;" :style="'background: '+state.background">
-                    <div class="blockViewport" :style="blockViewStyle">
-                        &nbsp
+            <div class="col-sm-12" :class="isVertical ? 'col-md-7' : ''">
+                <div class="flex-container" style="flex-direction: row;">
+                    <div class="flex-item" __style="overflow: scroll;" :style="'background: '+state.background">
+                        <div class="blockViewport" :style="blockViewStyle">
+                            &nbsp
+                        </div>
                     </div>
                 </div>
-                <div class="flex-item">
-                    <div class="blockTreeview" :style="blockTreeViewStyle">
-                        <ul>
-                            <tree-view-item ref="treeViewItem" :model="root" opened=true></tree-view-item>
-                        </ul>
+            </div>
+            <div class="col-md-5 col-sm-12">
+                <div class="flex-container" :style="'flex-direction: '+(true ? 'row;' : 'column;')">
+                    <div class="flex-item">
+                        <div class="blockTreeview" :style="blockTreeViewStyle">
+                            <ul>
+                                <tree-view-item ref="treeViewItem" :model="root" opened=true></tree-view-item>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

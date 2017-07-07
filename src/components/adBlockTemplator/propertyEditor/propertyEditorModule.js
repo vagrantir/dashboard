@@ -5,7 +5,7 @@ const state = {
     id:'',
     height: '600px',
     width: '300px',
-    background: '#fbfbfb',
+    background: '#225588',
 }
 
 const getters = {

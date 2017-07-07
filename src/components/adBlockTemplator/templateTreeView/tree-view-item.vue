@@ -4,6 +4,8 @@
     }
 
     .tree-view-item {
+        display: inline-block;
+        min-width: 150px;
         padding: 5px 10px;
         margin: 2px;
         border: 1px solid #f0f0f0;
@@ -54,7 +56,7 @@
              @click.prevent.stop.self="click"
              @mouseover.prevent="mouseover" @mouseout.prevent="mouseout">
             <span v-if="isFolder">{{isOpen ? '-' : '+'}}</span>
-            <span @click.prevent.stop.self="dblClick">{{model.tagName}} &nbsp; ({{childs}})</span>
+            <span @click.prevent.stop.self="dblClick">{{model.tagName}} &nbsp; {{isFolder ? '('+childs+')' : ''}}</span>
         </div>
         <ul :class="{'open': isOpen}" v-if="isFolder">
             <tree-view-item ref="treeViewItem" v-for="model in model.children" :model="model"

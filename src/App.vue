@@ -35,11 +35,11 @@
                 </div>
             </div>
             <div class="row">
-                <main class="col-lg-10 col-md-9 col-xs-12">
+                <main class="col-md-9 col-xs-12">
                     <block-viewer ref="blockViewer" :height="blockViewer.height"
                                   :width="blockViewer.width"></block-viewer>
                 </main>
-                <aside class="col-lg-2 col-md-3 col-xs-12 bg-color-grey">
+                <aside class="col-md-3 col-xs-12 bg-color-grey">
                     <property-editor ref="propertyEditor"></property-editor>
                 </aside>
             </div>
