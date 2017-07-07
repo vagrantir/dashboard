@@ -3,9 +3,9 @@ import * as t from '../../../store/mutation-types'
 // initial state
 const state = {
     id: '',
-    height: '600px',
+    height: '900px',
     width: '300px',
-    background: '#fbfbfb',
+    background: '#225588',
     html: '',
     blockViewport: null,
     root: {},

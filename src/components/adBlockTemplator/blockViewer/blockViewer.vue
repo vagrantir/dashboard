@@ -88,7 +88,7 @@
 <template>
     <div :id="id" class="panel panel-default">
         <div class="panel-body">
-            <div class="col-sm-12" :class="isVertical ? 'col-md-7' : ''">
+            <div class="col-sm-12" :class="isVertical ? 'col-lg-8 col-md-7' : ''">
                 <div class="flex-container" style="flex-direction: row;">
                     <div class="flex-item" __style="overflow: scroll;" :style="'background: '+state.background">
                         <div class="blockViewport" :style="blockViewStyle">
@@ -97,7 +97,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-5 col-sm-12">
+            <div class="col-sm-12" :class="isVertical ? 'col-lg-4 col-md-5' : ''">
                 <div class="flex-container" :style="'flex-direction: '+(true ? 'row;' : 'column;')">
                     <div class="flex-item">
                         <div class="blockTreeview" :style="blockTreeViewStyle">

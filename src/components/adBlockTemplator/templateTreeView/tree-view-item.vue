@@ -17,9 +17,9 @@
         cursor: pointer;
     }
 
-    .tree-view-item > span:first-child + span:hover {
-        cursor: help;
-    }
+    /*.tree-view-item > span:first-child + span:hover {*/
+    /*cursor: help;*/
+    /*}*/
 
     .tree-view-item.selected:hover {
         background-color: antiquewhite;
@@ -53,10 +53,14 @@
     <li :id="id" class="li-wrapper" v-show="!!opened">
         <div class="tree-view-item"
              :class="{bold: isFolder, selected: isSelected, 'open': isOpen, 'el-folder':isFolder}"
-             @click.prevent.stop.self="click"
-             @mouseover.prevent="mouseover" @mouseout.prevent="mouseout">
+             @mouseover.prevent="mouseover" @mouseout.prevent="mouseout"
+             @click.prevent.stop="click"
+             @click.prevent.stop.ctrl="dblClick">
             <span v-if="isFolder">{{isOpen ? '-' : '+'}}</span>
-            <span @click.prevent.stop.self="dblClick">{{model.tagName}} &nbsp; {{isFolder ? '('+childs+')' : ''}}</span>
+            <span @click.prevent.stop="click"
+                  @click.prevent.stop.ctrl="dblClick">
+                {{selectorString}} &nbsp; {{isFolder ? '(' + childs + ')' : ''}}
+            </span>
         </div>
         <ul :class="{'open': isOpen}" v-if="isFolder">
             <tree-view-item ref="treeViewItem" v-for="model in model.children" :model="model"
@@ -98,6 +102,15 @@
             childs(){
                 return this.model && this.model.children ? this.model.children.length : 0
             },
+            selectorString(){
+                var cl = ''
+                try {
+                    for (var c of this.model.classList.values()) {
+                        cl = cl + '.' + c
+                    }
+                } catch (e) {}
+                return this.model.tagName + cl
+            },
             ...mapGetters('blockViewer', [
                 'selectedItem'
             ])
@@ -113,7 +126,9 @@
                 }
             },
             dblClick: function () {
-                document.querySelectorAll('.selected-item').forEach(el=>{el.classList.remove('selected-item')})
+                document.querySelectorAll('.selected-item').forEach(el => {
+                    el.classList.remove('selected-item')
+                })
                 this.$root.$emit('selected', this)
             },
             mouseover: function () {
