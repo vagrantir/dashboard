@@ -1,0 +1,104 @@
+{
+   "activateCashback": {
+      "message": "Активировать кэшбэк"
+   },
+   "allCashbackShops": {
+      "message": "ВСЕ МАГАЗИНЫ С КЭШБЭКОМ >"
+   },
+   "allShops": {
+      "message": "ВСЕ МАГАЗИНЫ >"
+   },
+   "back": {
+      "message": "\u003C НАЗАД"
+   },
+   "cashback": {
+      "message": "Кэшбэк"
+   },
+   "cashbackActivated": {
+      "message": "Кэшбэк активирован"
+   },
+   "cashbackForOrder": {
+      "message": "Кэшбэк с каждого заказа"
+   },
+   "cashbackFromOrder": {
+      "message": "кэшбэк с каждого заказа"
+   },
+   "emailOrPhone": {
+      "message": "E-MAIL ИЛИ ТЕЛЕФОН"
+   },
+   "enter": {
+      "message": "ВХОД"
+   },
+   "extName": {
+      "message": "Smarty.Sale Cash Back"
+   },
+   "forCashbackNeed": {
+      "message": "ЧТОБЫ ПОЛУЧИТЬ КЭШБЭК НУЖНО"
+   },
+   "hiddenCashback": {
+      "message": "Возможно, кэшбэк доступен через сайт."
+   },
+   "iWantCashback": {
+      "message": "Я хочу кэшбэк в этом магазине"
+   },
+   "in": {
+      "message": "в"
+   },
+   "login": {
+      "message": "ВОЙТИ"
+   },
+   "logout": {
+      "message": "Выйти"
+   },
+   "min3Symobls": {
+      "message": "Введите минимум 3 символа..."
+   },
+   "noCashback": {
+      "message": "На данном сайте кэшбэка нет"
+   },
+   "noNeed": {
+      "message": "не нужен"
+   },
+   "nothingFound": {
+      "message": "Ничего не найдено!"
+   },
+   "or": {
+      "message": "ИЛИ"
+   },
+   "password": {
+      "message": "ПАРОЛЬ"
+   },
+   "promocode": {
+      "message": "Промокод"
+   },
+   "remain": {
+      "message": "Осталось"
+   },
+   "shopSearch": {
+      "message": "Поиск магазина"
+   },
+   "shopSpec": {
+      "message": "Спецпредложения магазина"
+   },
+   "shops": {
+      "message": "Магазины"
+   },
+   "signup": {
+      "message": "ЗАРЕГИСТРИРОВАТЬСЯ"
+   },
+   "spec": {
+      "message": "Спецпредложения"
+   },
+   "viewCatalog": {
+      "message": "Посмотреть каталог"
+   },
+   "wrongPassword": {
+      "message": "НЕВЕРНЫЙ ЛОГИН ИЛИ ПАРОЛЬ"
+   },
+   "youCanBuy": {
+      "message": "Вы можете купить в следующих магазинах:"
+   },
+   "yourBalance": {
+      "message": "Ваш баланс"
+   }
+}

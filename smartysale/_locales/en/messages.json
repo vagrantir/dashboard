@@ -1,0 +1,104 @@
+{
+   "activateCashback": {
+      "message": "Activate cashback"
+   },
+   "allCashbackShops": {
+      "message": "ALL CASHBACK SHOPS >"
+   },
+   "allShops": {
+      "message": "ALL SHOPS >"
+   },
+   "back": {
+      "message": "\u003C BACK"
+   },
+   "cashback": {
+      "message": "CashBack"
+   },
+   "cashbackActivated": {
+      "message": "Cashback activated"
+   },
+   "cashbackForOrder": {
+      "message": "Cashback from each order"
+   },
+   "cashbackFromOrder": {
+      "message": "cashback from each order"
+   },
+   "emailOrPhone": {
+      "message": "E-MAIL OR PHONE"
+   },
+   "enter": {
+      "message": "LOG IN"
+   },
+   "extName": {
+      "message": "Smarty.Sale Cash Back"
+   },
+   "forCashbackNeed": {
+      "message": "FOR CASHBACK YOU NEED"
+   },
+   "hiddenCashback": {
+      "message": "It is possible that cashback is available via this site."
+   },
+   "iWantCashback": {
+      "message": "I want cashback at this shop"
+   },
+   "in": {
+      "message": "in"
+   },
+   "login": {
+      "message": "LOG IN"
+   },
+   "logout": {
+      "message": "Log out"
+   },
+   "min3Symobls": {
+      "message": "Enter minimum 3 symbols..."
+   },
+   "noCashback": {
+      "message": "No cashback on this site"
+   },
+   "noNeed": {
+      "message": "no need"
+   },
+   "nothingFound": {
+      "message": "Nothing found!"
+   },
+   "or": {
+      "message": "OR"
+   },
+   "password": {
+      "message": "PASSWORD"
+   },
+   "promocode": {
+      "message": "Promocode"
+   },
+   "remain": {
+      "message": "Remain"
+   },
+   "shopSearch": {
+      "message": "Shop search"
+   },
+   "shopSpec": {
+      "message": "Shop’s special offers"
+   },
+   "shops": {
+      "message": "Shops"
+   },
+   "signup": {
+      "message": "SIGN UP"
+   },
+   "spec": {
+      "message": "Special deals"
+   },
+   "viewCatalog": {
+      "message": "View catalog"
+   },
+   "wrongPassword": {
+      "message": "WRONG LOGIN OR PASSWORD"
+   },
+   "youCanBuy": {
+      "message": "You can buy in the following shops:"
+   },
+   "yourBalance": {
+      "message": "Your balance"
+   }
+}

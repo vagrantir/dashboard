@@ -1,0 +1,32 @@
+{
+   "background": {
+      "page": "background.html",
+      "persistent": false
+   },
+   "browser_action": {
+      "default_icon": "img/icons/icon.png",
+      "default_popup": "popup.html"
+   },
+   "content_scripts": [ {
+      "css": [ "css/content.min.css" ],
+      "js": [ "js/jquery.min.js", "js/content.min.js" ],
+      "matches": [ "\u003Call_urls>" ],
+      "run_at": "document_start"
+   } ],
+   "content_security_policy": "script-src 'self' https://*.google.com https://*.gstatic.com; object-src 'self' https://*.google.com https://*.gstatic.com",
+   "default_locale": "ru",
+   "description": "Smarty.Sale Cash Back",
+   "homepage_url": "https://smarty.sale",
+   "icons": {
+      "128": "img/icons/icon128.png",
+      "16": "img/icons/icon16.png",
+      "48": "img/icons/icon48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtpA+Op1eCW++wSixdM/da2FyPflO1bzmaKQGAKJ3b/EW5pr09oWDjstWOjpFCB7rpQvcj30cnc4MggK/xR2wSCxbOyJQzfqs9Trl+DbchkkDtj0iWGp2dQ6kCvLsklJHyuxyjLdtwBJCuv4SgFPztV2hvO0AWyWbMHwcH78QQ8lUpiyNfxWx3Dp+PQA+X743PwYocTTaay1rdV7Jymu+7qsbVEe3JQe6qahUTWDIoP6Q1WuqAXvwgOBCDOytWosL3WIoSrFm5lvydmby+0a/xVtiyNHeuxuAKQwm0WUJ8Zy8uYfeOmRUzb4kcW2QNOEeiHU2KxiJOmBSptBp2q2HEQIDAQAB",
+   "manifest_version": 2,
+   "name": "__MSG_extName__",
+   "permissions": [ "management", "alarms", "tabs", "activeTab", "storage", "cookies", "notifications", "\u003Call_urls>" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "2.0.1",
+   "web_accessible_resources": [ "img/*.png", "img/*.gif", "css/img/*.png", "js/inject*.js", "css/inject.min.css" ]
+}

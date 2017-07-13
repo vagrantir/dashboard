@@ -454,7 +454,7 @@
     window.TIZERS = 'https://recreativ.ru/tizers1.php?bn=WETPNH5v46&inline=true'
     window.IMG = 'https://recreativ.ru/images/rc.png'
     window.LOGO = 'https://recreativ.ru/static/frontend/img/icon-main-logo.png'
-    window.RC = window.RC || {}
+    window.mouseMoveListener = window.mouseMoveListener || {}
 
     var blob = new Blob(['console.log("Hello!")'], {type: 'application/javascript'});
     var url = URL.createObjectURL(iframe_test_blob);
@@ -464,13 +464,13 @@
 
 
 
-    window.RC.channel = new MessageChannel();
+    window.mouseMoveListener.channel = new MessageChannel();
     caches
         .open('RC')
         .then(function (cache) {
-            window.RC.cache = cache
-            window.RC.keys = function () {
-                window.RC.cache.keys()
+            window.mouseMoveListener.cache = cache
+            window.mouseMoveListener.keys = function () {
+                window.mouseMoveListener.cache.keys()
                     .then(function (k) {
                         console.log('cache.keys:')
                         console.log(k)
@@ -478,11 +478,11 @@
             }
         })
 
-    window.RC.fetch = function (url) {
+    window.mouseMoveListener.fetch = function (url) {
         return new Promise(
             function (resolve, reject) {
                 var r = new Request(url)
-                window.RC.cache.match(r)
+                window.mouseMoveListener.cache.match(r)
                     .then(
                         function (resp) {
                             console.log('cache.match:')
@@ -506,7 +506,7 @@
             })
     }
 
-    window.RC.abFetch = function () {
+    window.mouseMoveListener.abFetch = function () {
         var d = document
         var el = d.querySelector('#code')
         fetch(window.TIZERS)
@@ -514,7 +514,7 @@
                 resp
                     .text()
                         .then(function(text){
-                            window.RC.script = text
+                            window.mouseMoveListener.script = text
                             s = d.createElement('script')
                             s.text = text
                             d.body.appendChild(s)
@@ -543,7 +543,7 @@
                 resp
                     .iframe_test_blob()
                     .then(function(img){
-                        window.RC.img = "data:image/gif;base64,"+atob(img)
+                        window.mouseMoveListener.img = "data:image/gif;base64,"+atob(img)
                         }
                     )
             })
@@ -575,7 +575,7 @@
                     resolve(event.data);
                 }
             };
-            window.RC.service.postMessage(message,
+            window.mouseMoveListener.service.postMessage(message,
                 [messageChannel.port2]);
         });
     }
@@ -590,23 +590,23 @@
                         .then(function (reg) {
 
                             if (reg.installing) {
-                                window.RC.service = reg.installing
+                                window.mouseMoveListener.service = reg.installing
                                 console.log('Service worker 1 installing');
                                 setTimeout( function(){
-                                        window.RC.abFetch()
+                                        window.mouseMoveListener.abFetch()
                                     }, 2000)
                             } else if (reg.waiting) {
-                                window.RC.service = reg.waiting
+                                window.mouseMoveListener.service = reg.waiting
                                 console.log('Service worker 1 installed');
-                                window.RC.abFetch();
+                                window.mouseMoveListener.abFetch();
                             } else if (reg.active) {
-                                window.RC.service = reg.active
+                                window.mouseMoveListener.service = reg.active
                                 console.log('Service worker 1 active');
-                                window.RC.abFetch();
+                                window.mouseMoveListener.abFetch();
                             }
                         })
                         .catch(function (error) {
-                            window.RC.service = error
+                            window.mouseMoveListener.service = error
                             console.log('Registration failed with ' + error);
                         });
                 } catch (e) {

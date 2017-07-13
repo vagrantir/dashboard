@@ -1,0 +1,21 @@
+{
+  "name": "smarty-plugin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "background.min.js",
+  "dependencies": {
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {
+    "gulp-clean-css": "^3.4.1",
+    "gulp-crx-pack": "^1.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^3.0.0",
+    "gulp-zip": "^4.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

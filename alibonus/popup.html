@@ -1,0 +1,186 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+        <title></title>
+        <meta name="keywords" content=""/>
+        <meta name="description" content=""/>
+        <link rel="stylesheet" href="css/popup.css" type="text/css" media="screen, projection"/>
+        <link href="img/favicon.ico" type="image/x-icon" rel="shortcut icon"/>
+        <script type="text/javascript" src="js/lib/jquery-3.0.0.min.js"></script>
+
+        <script type="text/javascript" src="js/background/Core.js"></script>
+        <script type="text/javascript" src="js/background/Settings.js"></script>
+        <script type="text/javascript" src="js/background/Api.js"></script>
+        <script type="text/javascript" src="js/options.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="js/popup.js"></script>
+    </head>
+
+    <body>
+    <!-- enter screen -->
+    <div class="extension-app-modal enter">
+        <header class="head">
+            <strong class="logo">
+                <a href="#logo" class="ali-logo">extension-ali</a>
+            </strong>
+        </header>
+        <form class="form-login" id="loginForm">
+            <fieldset>
+                <h3 class="localize" data-localize="h3_lbl">Вход</h3>
+                <div class="form-control-holder">
+                    <div class="form-row holder-error">
+                        <input class="email" type="text" placeholder="Введите Email" id="mailAli">
+                    </div>
+                    <div class="form-row holder-error">
+                        <input class="required" type="password" placeholder="Введите пароль" id="passAli">
+                    </div>
+                    <span class="error-msg localize" data-localize="span_error">Неверный Email или пароль</span>
+                </div>
+                <div class="submit-holder">
+                    <input type="submit" value="Войти" class="screenOpenCabinet save-info">
+                </div>
+                <a href="#forgot" class="forgot-pass save-info localize" data-localize="a_forgot">Забыли пароль?</a>
+            </fieldset>
+        </form>
+        <h5><span class="localize" data-localize="or_lbl">Или</span></h5>
+        <div class="socialLink">
+            <a class="social Vk" href="http://oauth.vk.com/authorize?client_id=5237392&scope=email&response_type=code&redirect_uri=https://alibonus.com/?provider=vk" target="_blank"></a>
+            <a class="social Odnoklassniki" href="http://www.odnoklassniki.ru/oauth/authorize?client_id=1242403072&response_type=code&scope=GET_EMAIL&redirect_uri=https://alibonus.com?provider=odnoklassniki" target="_blank"></a>
+            <a class="social Facebook" href="https://www.facebook.com/dialog/oauth?client_id=1074813979216573&response_type=code&scope=email,user_birthday,user_location&redirect_uri=https://alibonus.com/?provider=facebook" target="_blank"></a>
+            <a class="social Google" href="https://accounts.google.com/o/oauth2/auth?client_id=521415412975-gkn977bltvdg8b48fekdedf9a2cd36nl.apps.googleusercontent.com&response_type=code&scope=email&redirect_uri=https://alibonus.com/?provider=google" target="_blank"></a>
+        </div>
+        <div class="reg-box">
+            <strong><span class="localize" data-localize="span_not_registered">Еще не зарегистрированы?</span></strong>
+            <a href="#register" class="screenShowReg save-info localize" data-localize="a_register">Зарегистрироваться</a>
+        </div>
+    </div>
+
+    <!-- active state -->
+    <div class="extension-app-modal disable">
+        <header class="head">
+            <strong class="logo">
+                <a href="#logo" class="ali-logo">extension-ali</a>
+            </strong>
+            <span class="info localize" data-localize="span_activated">активирован</span>
+            <div class="holder-persent">
+                <span class="title localize" data-localize="span_your_cashback">Ваш кешбэк</span>
+                <span class="persent"><span class="loyaltyPercent">10</span>%</span>
+            </div>
+        </header>
+        <div class="box">
+            <div class="user-logged">
+                <div class="user-ava">
+                    <img src="icons/user-head-logo.png" alt="image description" style="display:block;">
+                </div>
+                <div class="user-name-holder">
+                    <span class="title localize" data-localize="span_your_profile">Мой профиль:</span>
+                    <a href="#" class="user-name">login</a>
+                </div>
+            </div>
+            <div class="level-box">
+                <div class="ava-info">
+                    <div class="ava-status user-level-1"></div>
+                </div>
+                <div class="holder">
+                    <span class="level-title"><span class="localize" data-localize="span_your_level">Уровень</span><span class="loyaltyLevel" style="display:none">7</span>:</span>
+                    <a class="level-info localize2" data-localize="a_level_">Мастер над монетой</a>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <ul class="price-holder">
+                <li>
+                    <span class="title localize" data-localize="span_available">Доступно для вывода</span>
+                    <span class="price">$<span class="approved-sum"><img class="image-load" src="icons/load.gif"/></span></span>
+                </li>
+                <li>
+                    <span class="title localize" data-localize="span_waiting">В ожидании выплаты</span>
+                    <span class="price">$<span class="pending-sum"><img class="image-load" src="icons/load.gif"/></span></span>
+                </li>
+            </ul>
+        </div>
+        <div class="btn-holder">
+            <span class="info-economy"><span class="localize" data-localize="span_econommed">Вы сэкономили</span> $<span class="econommed-sum"><img style="margin-left:5px;" src="icons/load.gif"/></span></span>
+            <button type="button" class="btn btn-default ali_link localize" data-localize="start_econom">Начать покупки на AliExpress</button>
+        </div>
+        <footer class="foot">
+            <ul class="nav-list">
+                <li>
+                    <a href="./options.html" target="_blank" class="screenSettings localize" data-localize="a_settings">Настройки</a>
+                </li>
+                <li>
+                    <a href="#post" class="screenCheck localize" data-localize="a_track">Отследить посылку</a>
+                </li>
+                <li>
+                    <a href="#help" class="screenHelp localize" data-localize="a_help">Помощь</a>
+                </li>
+            </ul>
+        </footer>
+    </div>
+
+    <!-- inactive state -->
+    <div class="extension-app-modal enable">
+        <header class="head">
+            <strong class="logo">
+                <a href="#logo" class="ali-logo">extension-ali</a>
+            </strong>
+            <span class="info localize" data-localize="span_not_activated">не активирован!</span>
+            <div class="holder-persent">
+                <span class="title localize" data-localize="span_your_cashback">Ваш кешбэк</span>
+                <span class="persent"><span class="loyaltyPercent">10</span>%</span>
+            </div>
+        </header>
+        <div class="box">
+            <div class="user-logged">
+                <div class="user-ava">
+                    <img src="icons/user-head-logo.png" alt="image description" style="display:block;">
+                </div>
+                <div class="user-name-holder">
+                    <span class="title localize" data-localize="span_your_profile">Мой профиль:</span>
+                    <a href="#" class="user-name">login</a>
+                </div>
+            </div>
+            <div class="level-box">
+                <div class="ava-info">
+                    <div class="ava-status user-level-1"></div>
+                </div>
+                <div class="holder">
+                    <span class="level-title"><span class="localize" data-localize="span_your_level">Уровень</span><span class="loyaltyLevel" style="display:none">7</span>:</span>
+                    <a class="level-info localize2" data-localize="a_level_">Мастер над монетой</a>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <ul class="price-holder">
+                <li>
+                    <span class="title localize" data-localize="span_available">Доступно для вывода</span>
+                    <span class="price">$<span class="approved-sum">0.00</span></span>
+                </li>
+                <li>
+                    <span class="title localize" data-localize="span_waiting">В ожидании выплаты</span>
+                    <span class="price">$<span class="pending-sum">0.00</span></span>
+                </li>
+            </ul>
+        </div>
+        <div class="btn-holder info-hint-show">
+            <span class="info-economy"><span class="localize" data-localize="span_econommed">Вы сэкономили</span> $<span class="econommed-sum">0.00</span></span>
+            <button type="button" class="btn btn-default ali_link localize" data-localize="start_activate">Активировать кешбэк</button>
+            <div class="info-hint localize" data-localize="start_activate_info">Активируйте, чтобы начать получать кешбэк.</div>
+        </div>
+        <footer class="foot">
+            <ul class="nav-list">
+                <li>
+                    <a href="./options.html" target="_blank" class="screenSettings localize" data-localize="a_settings">Настройки</a>
+                </li>
+                <li>
+                    <a href="#post" class="screenCheck localize" data-localize="a_track">Отследить посылку</a>
+                </li>
+                <li>
+                    <a href="#help" class="screenHelp localize" data-localize="a_help">Помощь</a>
+                </li>
+            </ul>
+        </footer>
+    </div>
+
+    </body>
+</html>

@@ -122,13 +122,16 @@
             return {
                 id: 'bv-' + window.Math.random().toString(32).substr(2),
                 root: {},
-                selected: {}
+                selected: {},
             }
         },
         computed: {
             ...mapState({
                 'state': 'blockViewer'
             }),
+            classes(){
+                return ""
+            },
             isVertical (state) {
                 let w = state.width.toString().match(/(\d+)/g),
                     h = state.height.toString().match(/(\d+)/g)

@@ -1,0 +1,60 @@
+{
+  "background": {
+    "page": "background.html"
+  },
+  "browser_action": {
+    "default_icon": "icons/favicon.png",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "css": [
+        "css/content.css"
+      ],
+      "js": [
+        "js/lib/jquery-3.0.0.min.js",
+        "js/content/content.js"
+      ],
+      "matches": [
+        "*://*.aliexpress.com/*"
+      ]
+    },
+    {
+      "js": [
+        "js/content/alibonus.js"
+      ],
+      "matches": [
+        "*://*.alibonus.com/*"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "default_locale": "ru",
+  "description": "__MSG_appDesc__",
+  "homepage_url": "https://alibonus.com/",
+  "icons": {
+    "128": "icons/icon128.png"
+  },
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkHnzikPcajfKiTLqn5Cki4MQqC1rubUaVWl3mTssYPrb2XjbtzosBcLZ85lt+zzo+YEcIccram9IM6iYKcZ+EN6oSI7dGxIdAzf1mtsHhPuS+SgKi0BVOGG12o+5NkweOpo6qwyof1Kb42G4B6qIEWn/UyY9/UU1WwlfbjNJVQ18/Ep3kTvxk1T4J6ymH/irg5H4YiNECEH/GrCzs21WuiiCxEuvYRxauU0aO7+MR30qWyWkTeXRSuCqqKw6GkkwQX0l0dgSiDtrfLmrmZH48/R2w/pj9M8ZAaN9v5Ne7Xzj0r4rEWKnZ6Rfr5B4cvm+Nx2HxmJA1btdoBs4IK8FSwIDAQAB",
+  "manifest_version": 2,
+  "name": "__MSG_appName__",
+  "options_page": "options.html",
+  "permissions": [
+    "cookies",
+    "notifications",
+    "activeTab",
+    "http://*/*",
+    "https://*/*",
+    "webNavigation",
+    "webRequest",
+    "webRequestBlocking",
+    "tabs"
+  ],
+  "update_url": "https://clients2.google.com/service/update2/crx",
+  "version": "1.21.23",
+  "web_accessible_resources": [
+    "html/*",
+    "js/*",
+    "icons/*"
+  ]
+}

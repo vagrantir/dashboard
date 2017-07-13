@@ -1,0 +1,482 @@
+{
+   "Share_button": {
+      "description": "Share",
+      "message": "Share"
+   },
+   "a_forgot": {
+      "description": "a forgot",
+      "message": "Forgot password"
+   },
+   "a_help": {
+      "description": "a help",
+      "message": "Help"
+   },
+   "a_level_1": {
+      "description": "a level 1",
+      "message": "Newbie"
+   },
+   "a_level_2": {
+      "description": "a level 2",
+      "message": "Arithmetician"
+   },
+   "a_level_3": {
+      "description": "a level 3",
+      "message": "Tradesman"
+   },
+   "a_level_4": {
+      "description": "a level 4",
+      "message": "Economist"
+   },
+   "a_level_5": {
+      "description": "a level 5",
+      "message": "Shopaholic"
+   },
+   "a_level_6": {
+      "description": "a level 6",
+      "message": "Treasurer"
+   },
+   "a_level_7": {
+      "description": "a level 7",
+      "message": "Master of coin"
+   },
+   "a_lot_of_sales_for_the_last_three_months": {
+      "description": "A lot of sales for the last three months",
+      "message": "A lot of sales for the last three months"
+   },
+   "a_register": {
+      "description": "a register",
+      "message": "Join now!"
+   },
+   "a_settings": {
+      "description": "a settings",
+      "message": "Settings"
+   },
+   "a_track": {
+      "description": "a track",
+      "message": "Package tracking"
+   },
+   "activate": {
+      "description": "Activate cashback",
+      "message": "Activate"
+   },
+   "activate_tooltip": {
+      "description": "Press «Activate» to get cashback for this purchase",
+      "message": "Press 'Activate' to get cashback for this purchase"
+   },
+   "actively_selling_for_more_than_nine_months": {
+      "description": "Actively selling for more than nine months",
+      "message": "Actively sells more than nine months"
+   },
+   "actively_selling_for_more_than_six_months": {
+      "description": "Actively sells more than six months",
+      "message": "Actively sells over half a year"
+   },
+   "actively_sells_for_less_than_six_months": {
+      "description": "Actively sells less than six months",
+      "message": "Actively sells less than six months"
+   },
+   "actively_sells_for_less_than_three_months": {
+      "description": "Actively sells less than three months",
+      "message": "Actively sells less than three months"
+   },
+   "actively_sells_more_than_a_year": {
+      "description": "Actively sells more than a year",
+      "message": "Actively sells more than a year'"
+   },
+   "alibonus_support_service": {
+      "description": "AliBonus Support Service",
+      "message": "AliBonus Support Service"
+   },
+   "an_answer_to_ticket": {
+      "description": "An answer to ticket ",
+      "message": "An answer to ticket "
+   },
+   "appDesc": {
+      "description": "App description.",
+      "message": "Alibonus - Cashback up to 8.25% from Aliexpress"
+   },
+   "appName": {
+      "description": "App name.",
+      "message": "Alibonus - Cashback up to 8.25% from Aliexpress"
+   },
+   "arithmetician": {
+      "description": "Arithmetician",
+      "message": "'Arithmetician'."
+   },
+   "available_for_withdrawal": {
+      "description": "Available for withdrawal",
+      "message": "Available for withdrawal"
+   },
+   "btn_enter": {
+      "description": "btn enter",
+      "message": "Sign in"
+   },
+   "button_back": {
+      "description": "Back",
+      "message": "Back"
+   },
+   "can_play_for_time_deliveries": {
+      "description": "Can play for time deliveries",
+      "message": "There may be delays in sending of goods"
+   },
+   "cashback_activate": {
+      "description": "cashback activate",
+      "message": "Activate"
+   },
+   "cashback_activated": {
+      "description": "cashback activated",
+      "message": "Cashback activated successfully"
+   },
+   "cashback_block_tooltip": {
+      "description": "This is cashback that you will get after this purchase",
+      "message": "This is cashback that you will get after this purchase"
+   },
+   "cashback_block_tooltip2": {
+      "description": "This is casback that will be refunded on your AliBonus account",
+      "message": "This is casback that will be refunded on your AliBonus account"
+   },
+   "cashback_cant_be_refunded": {
+      "description": "Cashback can't be refunded",
+      "message": "Cashback can't be refunded"
+   },
+   "cashback_cant_be_refunded_for_this_purchase": {
+      "description": "Cashback can’t be refunded for this purchase",
+      "message": "Cashback can’t be refunded for this purchase"
+   },
+   "cashback_for_purchase": {
+      "description": "Cashback for purchase",
+      "message": "Cashback for purchase"
+   },
+   "cashback_is_not_active": {
+      "description": "Cashback is not active",
+      "message": "Cashback is not active"
+   },
+   "cashback_not_activated_1": {
+      "description": "cashback not activated 1",
+      "message": "You might not get"
+   },
+   "cashback_not_activated_2": {
+      "description": "cashback not activated 2",
+      "message": "your cashback"
+   },
+   "cashback_not_activated_3": {
+      "description": "cashback not activated 3",
+      "message": "Cashback not activated"
+   },
+   "cashback_service_number_1": {
+      "description": "cashback service number 1",
+      "message": "Cashback service for AliExpress #1"
+   },
+   "create_account_1": {
+      "description": "create account 1",
+      "message": "Create"
+   },
+   "create_account_2": {
+      "description": "create account 2",
+      "message": "account in AliBonus"
+   },
+   "declined": {
+      "description": "Declined",
+      "message": "Declined'"
+   },
+   "description_of_the_goods_in_the_store_may_not_be_accurate": {
+      "description": "Description of the goods in the store may not be accurate",
+      "message": "Description of the goods in store may not be accurate"
+   },
+   "economist": {
+      "description": "Economist",
+      "message": "'Economist'."
+   },
+   "email_placeholder": {
+      "description": "email placeholder",
+      "message": "Enter e-mail"
+   },
+   "enough_reliable_seller": {
+      "description": "Enough reliable seller",
+      "message": "Enough reliable seller. You can buy"
+   },
+   "ext_your_cashback": {
+      "description": "Your cashback",
+      "message": " Your cashback "
+   },
+   "extremely_low_performance_rating": {
+      "description": "Extremely low performance rating",
+      "message": "Extremely low seller rating"
+   },
+   "fast_shipping_goods": {
+      "description": "Fast shipping goods to the buyer",
+      "message": "Fast shipping of goods to the customer"
+   },
+   "good_seller_ratings": {
+      "description": "Good seller ratings",
+      "message": "Good seller rating"
+   },
+   "goods_in_the_store_close_to_the_description": {
+      "description": "Goods in the store close to the description",
+      "message": "Goods in store is match to the description"
+   },
+   "h3_lbl": {
+      "description": "h3 lbl",
+      "message": "Sign in"
+   },
+   "has_been_received": {
+      "description": "has been received!",
+      "message": " has been received"
+   },
+   "high_seller_rating": {
+      "description": "High seller rating",
+      "message": "High seller rating"
+   },
+   "how_to_get_double_cashback": {
+      "description": "How to get double cashback?",
+      "message": "How to get double cashback?"
+   },
+   "info_for_track_number_is_server_error": {
+      "description": "At the moment, there is an increased load on the package tracking server. Information is not received. Please try again later.",
+      "message": "At the moment, there is an increased load on the package tracking server. Information is not received. Please try again later."
+   },
+   "learn_more": {
+      "description": "learn more link",
+      "message": "Learn more"
+   },
+   "less_products_sold_at_last_three_months": {
+      "description": "Over the past three months are very few products sold",
+      "message": "Low amount of sales over the past three months"
+   },
+   "level_up_msg": {
+      "description": "Congratulations! Your level has been upgraded.",
+      "message": "Congratulations! Your level has been upgraded. "
+   },
+   "low_seller_ratings": {
+      "description": "Low seller ratings",
+      "message": "Low seller rating"
+   },
+   "mall_no_cashback": {
+      "description": "no cashback from mall",
+      "message": "No cashback for the goods from the Mall"
+   },
+   "master_of_coin": {
+      "description": "Master of Сoin",
+      "message": "'Master of Сoin'."
+   },
+   "more_details": {
+      "description": "More details",
+      "message": "More details"
+   },
+   "most_likely_to_encounter_problems": {
+      "description": "Most likely to encounter problems",
+      "message": "Most likely you may encounter troubles when buying from this seller"
+   },
+   "newbie": {
+      "description": "Newbie",
+      "message": "'Newbie'."
+   },
+   "no_cashback_certificates_tooltip": {
+      "description": "Cashback will not be refunded for purchases for purchase of gift certificates",
+      "message": "Cashback will not be refunded for purchases for purchase of gift certificates"
+   },
+   "options_ask_a_question": {
+      "description": "Ask a Question",
+      "message": "Ask a Question"
+   },
+   "options_group_language_setting": {
+      "description": "Language settings",
+      "message": "Language settings"
+   },
+   "options_group_main": {
+      "description": "General settings",
+      "message": "General settings"
+   },
+   "options_group_main_checkbox_1_text": {
+      "description": "Display \"Seller reliability\" box on product page",
+      "message": "Display \"Seller reliability\" box on product page"
+   },
+   "options_group_main_checkbox_2_text": {
+      "description": "Display cashback sum on product page",
+      "message": "Display cashback sum on product page"
+   },
+   "options_group_main_checkbox_3_text": {
+      "description": "Display cashback sum on search pages",
+      "message": "Display cashback sum on search pages"
+   },
+   "options_group_main_checkbox_4_text": {
+      "description": "Recommend AliBonus on AliExpress pages",
+      "message": "Recommend AliBonus on AliExpress pages"
+   },
+   "options_group_notify": {
+      "description": "Notifications settings",
+      "message": "Notifications settings"
+   },
+   "options_group_notify_checkbox_1_text": {
+      "description": "Cashback notifications",
+      "message": "Cashback notifications"
+   },
+   "or_lbl": {
+      "description": "or lbl",
+      "message": "Or"
+   },
+   "our_recomendatios": {
+      "description": "Our recomendatios",
+      "message": "Our recommendations:"
+   },
+   "our_recomendatios_20_per": {
+      "description": "Add your Alibonus link to the review and get 20% of the cashback from each user that joined thanks to you.",
+      "message": "Add your Alibonus link to the review and get 20% of the cashback from each user that joined thanks to you."
+   },
+   "our_recomendatios_text_1": {
+      "description": "I bought this product with AliBonus extension and already saved ",
+      "message": "I bought this product with AliBonus extension and already saved "
+   },
+   "our_recomendatios_text_2": {
+      "description": ". AliBonus extension helps to save up to 8.25% of the purchase price on AliExpress. Follow the link alibonus.com/?u=",
+      "message": ". AliBonus extension helps to save up to 8.25% of the purchase price on AliExpress. Follow the link alibonus.com/?u="
+   },
+   "our_recomendatios_text_3": {
+      "description": " to start saving right now!",
+      "message": " to start saving right now!"
+   },
+   "password_placeholder": {
+      "description": "password placeholder",
+      "message": "Enter password"
+   },
+   "piece": {
+      "description": "price per piece",
+      "message": " / piece"
+   },
+   "register_and_enter": {
+      "description": "register and enter",
+      "message": "Join or sign in to get up to 8.25% cashback right now!"
+   },
+   "reliable_seller": {
+      "description": "Reliable seller",
+      "message": "Reliable seller. You can safely buy"
+   },
+   "russian_mall_tooltip": {
+      "description": "Cashback will not be refunded for purchases from Russian Mall",
+      "message": "Cashback will not be refunded for purchases from Russian Mall"
+   },
+   "satisfactory_seller_rating": {
+      "description": "Satisfactory seller rating",
+      "message": "Acceptable seller rating"
+   },
+   "seller_readily_comes_to_contact_with_the_buyer": {
+      "description": "Seller readily comes to contact with the buyer",
+      "message": "Seller is willingly contacts with the customer"
+   },
+   "seller_reliability": {
+      "description": "seller reliability title",
+      "message": "Seller reliability"
+   },
+   "shopaholic": {
+      "description": "Shopaholic",
+      "message": "'Shopaholic'."
+   },
+   "span_activated": {
+      "description": "span activated",
+      "message": "activated"
+   },
+   "span_available": {
+      "description": "span available",
+      "message": "Available for payout"
+   },
+   "span_econommed": {
+      "description": "span econommed",
+      "message": "Already saved"
+   },
+   "span_error": {
+      "description": "span error",
+      "message": "Wrong Email or password"
+   },
+   "span_not_activated": {
+      "description": "span not activated",
+      "message": "not activated!"
+   },
+   "span_not_registered": {
+      "description": "span not registered.",
+      "message": "Not registered?"
+   },
+   "span_waiting": {
+      "description": "span waiting",
+      "message": "Pending approval"
+   },
+   "span_your_cashback": {
+      "description": "span your cashback",
+      "message": "Your cashback"
+   },
+   "span_your_level": {
+      "description": "span your level",
+      "message": "Level"
+   },
+   "span_your_profile": {
+      "description": "span your profile",
+      "message": "My profile:"
+   },
+   "start_activate": {
+      "description": "start activate",
+      "message": "Activate cashback"
+   },
+   "start_activate_info": {
+      "description": "start activate",
+      "message": "Activate to start getting cashback"
+   },
+   "start_econom": {
+      "description": "start econom",
+      "message": "Begin shopping on AliExpress"
+   },
+   "successfully_credited": {
+      "description": "Successfully credited",
+      "message": "Successfully credited"
+   },
+   "the_average_level_of_reliability": {
+      "description": "The average level of reliability",
+      "message": "The average level of reliability: you can buy if there is no other options"
+   },
+   "the_seller_has_no_shop": {
+      "description": "The seller has no shop",
+      "message": "This seller doesn't have store, most likely he is a fraudster!"
+   },
+   "total_cashback": {
+      "description": "Total cashback",
+      "message": "Total cashback:"
+   },
+   "tradesman": {
+      "description": "Tradesman",
+      "message": "'Tradesman'."
+   },
+   "treasurer": {
+      "description": "Treasurer",
+      "message": "'Treasurer'."
+   },
+   "trust_block_tooltip": {
+      "description": "tooltip in trust block header",
+      "message": "This section will provide you with information about seller reliability . Alibonus helps you to make not only profitable, but also secure purchase!"
+   },
+   "unreliable_seller": {
+      "description": "Unreliable seller",
+      "message": "Unreliable seller - we recommend not to buy from him"
+   },
+   "will_return": {
+      "description": "cashback which will return",
+      "message": "You will save"
+   },
+   "you_may_not_get_cashback": {
+      "description": "You may not get cashback",
+      "message": "You may not get cashback"
+   },
+   "you_wont_get_cashback_for_this_purchase": {
+      "description": "You won’t get cashback for this purchase",
+      "message": "You won’t get cashback for this purchase "
+   },
+   "your_cashback": {
+      "description": "Cashback which will return",
+      "message": "Your cashback: "
+   },
+   "your_cashback_is_active": {
+      "description": "Your cashback is active",
+      "message": "Your cashback is active"
+   },
+   "your_level": {
+      "description": "Your level",
+      "message": "Your level"
+   }
+}

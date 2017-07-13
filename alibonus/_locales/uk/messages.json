@@ -1,0 +1,514 @@
+{
+   "Share_button": {
+      "description": "Share",
+      "message": "Поделиться"
+   },
+   "a_forgot": {
+      "description": "a forgot",
+      "message": "Забыли пароль?"
+   },
+   "a_help": {
+      "description": "a help",
+      "message": "Помощь"
+   },
+   "a_level_1": {
+      "description": "a level 1",
+      "message": "Новичок"
+   },
+   "a_level_2": {
+      "description": "a level 2",
+      "message": "Арифметик"
+   },
+   "a_level_3": {
+      "description": "a level 3",
+      "message": "Купец"
+   },
+   "a_level_4": {
+      "description": "a level 4",
+      "message": "Экономист"
+   },
+   "a_level_5": {
+      "description": "a level 5",
+      "message": "Шопоголик"
+   },
+   "a_level_6": {
+      "description": "a level 6",
+      "message": "Казначей"
+   },
+   "a_level_7": {
+      "description": "a level 7",
+      "message": "Мастер над монетой"
+   },
+   "a_lot_of_sales_for_the_last_three_months": {
+      "description": "A lot of sales for the last three months",
+      "message": "Очень много продаж за последние три месяца"
+   },
+   "a_register": {
+      "description": "a register",
+      "message": "Зарегистрироваться"
+   },
+   "a_settings": {
+      "description": "a settings",
+      "message": "Настройки"
+   },
+   "a_track": {
+      "description": "a track",
+      "message": "Отследить посылку"
+   },
+   "activate": {
+      "description": "Activate cashback",
+      "message": "Активировать"
+   },
+   "activate_tooltip": {
+      "description": "Press «Activate cashback» to get cashback for this purchase",
+      "message": "Нажмите кнопку 'Активировать', чтобы получить кешбэк за этот товар"
+   },
+   "actively_selling_for_more_than_nine_months": {
+      "description": "Actively selling for more than nine months",
+      "message": "Активно продает более девяти месяцев"
+   },
+   "actively_selling_for_more_than_six_months": {
+      "description": "Actively sells more than six months",
+      "message": "Активно продает более полугода"
+   },
+   "actively_sells_for_less_than_six_months": {
+      "description": "Actively sells less than six months",
+      "message": "Активно продает менее полугода"
+   },
+   "actively_sells_for_less_than_three_months": {
+      "description": "Actively sells less than three months",
+      "message": "Активно продает менее трех месяцев"
+   },
+   "actively_sells_more_than_a_year": {
+      "description": "Actively sells more than a year",
+      "message": "Активно продает более года"
+   },
+   "alibonus_support_service": {
+      "description": "AliBonus Support Service",
+      "message": "Служба поддержки AliBonus"
+   },
+   "an_answer_to_ticket": {
+      "description": "An answer to ticket ",
+      "message": "Пришел ответ на тикет "
+   },
+   "appDesc": {
+      "description": "App description.",
+      "message": "Alibonus - Возвращай до 8.25% с Aliexpress"
+   },
+   "appName": {
+      "description": "App name.",
+      "message": "Alibonus - Возвращай до 8.25% с Aliexpress"
+   },
+   "arithmetician": {
+      "description": "Arithmetician",
+      "message": "'Арифметик'."
+   },
+   "available_for_withdrawal": {
+      "description": "Available for withdrawal",
+      "message": "Доступен для вывода"
+   },
+   "btn_enter": {
+      "description": "btn enter",
+      "message": "Войти"
+   },
+   "button_back": {
+      "description": "Back",
+      "message": "Назад"
+   },
+   "can_play_for_time_deliveries": {
+      "description": "Can play for time deliveries",
+      "message": "Может тянуть время при отправке товара"
+   },
+   "cashback_activate": {
+      "description": "cashback activate",
+      "message": "Активировать"
+   },
+   "cashback_activated": {
+      "description": "cashback activated",
+      "message": "Кешбэк успешно активирован"
+   },
+   "cashback_block_tooltip": {
+      "description": "This is cashback that you will get after this purchase",
+      "message": "Это блок кешбэка, который вы можете получить после покупки данного товара"
+   },
+   "cashback_block_tooltip2": {
+      "description": "This is casback that will be refunded on your AliBonus account",
+      "message": "Это сумма кешбэка, которая вернётся на ваш счет в личный кабинет Alibonus"
+   },
+   "cashback_cant_be_refunded": {
+      "description": "Cashback can't be refunded",
+      "message": "Кешбэк не может быть зачислен"
+   },
+   "cashback_cant_be_refunded_for_this_purchase": {
+      "description": "Cashback can’t be refunded for this purchase",
+      "message": "На данный товар не может быть начислен кешбек"
+   },
+   "cashback_for_purchase": {
+      "description": "Cashback for purchase",
+      "message": "Кешбэк за покупку"
+   },
+   "cashback_is_not_active": {
+      "description": "Cashback is not active",
+      "message": "Кешбэк не активирован"
+   },
+   "cashback_not_activated_1": {
+      "description": "cashback not activated 1",
+      "message": "Вы можете не получить"
+   },
+   "cashback_not_activated_2": {
+      "description": "cashback not activated 2",
+      "message": "свой кешбэк"
+   },
+   "cashback_not_activated_3": {
+      "description": "cashback not activated 3",
+      "message": "Кешбэк не активирован"
+   },
+   "cashback_service_number_1": {
+      "description": "cashback service number 1",
+      "message": "Кешбэк сервис для AliExpress #1"
+   },
+   "create_account_1": {
+      "description": "create account 1",
+      "message": "Создайте"
+   },
+   "create_account_2": {
+      "description": "create account 2",
+      "message": "учетную запись AliBonus"
+   },
+   "declined": {
+      "description": "Declined",
+      "message": "Отклонен'"
+   },
+   "description_of_the_goods_in_the_store_may_not_be_accurate": {
+      "description": "Description of the goods in the store may not be accurate",
+      "message": "Описание товаров в магазине может не соответствовать действительности"
+   },
+   "economist": {
+      "description": "Economist",
+      "message": "'Экономист'."
+   },
+   "email_placeholder": {
+      "description": "email placeholder",
+      "message": "Введите Email"
+   },
+   "enough_reliable_seller": {
+      "description": "Enough reliable seller",
+      "message": "Достаточно надежный продавец - можно брать"
+   },
+   "enter_track_number": {
+      "description": "PACKAGE TRACK NUMBER",
+      "message": "ТРЕК НОМЕР ОТПРАВЛЕНИЯ"
+   },
+   "ext_your_cashback": {
+      "description": "Your cashback",
+      "message": " Ваш кешбэк увеличен на "
+   },
+   "extremely_low_performance_rating": {
+      "description": "Extremely low performance rating",
+      "message": "Крайне низкий рейтинг продавца"
+   },
+   "fast_shipping_goods": {
+      "description": "Fast shipping goods to the buyer",
+      "message": "Быстрая отправка товаров покупателю"
+   },
+   "good_seller_ratings": {
+      "description": "Good seller ratings",
+      "message": "Хороший рейтинг продавца"
+   },
+   "goods_in_the_store_close_to_the_description": {
+      "description": "Goods in the store close to the description",
+      "message": "Товары в магазине соответствуют описанию"
+   },
+   "h3_lbl": {
+      "description": "h3 lbl",
+      "message": "Войти"
+   },
+   "has_been_received": {
+      "description": "has been received",
+      "message": ""
+   },
+   "high_seller_rating": {
+      "description": "High seller rating",
+      "message": "Высокий рейтинг продавца"
+   },
+   "how_to_get_double_cashback": {
+      "description": "How to get double cashback?",
+      "message": "Как получить двойной кешбек?"
+   },
+   "incorrect_track_number": {
+      "description": "Invalid tracking number.",
+      "message": "Неправильный трек-номер. Пожалуйста, проверьте правильность введенного трек-номера отправления."
+   },
+   "info_for_track_number_is_server_error": {
+      "description": "At the moment, there is an increased load on the package tracking server. Information is not received. Please try again later.",
+      "message": "На данный момент наблюдается повышенная нагрузка на сервер отслеживания посылок. Информация о посылке не получена. Пожалуйста, попробуйте позже."
+   },
+   "invalid_track_number": {
+      "description": "Please enter your tracking number.",
+      "message": "Пожалуйста, введите трек-номер отправления."
+   },
+   "learn_more": {
+      "description": "learn more link",
+      "message": "Подробнее"
+   },
+   "less_products_sold_at_last_three_months": {
+      "description": "Over the past three months are very few products sold",
+      "message": "За последние три месяца продано очень мало товаров"
+   },
+   "level_up_msg": {
+      "description": "Congratulations! Your level has been upgraded.",
+      "message": "Поздравляем! Только что ваш уровень был повышен. "
+   },
+   "low_seller_ratings": {
+      "description": "Low seller ratings",
+      "message": "Низкий рейтинг продавца"
+   },
+   "mall_no_cashback": {
+      "description": "no cashback from mall",
+      "message": "Для товаров из мола кешбэка нет"
+   },
+   "many_post_services": {
+      "description": "Your tracking number is associated with several mail services. Choose your mail service pressing the necessary icon.",
+      "message": "Введенному вами номеру почтового отправления соответствует несколько почтовых служб. Выберите правильную почтовую службу, нажав на соответствующую иконку."
+   },
+   "master_of_coin": {
+      "description": "Master of Сoin",
+      "message": "'Мастер над монетой'."
+   },
+   "more_details": {
+      "description": "More details",
+      "message": "Подробнее"
+   },
+   "most_likely_to_encounter_problems": {
+      "description": "Most likely to encounter problems",
+      "message": "Большая вероятность столкнуться с проблемами при покупке у этого продавца"
+   },
+   "newbie": {
+      "description": "Newbie",
+      "message": "'Новичок'."
+   },
+   "no_cashback_certificates_tooltip": {
+      "description": "Cashback will not be refunded for purchases for purchase of gift certificates",
+      "message": "Кешбэк за подарочные сертификаты начислен не будет."
+   },
+   "not_info_for_track_number": {
+      "description": "No information about your shipment yet. Please check back later.",
+      "message": "Информации о местоположении посылки пока нет."
+   },
+   "options_ask_a_question": {
+      "description": "Ask a Question",
+      "message": "Задать вопрос"
+   },
+   "options_group_language_setting": {
+      "description": "Language settings",
+      "message": "Языковые настройки"
+   },
+   "options_group_main": {
+      "description": "Общие настройки",
+      "message": "Общие настройки"
+   },
+   "options_group_main_checkbox_1_text": {
+      "description": "Отображать блок \"Надежность продавца\" в карточке товара.",
+      "message": "Отображать блок \"Надежность продавца\" в карточке товара."
+   },
+   "options_group_main_checkbox_2_text": {
+      "description": "Отображать сумму кешбэка в карточке товара.",
+      "message": "Отображать сумму кешбэка в карточке товара."
+   },
+   "options_group_main_checkbox_3_text": {
+      "description": "Отображать сумму кешбэка на страницах поиска.",
+      "message": "Отображать сумму кешбэка на страницах поиска."
+   },
+   "options_group_main_checkbox_4_text": {
+      "description": "Рекомендовать AliBonus на страницах AliExpress",
+      "message": "Рекомендовать AliBonus на страницах AliExpress"
+   },
+   "options_group_main_checkbox_6_text": {
+      "description": "Display \"Track package\" button on \"My orders\" page",
+      "message": "Отображать кнопку \"Отследить посылку\" на странице \"Мои заказы\""
+   },
+   "options_group_notify": {
+      "description": "Настройки уведомлений",
+      "message": "Настройки уведомлений"
+   },
+   "options_group_notify_checkbox_1_text": {
+      "description": "Уведомления о кешбеке.",
+      "message": "Уведомления о кешбеке."
+   },
+   "or_lbl": {
+      "description": "or lbl",
+      "message": "Или"
+   },
+   "our_recomendatios": {
+      "description": "Our recomendatios",
+      "message": "Наши рекомендации:"
+   },
+   "our_recomendatios_20_per": {
+      "description": "Add your Alibonus link to the review and get 20% of the cashback from each user that joined thanks to you.",
+      "message": "Дополни отзыв личной ссылкой на Alibonus и получай 20% от кешбэка пользователей, присоединившихся благодаря тебе."
+   },
+   "our_recomendatios_text_1": {
+      "description": "I bought this product with AliBonus extension and already saved ",
+      "message": "Этот товар я приобрел с расширением AliBonus и сэкономил уже "
+   },
+   "our_recomendatios_text_2": {
+      "description": ". AliBonus extension helps to save up to 8.25% of the purchase price on AliExpress. Follow the link alibonus.com/?u=",
+      "message": ". Расширение AliBonus помогает экономить до 8.25% от стоимости покупки на AliExpress. Воспользуетесь моей ссылкой alibonus.com/?u="
+   },
+   "package_h1": {
+      "description": "My packages",
+      "message": "Мои посылки."
+   },
+   "package_h3": {
+      "description": "Package tracking",
+      "message": "Отслеживание посылки"
+   },
+   "package_title_text": {
+      "description": "Here you can track international parcels and parcels from China.",
+      "message": "Здесь вы можете отследить международные почтовые отправления и посылки из Китая."
+   },
+   "password_placeholder": {
+      "description": "password placeholder",
+      "message": "Введите пароль"
+   },
+   "piece": {
+      "description": "цена за штуку",
+      "message": " / шт"
+   },
+   "register_and_enter": {
+      "description": "register and enter",
+      "message": "Зарегистрируйся или Войди в личный кабинет, чтобы получать кешбэк до 8.25% прямо сейчас"
+   },
+   "reliable_seller": {
+      "description": "Reliable seller",
+      "message": "Надежный продавец - можно покупать"
+   },
+   "russian_mall_tooltip": {
+      "description": "Cashback will not be refunded for purchases from Russian Mall",
+      "message": "Кешбэк не может быть начислен за товары из Российского МОЛЛА"
+   },
+   "satisfactory_seller_rating": {
+      "description": "Satisfactory seller rating",
+      "message": "Удовлетворительный рейтинг продавца"
+   },
+   "seller_readily_comes_to_contact_with_the_buyer": {
+      "description": "Seller readily comes to contact with the buyer",
+      "message": "Продавец охотно идёт на контакт с покупателем"
+   },
+   "seller_reliability": {
+      "description": "seller reliability title",
+      "message": "Надежность продавца"
+   },
+   "shopaholic": {
+      "description": "Shopaholic",
+      "message": "'Шопоголик'."
+   },
+   "span_activated": {
+      "description": "span activated",
+      "message": "активирован"
+   },
+   "span_available": {
+      "description": "span available",
+      "message": "Доступно для вывода"
+   },
+   "span_econommed": {
+      "description": "span econommed",
+      "message": "Вы сэкономили"
+   },
+   "span_error": {
+      "description": "span error",
+      "message": "Неверный Email или пароль"
+   },
+   "span_not_activated": {
+      "description": "span not activated",
+      "message": "не активирован!"
+   },
+   "span_not_registered": {
+      "description": "span not registered.",
+      "message": "Еще не зарегистрированы?"
+   },
+   "span_waiting": {
+      "description": "span waiting",
+      "message": "В ожидании выплаты"
+   },
+   "span_your_cashback": {
+      "description": "span your cashback",
+      "message": "Ваш кешбэк"
+   },
+   "span_your_level": {
+      "description": "span your level",
+      "message": "Уровень"
+   },
+   "span_your_profile": {
+      "description": "span your profile",
+      "message": "Мой профиль:"
+   },
+   "start_activate": {
+      "description": "start activate",
+      "message": "Активировать кешбэк"
+   },
+   "start_activate_info": {
+      "description": "start activate",
+      "message": "Активируйте, чтобы начать получать кешбэк."
+   },
+   "start_econom": {
+      "description": "start econom",
+      "message": "Начать покупки на AliExpress"
+   },
+   "successfully_credited": {
+      "description": "Successfully credited",
+      "message": "Успешно зачислен"
+   },
+   "the_average_level_of_reliability": {
+      "description": "The average level of reliability",
+      "message": "Средний уровень надежности: можно покупать, если нет других вариантов"
+   },
+   "the_seller_has_no_shop": {
+      "description": "The seller has no shop",
+      "message": "У продавца нет магазина, вероятнее всего - это мошенник!"
+   },
+   "total_cashback": {
+      "description": "Total cashback",
+      "message": "Общий кешбэк:"
+   },
+   "tradesman": {
+      "description": "Tradesman",
+      "message": "'Купец'."
+   },
+   "treasurer": {
+      "description": "Treasurer",
+      "message": "'Казначей'."
+   },
+   "trust_block_tooltip": {
+      "description": "tooltip in trust block header",
+      "message": "Это блок проверки продавца кешбэк-сервиса Alibonus. Мы помогаем делаеть не только выгодные, но и безопасные покупки!"
+   },
+   "unreliable_seller": {
+      "description": "Unreliable seller",
+      "message": "Ненадежный продавец - покупаем, если нет других вариантов, но очень нужно"
+   },
+   "will_return": {
+      "description": "cashback which will return",
+      "message": "Вернется"
+   },
+   "you_may_not_get_cashback": {
+      "description": "You may not get cashback",
+      "message": "Вы можете не получить кешбэк!"
+   },
+   "you_wont_get_cashback_for_this_purchase": {
+      "description": "You won’t get cashback for this purchase",
+      "message": "Вы не получите кешбэк за этот товар. "
+   },
+   "your_cashback": {
+      "description": "Cashback which will return",
+      "message": "Вам вернётся: "
+   },
+   "your_cashback_is_active": {
+      "description": "Your cashback is active",
+      "message": "Ваш кешбэк активирован"
+   },
+   "your_level": {
+      "description": "Your level",
+      "message": "Ваш уровень"
+   }
+}

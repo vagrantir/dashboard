@@ -1,0 +1,1032 @@
+@font-face {
+    font-family: 'Conv_Proxima Nova Light';
+    src: url('../fonts/Proxima Nova Light.eot');
+    src: local('☺'), url('../fonts/Proxima Nova Light.woff') format('woff'),
+    url('../fonts/Proxima Nova Light.ttf') format('truetype'),
+    url('../fonts/Proxima Nova Light.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Conv_Proxima Nova Extrabold';
+    src: url('../fonts/Proxima Nova Extrabold.eot');
+    src: local('☺'), url('../fonts/Proxima Nova Extrabold.woff') format('woff'),
+    url('../fonts/Proxima Nova Extrabold.ttf') format('truetype'),
+    url('../fonts/Proxima Nova Extrabold.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Conv_Proxima Nova Regular';
+    src: url('../fonts/Proxima Nova Regular.eot');
+    src: local('☺'), url('../fonts/Proxima Nova Regular.woff') format('woff'),
+    url('../fonts/Proxima Nova Regular.ttf') format('truetype'),
+    url('../fonts/Proxima Nova Regular.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    outline:none!important;
+}
+html {
+    height: 100%;
+    -webkit-text-size-adjust: none;
+}
+html, body {
+    height: 100%;
+    margin:0;
+    color:#000;
+    font-family: 'Conv_Proxima Nova Regular','Conv_Proxima Nova Light',Helvetica,Arial,sans-serif;
+    background:#fff;
+    min-width: 320px;
+    font-size: 14px;
+    line-height: 1.42857143;
+}
+body {
+    height: 600px!important;
+    min-width: 320px;
+    width: 423px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+img {
+    border-style:none;
+    vertical-align: top;
+}
+a {
+    color: #3498db;
+    outline:none;
+    text-decoration: none;
+}
+a:hover {
+    color: #3498db;
+    text-decoration: underline;
+}
+input, textarea, select {
+    font:400 14px/14px 'Conv_Proxima Nova Regular', sans-serif;
+    vertical-align:middle;
+    outline: none!important;
+    -webkit-appearance:none;
+    -webkit-border-radius:0;
+    box-shadow: none!important;
+
+}
+form, fieldset {
+    margin:0;
+    padding:0;
+    border-style:none;
+}
+h1 {
+    color: #000;
+    padding: 0;
+    margin: 0 0 10px 0;
+    text-transform: uppercase;
+    font-family: 'Conv_Proxima Nova Regular', sans-serif;
+    font-size: 40px;
+    line-height: 50px;
+}
+h2 {
+    color: #000;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+    font-family: 'Conv_Proxima Nova Regular', sans-serif;
+    font-size: 30px;
+    line-height: 50px;
+    font-weight: normal;
+}
+h3 {
+    color: #000;
+    margin: 0 0 11px;
+    font-family: 'Conv_Proxima Nova Regular', sans-serif;
+    font-size: 28px;
+    line-height: 28px;
+}
+p {
+    font-size: 13px;
+    line-height: 18px;
+    color: #000;
+    margin: 0 0 10px;
+}
+strong {
+    font-family: 'Conv_Proxima Nova Bold', sans-serif;
+}
+.image-load {
+    margin-top: 10px;
+    margin-left: 5px;
+}
+.logo {
+    width: 165px;
+    height: 70px;
+    background: url(../icons/logo.png) 0 20px no-repeat;
+    background-size: 100%;
+    text-indent: -9999px;
+    overflow: hidden;
+    margin: 0;
+    display: block;
+}
+.logo a {
+    display: block;
+    height: 100%;
+}
+.extension-app-modal {
+    position: absolute;
+    padding: 0 0 26px;
+    width: 423px;
+/*    -webkit-box-shadow: 1px 0px 10px 1px rgba(0,0,0,0.3);
+    box-shadow: 1px 0px 10px 1px rgba(0,0,0,0.3);*/
+    background: #fff;
+}
+.extension-app-modal:before{
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: -8px;
+    right: 16px;
+/*    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 8px solid #fff;*/
+}
+.extension-app-modal .head {
+    background: #89bf1e;
+    overflow: hidden;
+    border: 1px #fff solid;
+    border-radius: 5px;
+    padding: 18px 20px 17px 19px;
+}
+.extension-app-modal.enable .head {
+    background: #bf1e1e;
+}
+.extension-app-modal.enter .head {
+    background: #843e6b;
+    padding: 18px 20px 23px 19px;
+}
+.extension-app-modal.enter .logo {
+    margin: 0 auto;
+    float: none;
+}
+.extension-app-modal .logo {
+    width: 39px;
+    height: 37px;
+    float: left;
+    margin: 0 18px 0 0;
+    background: url(../icons/logo-extension.png) no-repeat 50% 50%;
+    background-size: 100%;
+}
+.extension-app-modal .head .info {
+    float: left;
+    font-size: 20px;
+    color: #fff;
+    font-family: 'Conv_Proxima Nova Light';
+    line-height: 33px;
+}
+.extension-app-modal.enable .head .info {
+    border-bottom: 1px #df8f8f solid;
+    line-height: 20px;
+    padding: 6px 0 0 0;
+}
+.extension-app-modal .holder-persent {
+    float: right;
+    display: none;
+}
+.extension-app-modal .holder-persent .title {
+    display: block;
+    font-size: 14px;
+    line-height: 20px;
+    color: #fff;
+    margin: 0 0 -3px;
+    font-family: 'Conv_Proxima Nova Light';
+}
+.extension-app-modal .holder-persent .persent {
+    display: block;
+    font-size: 24px;
+    line-height: 24px;
+    color: #fff;
+    font-family: 'Conv_Proxima Nova Extrabold';
+}
+.extension-app-modal .user-logged {
+    float: left;
+    padding: 0;
+}
+.extension-app-modal  .level-box {
+    float: right;
+    padding: 9px 0 0 0;
+    min-width: 130px;
+}
+.extension-app-modal  .level-box .ava-info {
+    float: left;
+    margin: 0 10px 0 0;
+}
+.extension-app-modal  .level-box .ava-info div {
+    width: 29px;
+    height: 29px;
+    background-image: url(../icons/userlevel_spritesheet.png);
+    background-repeat: no-repeat;
+    display: block;
+}
+.extension-app-modal  .level-box .ava-info div.user-level-1{
+    background-position: -5px -5px;
+}
+.extension-app-modal  .level-box .ava-info div.user-level-2{
+    background-position: -44px -5px;
+}
+.extension-app-modal  .level-box .ava-info div.user-level-3{
+    background-position: -5px -44px;
+}
+.extension-app-modal  .level-box .ava-info div.user-level-6{
+    background-position: -44px -44px;
+}
+.extension-app-modal  .level-box .ava-info div.user-level-5{
+    background-position: -83px -5px;
+}
+.extension-app-modal  .level-box .ava-info div.user-level-4{
+    background-position: -83px -44px;
+}
+.extension-app-modal  .level-box .ava-info div.user-level-7{
+    background-position: -5px -83px;
+}
+
+.extension-app-modal .level-box .holder {
+    overflow: hidden;
+}
+.extension-app-modal  .level-box .level-title {
+    display: block;
+    font-size: 14px;
+    line-height: 14px;
+    color: #000;
+}
+.extension-app-modal .level-box .level-info {
+    display: block;
+    font-size: 14px;
+    line-height: 18px;
+    color: #3498db;
+    cursor: pointer;
+}
+.extension-app-modal .box {
+    overflow: hidden;
+    border-bottom: 1px #e2e2e2 solid;
+    padding: 28px 0px 31px 0px;
+    margin: 0 21px;
+}
+.extension-app-modal .user-logged .user-name {
+    color: #3498db;
+    padding: 0;
+    font-family: 'Conv_Proxima Nova Light';
+}
+.extension-app-modal .price-holder {
+    margin: 0 0 10px 0;
+    padding: 5px 0 0 0;
+    font-size: 0;
+    line-height: 0;
+    list-style: none;
+    text-align: center;
+}
+.extension-app-modal .price-holder li {
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+}
+.extension-app-modal .price-holder .title {
+    font-size: 16px;
+    line-height: 20px;
+    max-width: 95px;
+    display: block;
+    margin: 0 auto 32px;
+    font-family: 'Conv_Proxima Nova Light';
+}
+.extension-app-modal .price-holder .price {
+    font-size: 44px;
+    line-height: 44px;
+    color: #ababab;
+    font-family: 'Conv_Proxima Nova Light';
+}
+.extension-app-modal .price-holder li:first-child .price {
+    color: #96537d;
+}
+.extension-app-modal .btn-holder.info-hint-show{
+    text-align: center;
+    padding: 39px 66px 0 66px;
+    margin: 0 0 10px;
+}
+.extension-app-modal .btn-holder{
+    text-align: center;
+    padding: 39px 66px 0 66px;
+    margin: 0 0 34px;
+}
+
+.extension-app-modal .info-economy {
+    display: block;
+    font-size: 16px;
+    line-height: 16px;
+    margin: 0 0 40px;
+}
+.info-hint{
+    font-size: 12px;
+    color: #ccc;
+    margin-top: 10px;
+}
+.extension-app-modal .btn-default {
+    background: transparent;
+    border: 1px #97537e solid;
+    color: #97537e;
+    width: 100%;
+    height: 55px;
+    padding: 0;
+    border-radius: 37px!important;
+    letter-spacing: -0.02em;
+    font-size: 19px;
+    line-height: 16px;
+    margin: 0;
+}
+.extension-app-modal.enable .btn-default {
+    background: #89bf1e;
+    border: 1px #89bf1e solid;
+    color: #fff;
+    width: 100%;
+    height: 55px;
+    padding: 0;
+    border-radius: 37px!important;
+    letter-spacing: -0.02em;
+    font-size: 18px;
+    line-height: 16px;
+    margin: 0;
+}
+.extension-app-modal .nav-list {
+    /*margin: 0 -27px;*/
+    margin: 0px;
+    padding: 0;
+    list-style: none;
+    font-size: 0;
+    line-height: 0;
+    text-align: center;
+    border-top: solid 1px #e8e8e8;
+}
+.extension-app-modal .nav-list li  {
+    display: inline-block;
+    vertical-align: top;
+    width: 33.3%;
+    font-size: 13px;
+    line-height: 16px;
+}
+.extension-app-modal .nav-list li:nth-of-type(1){
+    background-image: url("../icons/settings_2x.png");
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-position: 33px 11px;
+}
+.extension-app-modal .foot .nav-list li:nth-of-type(1) a{
+    width: calc(100% - 21px);
+    float: left;
+    padding: 11px 0 10px 21px;
+}
+
+.extension-app-modal .nav-list li:nth-of-type(2){
+    border-right: solid 1px #e8e8e8;
+    border-left: solid 1px #e8e8e8;
+    width: calc(33.3% - 2px);
+}
+.extension-app-modal footer.foot {
+    /*padding: 0 0px 0 18px;*/
+    padding: 0px 0 0 0;
+    position: absolute;
+    width: 100%;
+    z-index: 99999;
+    background: #fff;
+    margin-top: 6px;
+}
+.extension-app-modal .foot ul.nav-list {
+
+}
+.extension-app-modal .foot .nav-list li{
+    vertical-align: baseline;
+    height: 36px;
+}
+.extension-app-modal .foot .nav-list li:hover{
+    background-color: #f0f0f0;
+}
+.extension-app-modal .foot .nav-list li a{
+    width: 100%;
+    float: left;
+    padding: 11px 0 10px 0px;
+}
+.extension-app-modal .foot .nav-list li a:hover{
+    text-decoration: none;
+}
+.extension-app-modal.enter h3 {
+    font: 30px/30px "Conv_Proxima Nova Extrabold",sans-serif;
+    padding: 0 20px;
+    margin: 0px;
+}
+.extension-app-modal.enter .form-control-holder {
+    position: relative;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 27px 81px 11px 81px;
+}
+.extension-app-modal.enter .form-row {
+    margin: 0 0 20px;
+    padding: 0;
+}
+.extension-app-modal.enter input[type="submit"] {
+    background: #843e6b;
+    border: none;
+    color: #fff;
+    width: 100%;
+    height: 33px;
+    padding: 0;
+    border-radius: 20px!important;
+    letter-spacing: -0.02em;
+    font-size: 16px;
+    line-height: 16px;
+    margin: 0 0 26px;
+}
+.extension-app-modal.enter h5 {
+    position: relative;
+    font-size: 16px;
+    margin: 0 50px 47px 50px;
+    line-height: 16px;
+    text-align: center;
+}
+.extension-app-modal.enter h5:before {
+    content: '';
+    width: 100%;
+    height: 1px;
+    background: #e2e2e2;
+    position: absolute;
+    top: 8px;
+    left: 0;
+}
+.extension-app-modal.enter h5 span {
+    display: inline-block;
+    vertical-align: top;
+    background: #fff;
+    z-index: 1;
+    position: relative;
+    padding: 0 15px;
+}
+.extension-app-modal.enter .soc-list {
+    padding: 0;
+    margin: 0 0 38px;
+    text-align: center;
+    list-style: none;
+}
+.extension-app-modal.enter .soc-list li {
+    display: inline-block;
+    vertical-align: top;
+}
+.extension-app-modal.enter .soc-list li {
+    margin: 0 13px;
+}
+.extension-app-modal.enter .soc-list a  {
+    width: 42px;
+    height: 34px;
+    border-radius: 3px;
+    display: block;
+    text-align: center;
+    line-height: 34px;
+}
+.extension-app-modal.enter .soc-list .ico  {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: middle;
+    background: url(../icons/cos-icons.png) no-repeat 0% 4px;
+}
+.extension-app-modal.enter .soc-list .ico1 {
+    width: 13px;
+    height: 24px;
+    background-position: 0 -34px;
+    background-size: 100%;
+}
+.extension-app-modal.enter .soc-list .ico2 {
+    width: 13px;
+    height: 24px;
+    background-position: 0 -11px;
+    background-size: 100%;
+}
+.extension-app-modal.enter .soc-list .od {
+    background: #f18500;
+}
+.extension-app-modal.enter .soc-list .vk {
+    background: #4e719a;
+}
+.extension-app-modal.enter .soc-list .fb {
+    background: #3a579a;
+}
+.extension-app-modal.enter input[type="text"],
+.extension-app-modal.enter input[type="password"] {
+    height: 36px;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 16px;
+    line-height: 36px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px #e2e2e2 solid;
+    background: #fff;
+    padding: 0 9px;
+}
+.extension-app-modal.enter {
+    text-align: center;
+    padding: 0 0 63px;
+}
+.extension-app-modal.enter .forgot-pass {
+    font-size: 16px;
+    line-height: 16px;
+    display: block;
+    margin: 0 0 17px;
+}
+.extension-app-modal.enter .submit-holder {
+    width: 165px;
+    margin: 0 auto;
+}
+.extension-app-modal.enter .form-login {
+    padding: 24px 0 0 0;
+}
+.extension-app-modal.enter .form-control-holder .error-msg {
+    position: absolute;
+    display: block;
+    bottom: -9999px;
+    left: -9999px;
+    right: 9999px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #db3434!important;
+    opacity: 0;
+    -webkit-transition: all 0s ease .35s ease, opacity .35s ease;
+    -o-transition: all 0s ease .35s ease, opacity .35s ease;
+    transition: all 0s ease .35s ease, opacity .35s ease;
+}
+.extension-app-modal.enter .form-control-holder.error .error-msg {
+    bottom: 6px;
+    left: -32px;
+    right: -32px;
+    opacity: 1;
+    -webkit-transition: opacity .35s ease;
+    -o-transition: opacity .35s ease;
+    transition: opacity .35s ease;
+}
+.extension-app-modal.enter .reg-box strong {
+    display: block;
+    margin: 0 0 4px;
+}
+.extension-app-modal.enter .reg-box {
+    font-size: 12px;
+    line-height: 12px;
+}
+.user-logged:after{
+    display:block;
+    clear:both;
+    content:'';
+}
+.user-logged {
+    padding: 24px 50px 0 0;
+    float: right;
+}
+.user-logged .user-ava {
+    width: 45px;
+    height: 45px;
+    margin: 0 5px 0 0;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.user-logged .user-ava img {
+    /*border-radius: 50%;*/
+    /*width: 45px;*/
+    height: inherit;
+}
+.user-logged .user-name-holder {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    max-width: 136px;
+    text-overflow: ellipsis;
+}
+.user-logged .user-name {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 12px 10px 12px 0;
+    cursor: pointer;
+    text-overflow: ellipsis;
+    display: block;
+    color: #fff;
+    overflow: hidden;
+    font-family: 'Conv_Proxima Nova Bold';
+    font-size: 14px;
+    line-height: 18px;
+}
+.user-logged .user-name:hover {
+    text-decoration: none;
+}
+.user-logged .user-name:after{
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 18px;
+    right: 0px;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 8px solid #fff;
+}
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.btn:active {
+    box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+}
+.form-row.focus, .form-row input:focus{
+    -webkit-box-shadow: 0 0 0 3px #ffd790 !important;
+    box-shadow: 0 0 0 3px #ffd790 !important;
+    border-radius: 6px !important;
+}
+input[type="submit"]:hover {
+    opacity: 0.7;
+    cursor:pointer;
+}
+.socialLink a{ width:41px; height:34px; background-size:100% !important; display:inline-block;margin:0 15px 35px 15px;}
+.socialLink .Vk{background: url('../icons/vk.png') no-repeat left top;}
+.socialLink .Odnoklassniki{background: url('../icons/ok.png') no-repeat left top;}
+.socialLink .Facebook{background: url('../icons/fb.png') no-repeat left top;}
+.socialLink .Google{background: url('../icons/go.png') no-repeat left top; border-radius: 3px;
+    -ms-background-position-y:-3px;
+    background-position-y:-3px;}
+
+/* options */
+.slide-window{
+    background: #fff;
+}
+.slide-window .back-button{
+    border-bottom: solid 1px #e8e8e8;
+    cursor: pointer;
+    font-family: 'Conv_Proxima Nova Light',Helvetica,Arial,sans-serif;
+    font-size: 18px;
+    background-image: url(../icons/icon_back.jpg);
+    background-repeat: no-repeat;
+    background-size: 14px;
+    padding-left: 49px;
+    background-position: 17px 21px;
+    padding: 20px 0 20px 49px;
+}
+
+.slide-window-body{
+    padding: 0 18px;
+}
+#options-main.slide-window-body{
+    height: 500px;
+    overflow-y: auto;
+}
+#options-main.slide-window-body::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+#options-main.slide-window-body::-webkit-scrollbar-thumb:hover {
+    background: rgba(0,0,0,0.4);
+}
+#options-main.slide-window-body::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #7c7f7e;
+}
+#options-main.slide-window-body::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #7c7f7e;
+}
+
+.slide-window-body h1{
+    font-size: 24px;
+    font-family: 'Conv_Proxima Nova Light',Helvetica,Arial,sans-serif;
+    text-transform: none;
+    font-weight: normal;
+    line-height: 24px;
+    padding: 24px 0 5px 0;
+}
+.slide-window-body input[type="checkbox"]{
+    margin: 0;
+    padding: 0;
+    height: auto;
+    width: auto;
+    display: block;
+}
+#options-main.slide-window-body input[type="checkbox"]{
+    display: none;
+}
+/* select */
+select{
+    -webkit-appearance: menulist;
+    margin-left: -30px;
+    padding: 5px;
+    width: 180px;
+}
+/* checkbox */
+.slide-window-body .control-group>div{
+    border-bottom: solid 1px #e8e8e8;
+    padding: 15px 45px 15px 33px;
+}
+.slide-window-body .control-group>div:nth-of-type(2){
+    padding-right: 59px;
+}
+.slide-window-body .control-group>div:nth-last-of-type(1){
+    border-color: #fff;
+}
+.slide-window-body label{
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 16px;
+    font-family: 'Conv_Proxima Nova Light',Helvetica,Arial,sans-serif;
+}
+.slide-window-body label.checkbox{
+    float: left;
+    margin-top: 2px;
+}
+.slide-window-body input[type="checkbox"]:checked + label.checkbox {
+    border: 1px solid #dee0e2;
+    position: relative;
+}
+.slide-window-body input[type="checkbox"] + label.checkbox {
+    border: 1px solid #dee0e2;
+}
+.slide-window-body input[type="checkbox"] + label.checkbox {
+    padding: 7px 7px 6px 6px;
+    border-radius: 4px;
+    display: inline-block;
+    position: relative;
+    margin-left: -31px;
+}
+.slide-window-body input[type="checkbox"]:checked + label.checkbox:after{
+    font-size: 14px;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    color: #99a1a7;
+    width: 7px;
+    height: 7px;
+    background: #89bf1e;
+    z-index: 999;
+    float: left;
+    content: '';
+    border-radius: 2px;
+}
+
+/*check-package-main*/
+.check-package{
+    font: 16px/normal 'Conv_Proxima Nova Light',Helvetica,Arial,sans-serif;
+}
+.check-package.eath{
+    background: url("../icons/eath.PNG") #fff;
+    background-position: 50% 80%;
+    background-repeat: no-repeat;
+    font: 16px/normal 'Conv_Proxima Nova Light',Helvetica,Arial,sans-serif;
+}
+.check-package.load{
+    background: url("../icons/loader.gif") #fff;
+    background-position: 50% 65%;
+    background-repeat: no-repeat;
+}
+
+.check-package h3{
+    margin-top: 20px;
+    font: 24px/29px 'Conv_Proxima Nova Light',Helvetica,Arial,sans-serif;
+}
+.check-package .search-input-div{
+    margin-top: 20px;
+}
+.check-package input.input-search{
+    width: 290px;
+    height: 40px;
+    margin: 0;
+    border-radius: 2px;
+    background-color: #ffffff;
+    border: solid 1px #e8e8e8;
+    font-size: 16px;
+    padding: 0 10px;
+    text-transform: uppercase;
+}
+
+.check-package input.button-search{
+    width: 63px;
+    height: 42px;
+    border-radius: 2px;
+    margin-left: 10px;
+    border: 0px;
+    background: url("../icons/search_32.png") #89bf1e;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 14px;
+    cursor: pointer;
+}
+.check-package .body-div{
+    margin-top: 20px;
+    overflow-y: auto;
+    height: 360px;
+    padding: 0 30px 0 0;
+    width: 100%;
+}
+.check-package .body-div::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+.check-package .body-div::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: rgba(0,0,0,0.1);
+    background: #fff;
+}
+.check-package .body-div::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background: #7c7f7e;
+}
+.check-package .body-div::-webkit-scrollbar-thumb:hover{
+    background: rgba(0,0,0,0.4);
+}
+.check-package .body-div::-webkit-scrollbar-thumb:active{
+    background: rgba(0,0,0,.9);
+}
+
+.check-package .body-div.scroll{
+    width: calc(100% + 5px);
+    padding: 0 8px 0 0;
+    height: 300px;
+}
+.check-package .body-div.scroll.track-info-height{
+    height: 370px;
+}
+.check-package .body-div table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.check-package .body-div table.old-search tr:nth-child(odd) td,
+.check-package .body-div .track-rows tr:nth-child(odd) td,
+.check-package .body-div .service-choose tr:nth-child(odd) td{
+    background-color: #f8f8f8;
+}
+.check-package .body-div table.old-search tr td span,
+.check-package .body-div .service-choose tr td{
+    font: 16px/normal 'Conv_Proxima Nova Light',Helvetica,Arial,sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: 0.6px;
+    color: #4a90e2;
+    text-transform: uppercase;
+    padding: 0 10px;
+}
+.check-package .body-div .service-choose tr td{
+    cursor: pointer;
+    text-transform: none;
+}
+.check-package .body-div .service-choose tr td:hover{
+    text-decoration: underline;
+}
+
+.check-package .body-div table.old-search tr td,
+.check-package .body-div .service-choose tr td{
+    padding: 20px 10px;
+}
+.check-package .body-div table.old-search tr td:nth-last-of-type(1){
+    padding: 20px 10px;
+    text-align: center;
+}
+
+.check-package .body-div table.old-search tr td span:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.check-package .body-div table .old-search-delete img{
+    width: 15px;
+    border: none;
+    cursor: pointer;
+    margin-top: 1px;
+    /* opacity: 0.5; */
+}
+.check-package .body-div table .old-search-update img {
+    width: 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 1px;
+    opacity: 0.7;
+}
+
+.check-package .body-div table .old-search-update{
+    width: 10px;
+    height: 0;
+    padding-top: 14px;
+
+}
+.check-package .body-div .track-rows,
+.check-package .body-div .service-choose{
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+.check-package .body-div .track-rows .not-info{
+    margin-top: 150px;
+    text-align: center;
+    display: none;
+}
+.check-package .body-div .track-info-rows div{
+    font: 12px/normal 'Conv_Proxima Nova Light',Helvetica,Arial,sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.67;
+    letter-spacing: 0.5px;
+    color: #000000;
+}
+.check-package .body-div .track-rows tr td div{
+    font: 14px/normal 'Conv_Proxima Nova Light', sans-serif;
+    color: #9b9b9b;
+}
+.check-package .body-div .track-rows tr td strong{
+    font: 16px/normal 'Conv_Proxima Nova Bold', sans-serif;
+    font-weight: bold;
+    color: #000;
+}
+.check-package .body-div .track-rows tr td:nth-of-type(1){
+    width: 106px;
+}
+.check-package .body-div .track-rows tr td:nth-of-type(3){
+    width: 223px;
+}
+.check-package .body-div .track-rows tr td:nth-of-type(1),
+.check-package .body-div .track-rows tr td:nth-of-type(3){
+    padding: 11px 10px;
+    vertical-align: baseline;
+}
+
+.check-package .body-div .track-rows tr:nth-child(even) td:nth-of-type(1),
+.check-package .body-div .track-rows tr:nth-child(even) td:nth-of-type(3){
+    padding: 15px 10px;
+}
+
+.check-package .body-div .track-info-rows div span:nth-of-type(2){
+    padding-left: 5px;
+}
+.check-package .body-div .track-rows tr td div.road-container{
+    position: relative;
+}
+.check-package .body-div .track-rows tr td div.track-road{
+    width: 15px;
+    position: absolute;
+    margin-top: -15px;
+    margin-left: -25px;
+}
+.check-package .body-div .track-rows tr td div.track-road span:nth-of-type(2){
+    position: absolute;
+    height: 100%;
+    background: #e8e8e8;
+    width: 1px;
+    margin-left: 7px;
+    margin-top: 20px;
+    z-index: 0;
+}
+.check-package .body-div .track-rows tr td div.track-road span:nth-of-type(1){
+    width: 15px;
+    height: 15px;
+    background-color: #89bf1e;
+    border-radius: 15px;
+    float: left;
+    margin-top: 17px;
+    position: absolute;
+    z-index: 2;
+}
+
+.check-package .check-package-errors{
+    display: none;
+    color: #db3434;
+    font: 13px/20px 'Conv_Proxima Nova Light', sans-serif;
+    text-align: center;
+
+    top: 33px;
+    left: 0;
+    right: 0;
+    padding: 15px 0 0 0;
+
+}
+.check-package .check-package-errors.show{
+    display: block;
+}

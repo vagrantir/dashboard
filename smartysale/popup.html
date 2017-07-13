@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>popup</title>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,700,500&subset=cyrillic,latin' rel='stylesheet'
+          type='text/css'>
+    <link rel="stylesheet" href="css/popup.min.css" type="text/css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="css/scrollbar.min.css" type="text/css" media="screen" charset="utf-8">
+</head>
+
+<body>
+<input type="hidden" tabindex="0"/>
+<div class="wrapper">
+    <div class="logo">
+        <a href="#" data-logo-click>
+            <img src="img/logo.png" srcset="img/logo.png 1x, img/logo@2x.png 2x" alt="">
+        </a>
+    </div>
+    <div id="content">
+    </div>
+</div>
+
+<!-- Список купонов -->
+<script id="couponsListTpl" type="x-tmpl-mustache">
+    {{^coupons}}
+        <div data-not-found i18n="nothingFound">Ничего не найдено!</div>
+    {{/coupons}}
+    {{#coupons}}
+        <div data-id="-{{id}}" data-newtab="1" class="couponItem" data-url="{{url}}" data-get-cashback>
+            <img class="shopLogo" src="{{logo}}" />
+            <span class="shopUrl">{{domain}}</span><br />
+            <table width="295" class="couponTable">
+                <tr>
+                    <td align="left">
+                        <div class="couponTitle">{{title}}</div>
+                    </td>
+                    <td width="90" align="center"><span i18n="promocode">Промокод</span><br />
+                        {{^code}}<span i18n="noNeed">не нужен</span>{{/code}}
+                        {{#code}}<span class="promoCode">{{code}}</span>{{/code}}
+                    </td>
+                </tr>
+            </table>
+            <span class="clock"></span><span i18n="remain">осталось</span> {{remain}}
+        </div>
+        <div data-coupon-id="-{{id}}" class="border"></div>
+    {{/coupons}}
+
+</script>
+
+<script id="shopsListTpl" type="x-tmpl-mustache">
+    {{^shops}}
+        <div data-not-found i18n="nothingFound">Ничего не найдено!</div>
+    {{/shops}}
+    {{#shops}}
+        <div data-id="{{id}}" data-newtab="1" data-title="{{title}}" data-queries="{{queries}}" data-domain="{{domain}}" class="shopItem" data-url="{{url}}" data-get-cashback>
+            {{#fav}}<span class="hearth"></span>{{/fav}}
+            <img class="shopLogo" {{#fav}}style="max-width: 90px;"{{/fav}} src="{{logo}}" />
+            <span class="shopUrl">{{domain}}</span>
+            <span class="shopCashback">{{cashback}}</span>
+        </div>
+        <div data-id="{{id}}" class="border"></div>
+    {{/shops}}
+
+</script>
+
+<!-- Список магазинов -->
+<script id="shopsList" type="x-tmpl-mustache">
+{{#current_action}}
+    <div class="action_label">
+        {{current_action}}
+    </div>
+{{/current_action}}
+<div class="wrapper tabs">
+    <a href="#" data-tab="shopItems" class="active" i18n="shops">Магазины</a>
+    <span class="tabs_divider"> | </span>
+    <a href="#" data-tab="couponsItems" i18n="spec">Спецпредложения</a>
+</div>
+    <br />
+       <div id="searchDiv">
+            <input i18n="shopSearch" placeholder="Поиск магазина" autocomplete="off" type="text" class="search" id="search" />
+            <span id="searchButton" class="searchButton">
+                <span data-search-button></span>
+                <div data-search-wait style="display: none;" class="spinner spinner-search">
+                  <div class="bounce1"></div>
+                  <div class="bounce2"></div>
+                  <div class="bounce3"></div>
+                </div>
+            </span>
+        </div>
+        <div id="topShops" class="shopItems scrollbar-macosx">
+            <div data-not-found style="display: none;" i18n="nothingFound">Ничего не найдено!</div>
+            {{#shops}}
+                <div data-id="{{id}}" data-newtab="1" data-title="{{title}}" data-queries="{{queries}}" data-domain="{{domain}}" class="shopItem" data-url="{{url}}" data-get-cashback>
+                    {{#fav}}<span class="hearth"></span>{{/fav}}
+                    <img class="shopLogo" {{#fav}}style="max-width: 90px;"{{/fav}} src="{{logo}}" />
+                    <span class="shopUrl">{{domain}}</span>
+                    <span class="shopCashback">{{cashback}}</span>
+                </div>
+                <div data-id="{{id}}" class="border"></div>
+            {{/shops}}
+        </div>
+         <div id="allShopsList" style="display: none;" class="shopItems scrollbar-macosx"></div>
+
+        <div class="couponsItems" style="display: none;">
+        <div id="topCoupons" class="couponItems scrollbar-macosx">
+            <div data-not-found style="display: none;" i18n="nothingFound">Ничего не найдено!</div>
+            {{#top_coupons}}
+                <div data-id="-{{id}}" data-newtab="1" data-title="{{shop_title}}" data-domain="{{domain}}" class="couponItem" data-url="{{url}}" data-get-cashback>
+                    <img class="shopLogo" src="{{logo}}" />
+                    <span class="shopUrl">{{domain}}</span><br />
+                    <table width="295" class="couponTable">
+                        <tr>
+                            <td align="left">
+                                <div class="couponTitle">{{title}}</div>
+                            </td>
+                            <td width="90" align="center"><span i18n="promocode">Промокод</span><br />
+                                {{^code}}<span i18n="noNeed">не нужен!</span>{{/code}}
+                                {{#code}}<span class="promoCode">{{code}}</span>{{/code}}
+                            </td>
+                        </tr>
+                    </table>
+                    <span class="clock"></span><span i18n="remain">Осталось</span> {{remain}}
+                </div>
+                <div data-coupon-id="-{{id}}" class="border"></div>
+            {{/top_coupons}}
+        </div>
+         <div id="allCoupons" style="display: none;" class="couponItems scrollbar-macosx"></div>
+    </div>
+
+    {{^hideBackButton}}
+        <div class="border wideBorder"></div>
+        <div class="content"><a href="#" id="main-page" i18n="back">< НАЗАД</a></div>
+   {{/hideBackButton}}
+
+
+
+
+</script>
+
+<!-- Форма входа -->
+<script id="loginForm" type="x-tmpl-mustache">
+    <div class="border"></div>
+    <div class="content">
+        <b id="label_enter" i18n="enter">ВХОД</b>
+    </div>
+
+    <div class="login">
+        <label i18n="emailOrPhone">EMAIL ИЛИ ТЕЛЕФОН</label>
+        <input type="text" id="email_input" />
+        <label i18n="password">ПАРОЛЬ</label>
+        <input type="password" id="pass_input" />
+
+        <!-- <div class="g-recaptcha" id="recaptcha" data-sitekey="6Lf2hQkUAAAAAFySWHA6be_-nOWUXFWwO3McnCie"></div> -->
+    </div>
+
+
+    <div class="button" id="do-login-button">
+        <span data-enter-button i18n="login">ВОЙТИ</span>
+        <span data-wait style="display: none;">
+            <div class="spinner">
+              <div class="bounce1"></div>
+              <div class="bounce2"></div>
+              <div class="bounce3"></div>
+            </div>
+        </span>
+    </div>
+    <div class="popup-social">
+		<ul class="eauth-list">
+            <li class="fb"><a data-login-url href="{{login_url}}"></a></li>
+            <li class="vk"><a data-login-url href="{{login_url}}"></a></li>
+            <li class="tw"><a data-login-url href="{{login_url}}"></a></li>
+            <li class="gp"><a data-login-url href="{{login_url}}"></a></li>
+            <li class="mr"><a data-login-url href="{{login_url}}"></a></li>
+            <li class="ok"><a data-login-url href="{{login_url}}"></a></li>
+        </ul>
+	</div>
+    <div class="content">
+        <a href="{{signup_link}}" target="_blank" i18n="signup">ЗАРЕГИСТРИРОВАТЬСЯ ></a>
+    </div>
+
+
+
+
+</script>
+
+<!-- Сайт без кэшбэка -->
+<script id="noCashback" type="x-tmpl-mustache">
+    {{^hidden}}
+     <div class="content">
+        <div class="border margin"></div>
+        <span i18n="noCashback">На данном сайте кэшбэка нет</span>
+    </div>
+    <a href="{{request_url}}" target="_blank" class="add_request" i18n="iWantCashback">
+        Я хочу кэшбэк в этом магазине
+    </a>
+    <a href="#" id="show-shops" class="button" i18n="allCashbackShops">
+        Все магазины с кэшбэком >
+    </a>
+    {{/hidden}}
+    {{#hidden}}
+    <div class="content">
+        <div class="border margin"></div>
+        <span i18n="hiddenCashback">Возможно, кэшбэк доступен через сайт.</span>
+    </div>
+         <div href="#" class="button" id="catalog-url" i18n="viewCatalog">
+           Посмотреть каталог
+        </div>
+
+    <div class="content"><a href="#" id="show-shops" i18n="allCashbackShops">ВСЕ МАГАЗИНЫ С КЭШБЭКОМ ></a></div>
+    {{/hidden}}
+
+
+
+
+
+</script>
+
+<!-- Сайт с кэшбэком -->
+<script id="isCashBacks" type="x-tmpl-mustache">
+    {{^actived}}
+        <div class="border"></div>
+        <div class="content">
+           <div class="percent redcolor">{{cashback}}{{#min_price}}*{{/min_price}}</div>
+            <span i18n="cashbackForOrder">кэшбэк с каждого заказа</span> <br /><span i18n="in">в</span> {{shop}}
+        </div>
+    {{/actived}}
+    {{#user_id}}
+        {{^actived}}
+            <div class="border"></div>
+
+            {{^hide_balance}}
+            <div class="label" i18n="yourBalance">
+                Ваш баланс
+            </div>
+            <div class="balance">
+                    {{#balance.usd}}<p><span>USD:</span> <span class="redcolor">{{balance.usd}}</span></p>{{/balance.usd}}
+                    {{#balance.eur}}<p><span>EUR:</span> <span class="redcolor">{{balance.eur}}</span></p>{{/balance.eur}}
+                    {{#balance.rub}}<p><span>RUB:</span> <span class="redcolor">{{balance.rub}}</span></p>{{/balance.rub}}
+                    {{#balance.uah}}<p><span>UAH:</span> <span class="redcolor">{{balance.uah}}</span></p>{{/balance.uah}}
+            <div class="clear"></div>
+            </div>
+            {{/hide_balance}}
+
+            <div class="button"{{^actived}} data-url="{{url}}" data-get-cashback="1" data-id="{{id}}"{{/actived}} i18n="activateCashback">
+                Активировать кэшбэк
+            </div>
+
+            <div class="content"><a href="#" id="show-shops" i18n="allShops">ВСЕ МАГАЗИНЫ ></a></div>
+        {{/actived}}
+        {{#actived}}
+            <div class="border activedCashback"></div>
+            <table width="100%" class="userInfo">
+                <tr>
+                    <td align="left"><img class="avatar" src="{{avatar}}" /> {{user_name}}</td>
+                    <td align="right"><a href="#" data-logout-button i18n="logout">Выйти</a></td>
+                </tr>
+            </table>
+            <div class="cashbackActived">
+                <table width="100%">
+                    <tr>
+                        <td valign="middle" align="left" i18n="cashbackActivated">Кэшбэк активирован:</td>
+                        <td valign="middle" align="right">{{cashback}}</td>
+                    </tr>
+                </table>
+            </div>
+            {{^hide_slider}}
+                <div class="slider">
+                    <ul>
+                    {{#slider}}
+                        <li>
+                        {{^url}}
+                            <img src="{{image}}" />
+                        {{/url}}
+                        {{#url}}
+                            <a target="_blank" href="{{url}}"><img src="{{image}}" /></a>
+                        {{/url}}
+                        </li>
+                    {{/slider}}
+                    </ul>
+                </div>
+            {{/hide_slider}}
+
+             {{^hide_balance}}
+                <div class="label" i18n="yourBalance">
+                    Ваш баланс
+                </div>
+                <div class="balance">
+                        {{#balance.usd}}<p><span>USD:</span> <span class="redcolor">{{balance.usd}}</span></p>{{/balance.usd}}
+                        {{#balance.eur}}<p><span>EUR:</span> <span class="redcolor">{{balance.eur}}</span></p>{{/balance.eur}}
+                        {{#balance.rub}}<p><span>RUB:</span> <span class="redcolor">{{balance.rub}}</span></p>{{/balance.rub}}
+                        {{#balance.uah}}<p><span>UAH:</span> <span class="redcolor">{{balance.uah}}</span></p>{{/balance.uah}}
+                <div class="clear"></div>
+                </div>
+                <div class="border"></div>
+             {{/hide_balance}}
+
+            <div id="couponsList"></div>
+
+            <div class="content"><a href="#" id="show-shops" i18n="allShops">ВСЕ МАГАЗИНЫ ></a></div>
+        {{/actived}}
+    {{/user_id}}
+
+    {{^user_id}}
+        <div class="notLogged" id="notLogged">
+            <span i18n="forCashbackNeed">ЧТОБЫ ПОЛУЧИТЬ КЭШБЭК НУЖНО</span><br />
+            <a id="show-login-form" href="#" class="redcolor" i18n="login">ВОЙТИ</a> <span i18n="or">ИЛИ</span> <a href="{{signup_link}}" target="_blank" class="redcolor" i18n="signup">ЗАРЕГИСТРИРОВАТЬСЯ</a>
+        </div>
+        <br />
+    {{/user_id}}
+
+
+
+</script>
+
+<script id="activeCashbackCoupons" type="x-tmpl-mustache">
+<div class="shopCouponsTitle" i18n="shopSpec">Спецпредложения магазина</div>
+<img src="{{logo}}" class="shopActiveLogo" />
+<div data-active-coupons class="couponActiveItems scrollbar-macosx">
+    {{#coupons}}
+        <div data-id="-{{id}}" data-newtab="1" class="couponActiveItem" data-url="{{url}}" data-get-cashback>
+            <table width="245" class="couponActiveTable">
+                <tr>
+                    <td align="left">
+                        <div class="couponActiveTitle">{{title}}</div>
+                    </td>
+                    <td width="90" align="center"><span i18n="promocode">Промокод</span><br />
+                        {{^code}}<span i18n="noNeed">не нужен!</span>{{/code}}
+                        {{#code}}<span class="promoCode">{{code}}</span>{{/code}}
+                    </td>
+                </tr>
+            </table>
+            <span class="clock"></span><span i18n="remain">Осталось</span> {{remain}}
+        </div>
+        <div data-coupon-id="-{{id}}" class="border"></div>
+    {{/coupons}}
+</div>
+<div class="border"></div>
+
+
+
+</script>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/api.min.js"></script>
+<script type="text/javascript" src="js/mustache.min.js"></script>
+<script type="text/javascript" src="js/scrollbar.min.js"></script>
+<script type="text/javascript" src="js/debounce.min.js"></script>
+<script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="js/popup.min.js"></script>
+
+</body>
+
+</html>

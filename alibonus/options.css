@@ -1,0 +1,183 @@
+@font-face {
+    font-family: 'Conv_Proxima Nova Light';
+    src: url('/fonts/Proxima Nova Light.eot');
+    src: local('☺'), url('/fonts/Proxima Nova Light.woff') format('woff'),
+    url('/fonts/Proxima Nova Light.ttf') format('truetype'),
+    url('/fonts/Proxima Nova Light.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Conv_Proxima Nova Extrabold';
+    src: url('/fonts/Proxima Nova Extrabold.eot');
+    src: local('☺'), url('/fonts/Proxima Nova Extrabold.woff') format('woff'),
+    url('/fonts/Proxima Nova Extrabold.ttf') format('truetype'),
+    url('/fonts/Proxima Nova Extrabold.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Conv_Proxima Nova Regular';
+    src: url('/fonts/Proxima Nova Regular.eot');
+    src: local('☺'), url('/fonts/Proxima Nova Regular.woff') format('woff'),
+    url('/fonts/Proxima Nova Regular.ttf') format('truetype'),
+    url('/fonts/Proxima Nova Regular.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Conv_Proxima Nova Bold';
+    src: url('/fonts/Proxima Nova Regular.eot');
+    src: local('☺'), url('/fonts/Proxima Nova Bold.woff') format('woff'),
+    url('/fonts/Proxima Nova Bold.ttf') format('truetype'),
+    url('/fonts/Proxima Nova Bold.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font: 14px/14px 'Conv_Proxima Nova Regular', 'Conv_Proxima Nova Light', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    color: #222222;
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+    font: 14px/14px 'Conv_Proxima Nova Regular', 'Conv_Proxima Nova Light', Helvetica, Arial, sans-serif;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    color: #000;
+
+
+    background: #fff;
+    min-width: 320px;
+
+    line-height: 1.42857143;
+    background: rgba(0, 0, 0, 0.53);
+}
+
+a {
+    color: #3498db;
+    outline: none;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #3498db;
+    text-decoration: underline;
+}
+
+h1 {
+    color: #000;
+    padding: 0;
+    margin: 0;
+    font: 24px/24px 'Conv_Proxima Nova Regular', sans-serif;
+    line-height: 50px;
+    font-weight: bold;
+}
+
+form {
+    clear: both;
+}
+
+input[type="checkbox"]{
+    margin-top: 1px;
+    margin-right: 13px;
+    float: left;
+}
+select{
+    width: 180px;
+    padding: 5px;
+}
+
+label {
+    text-align: right;
+    padding-right: 10px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+
+#options-main {
+    font: 14px/14px 'Conv_Proxima Nova Regular', 'Conv_Proxima Nova Light', Helvetica, Arial, sans-serif;
+    max-width: calc(100% - 70px);
+    width: 600px;
+    margin: 70px auto;
+    font-size: 16px;
+    line-height: 16px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: #fff;
+    border-radius: 5px;
+}
+
+.options-modal-content {
+    position: relative;
+}
+.options-modal-content-div {
+    position: relative;
+    padding: 30px;
+}
+
+.close-btn {
+    background: url(/icons/close-btn.png) no-repeat;
+    width: 22px;
+    height: 22px;
+    border: none;
+    position: absolute;
+    top: -37px;
+    right: -26px;
+    padding: 0;
+    cursor: pointer;
+}
+
+.control-group,
+.control-group > div {
+    width: 100%;
+}
+.control-group{
+    margin: 15px 0 25px 0;
+}
+.control-group > div{
+    padding: 5px 0;
+}
+
+.help {
+    color: #777777;
+    font-size: 12px;
+    display: block;
+    margin-left: 310px;
+    padding: 5px 3px;
+}
+
+#options-footer {
+    padding-top: 55px;
+}
+
+#options-footer ul{
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    width: calc(100% + 60px);
+    margin-left: -30px;
+}
+#options-footer ul li{
+    display: inline-block;
+    list-style: none;
+    padding: 5px 30px;
+}
+#options-footer ul li.company-label{
+    position: absolute;
+    right: 0px;
+}
+#options-footer ul li span{
+    color: #ababab;
+}

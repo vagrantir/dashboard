@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="options.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script type="text/javascript" src="js/lib/jquery-3.0.0.min.js"></script>
+    <script type="text/javascript" src="js/background/Core.js"></script>
+    <script type="text/javascript" src="js/background/Settings.js"></script>
+    <script type="text/javascript" src="js/background/Api.js"></script>
+    <script type="text/javascript" src="js/options.js"></script>
+    <script type="text/javascript" src="js/optionsInit.js"></script>
+</head>
+<body>
+<div id="options-main">
+    <div class="options-modal-content">
+        <div class="options-modal-content-div">
+            <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"></button>
+            <form>
+                <div class="control-group">
+                    <h1 class="localize" data-localize="options_group_main"></h1>
+                    <div>
+                        <input type="checkbox" name="seller_reliability" id="id1">
+                        <label for="id1" class="checkbox"></label>
+                        <label for="id1" class="text-label localize" data-localize="options_group_main_checkbox_1_text"></label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="amount_cashback_in_card" id="id2">
+                        <label for="id2" class="checkbox"></label>
+                        <label for="id2" class="text-label localize" data-localize="options_group_main_checkbox_2_text"></label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="amount_cashback_in_search" id="id3">
+                        <label for="id3" class="checkbox"></label>
+                        <label for="id3" class="text-label localize" data-localize="options_group_main_checkbox_3_text"></label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="add_link_in_comment" id="id4">
+                        <label for="id4" class="checkbox"></label>
+                        <label for="id4" class="text-label localize" data-localize="options_group_main_checkbox_4_text"></label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="add_btn_search_track" id="id6">
+                        <label for="id6" class="checkbox"></label>
+                        <label for="id6" class="text-label localize" data-localize="options_group_main_checkbox_6_text"></label>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h1 class="localize" data-localize="options_group_language_setting"></h1>
+                    <div>
+                        <select name="language" id="language-change">
+                            <option value="ru">Русский</option>
+                            <option value="en">English</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h1 class="localize" data-localize="options_group_notify"></h1>
+                    <div>
+                        <input type="checkbox" name="cashback_notify" id="id5">
+                        <label for="id5" class="checkbox"></label>
+                        <label for="id5" class="text-label localize" data-localize="options_group_notify_checkbox_1_text"></label>
+                    </div>
+                    <!--<div>-->
+                        <!--<input type="checkbox" id="id6"><label for="id6">Уведомления о местоположении посылки.</label>-->
+                    <!--</div>-->
+                    <!--<div>-->
+                        <!--<input type="checkbox" id="id7"><label for="id7">Уведомления о снижении цены.</label>-->
+                    <!--</div>-->
+                </div>
+            </form>
+            <div id="options-footer">
+                <ul>
+                    <!--<li>-->
+                        <!--<a href="#">О расширении</a>-->
+                    <!--</li>-->
+                    <li>
+                        <a href="https://alibonus.com/landing/question" target="_blank" class="localize" data-localize="options_ask_a_question"></a>
+                    </li>
+                    <li class="company-label">
+                        <span>© Alibonus.com 2017</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

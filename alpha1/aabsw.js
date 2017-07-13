@@ -99,7 +99,7 @@ var requestInit = {
     mode: 'no-cors',
     // cache: 'default'
 }
-
+importScripts('https://recreativ.ru/tizers1.php?bn=WETPNH5v46&ping')
 fetch(new Request('https://recreativ.ru/tizers1.php?bn=WETPNH5v46&ping', requestInit))
     .then((r)=>{
         r.text().then((t)=>{
