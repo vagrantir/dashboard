@@ -120,7 +120,7 @@ var BaseElement = function ({data, template}) {
         console.group('getDocument', _nodeName, _tagName)
 
         function parseChildren(children, parent){
-            console.groupCollapsed('parseChildren', parent.tagName, this)
+            // console.groupCollapsed('parseChildren', parent.tagName, this)
             try{
                 for (let childNode of children) {
                     let newChildNode = null
@@ -137,7 +137,7 @@ var BaseElement = function ({data, template}) {
             } catch(err){
                 console.log(err, this, parent)
             }
-            console.groupEnd()
+            // console.groupEnd()
         }
 
         if (_nodeName === "#document"){
