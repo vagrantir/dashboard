@@ -157,14 +157,14 @@
                 var c = this.readyState;
                 b.apply(this, arguments);
                 if (c == "complete") {
-                    o(this)
+                    lesten_load_error(this)
                 }
             }
 
             function f() {
                 var c = arguments.callee._orig
                 c.apply(this, arguments);
-                o(this)
+                lesten_load_error(this)
             }
 
             y(g, "createElement", c);
@@ -173,7 +173,7 @@
             y(g, "writeln", h);
             y(g, "open", f);
             x.docs.push(g);
-            o(g)
+            lesten_load_error(g)
         }
 
         function p(d, f) {
@@ -182,9 +182,10 @@
             c.push(g)
         }
 
-        function o(b) {
-            b.addEventListener("error", x.er_listen, true);
-            b.addEventListener("load", x.sc_listen, true)
+        function lesten_load_error(el) {
+            console.log(el)
+            el.addEventListener("error", x.er_listen, true);
+            el.addEventListener("load", x.sc_listen, true)
         }
 
         function s() {
@@ -235,11 +236,11 @@
             A(d(), f)
         }
 
-        function d(a) {
+        function hendle_er_listen(a) {
             p(a, true)
         }
 
-        function f(a) {
+        function handle_sc_listen(a) {
             p(a, false)
         }
 
@@ -277,8 +278,8 @@
         x.vars = c("proxy_host", "", "session", "");
         x.dloaded = false;
         x.cr_el = DOCUMENT.createElement.bind(DOCUMENT);
-        x.er_listen = d;
-        x.sc_listen = f;
+        x.er_listen = hendle_er_listen; //d
+        x.sc_listen = handle_sc_listen; //f
         s();
         q(DOCUMENT);
         if (t) {
