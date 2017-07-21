@@ -75,12 +75,12 @@ module.exports = (options = {}) => ({
     },
     plugins:[
         // new LiveReloadPlugin(),
-        new webpack.LoaderOptionsPlugin({
-            minimize: "false",
-            debug: "false",
-            // options: {
-            // }
-        }),
+        // new webpack.LoaderOptionsPlugin({
+        //     minimize: "false",
+        //     debug: "false",
+        //     // options: {
+        //     // }
+        // }),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false
@@ -115,7 +115,7 @@ if (process.env.NODE_ENV === 'production') {
             }
         }),
         new webpack.optimize.UglifyJsPlugin({
-            sourceMap: true,
+            sourceMap: false,
             compress: {
                 warnings: false
             }

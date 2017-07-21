@@ -6,6 +6,7 @@ import * as mutations from './mutations'
 import htmlLoader from '../components/adBlockTemplator/htmlLoader/htmlLoaderModile'
 import propertyEditor from '../components/adBlockTemplator/propertyEditor/propertyEditorModule'
 import blockViewer from '../components/adBlockTemplator/blockViewer/blockViewerModule'
+import element from '../components/adBlockTemplator/blockViewer/elementModule'
 
 Vue.use(Vuex)
 
@@ -16,6 +17,6 @@ export default new Vuex.Store({
     mutations,
     actions,
     getters,
-    modules: { htmlLoader, propertyEditor, blockViewer },
+    modules: { htmlLoader, propertyEditor, blockViewer, element },
     strict: debug,
 })

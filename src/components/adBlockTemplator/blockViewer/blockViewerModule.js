@@ -1,5 +1,5 @@
 import * as t from '../../../store/mutation-types'
-
+import Element from './elementModule'
 // initial state
 const state = {
     id: '',
@@ -7,6 +7,70 @@ const state = {
     width: '300px',
     background: '#225588',
     html: '',
+    block: {},
+    __block:    {
+        label: "рекламный блок",
+        name: "advertising-block",
+        isStatic: true,
+        isBlock: true,
+        isHref: false,
+        src: '',
+        template:"",
+        children: [
+            {
+                label: "внутренний блок",
+                name: "internal-block",
+                isStatic: true,
+                isRemovable: true,
+                isBlock: true,
+                isHref: false,
+                src: '',
+                template:"",
+                children:[
+                    {
+                        label:"изображение",
+                        name:"static-image",
+                        isStatic: true,
+                        isRemovable: true,
+                        isImage: true,
+                        isHref: false,
+                        src: '',
+                        template:"",
+                    },
+                    {
+                        label:"текст",
+                        name:"static-text",
+                        isStatic: true,
+                        isRemovable: true,
+                        isHref: false,
+                        src: '',
+                        template:"",
+                    },
+                ]
+            },
+            {
+                label: "блок тизеров",
+                name: "teasers-block",
+                isStatic: true,
+                isRemovable: false,
+                isBlock: true,
+                isHref: false,
+                src: '',
+                template:"",
+                children:[
+                    {
+                        label: "тизер",
+                        name: "teaser",
+                        isStatic: false,
+                        isRemovable: false,
+                        isHref: false,
+                        src: '',
+                        template:"",
+                    }
+                ]
+            },
+        ]
+    },
     blockViewport: null,
     root: {},
     selected: {},
@@ -18,10 +82,20 @@ const getters = {
     width: state => state.width,
     selectedItem: state => {
         return state.selected
-        },
-    }
+    },
+}
 
 const actions = {
+    initRoot ({state, commit}, rootEl){
+        return new Promise((resolve, reject) => {
+            try {
+                commit(t.ROOT, rootEl)
+                resolve(rootEl)
+            } catch (e) {
+                reject(e)
+            }
+        })
+    },
     save ({state, commit}, {target}){
         return new Promise((resolve, reject) => {
             try {
@@ -37,12 +111,12 @@ const actions = {
         })
     },
     selectItem ({state, commit}, item){
-        if (state.selected.model){
+        if (state.selected.model) {
             state.selected.model.classList.remove('selected-item')
         }
         commit(t.SELECT, item.id)
-        if (item){
-            if (item.model.tagName == 'IMG'){
+        if (item) {
+            if (item.model.tagName == 'IMG') {
                 item.model.classList.add('selected-item')
                 item.model.classList.add('animated')
                 item.model.classList.add('infinite')
@@ -52,24 +126,21 @@ const actions = {
             }
         }
     },
-    initRoot ({state, commit}, rootEl){
+    setBlock ({state, commit}, block){
         return new Promise((resolve, reject) => {
             try {
-                console.log('root is: \n', rootEl)
-                commit(t.ROOT, rootEl)
-                resolve(rootEl)
+                commit(t.BLOCK, block)
+                resolve(block)
             } catch (e) {
                 reject(e)
             }
         })
     },
-    updateRoot ({state, commit}, newRoot){
+    setHeight ({commit}, height){
         return new Promise((resolve, reject) => {
             try {
-                let r = state.root
-                commit(t.ROOT, null)
-                commit(t.ROOT, newRoot)
-                resolve(r)
+                commit(t.HEIGHT, height)
+                resolve()
             } catch (e) {
                 reject(e)
             }
@@ -87,22 +158,22 @@ const actions = {
             }
         })
     },
-    setViewport ({commit}, viewport){
+    setId ({commit}, {id}){
         return new Promise((resolve, reject) => {
             try {
-                commit(t.HEIGHT, viewport.height)
-                commit(t.WIDTH, viewport.width)
-                commit(t.BACKGROUND, viewport.background)
+                commit(t.ID, {id})
                 resolve()
             } catch (e) {
                 reject(e)
             }
         })
     },
-    setHeight ({commit}, height){
+    setViewport ({commit}, viewport){
         return new Promise((resolve, reject) => {
             try {
-                commit(t.HEIGHT, height)
+                commit(t.HEIGHT, viewport.height)
+                commit(t.WIDTH, viewport.width)
+                commit(t.BACKGROUND, viewport.background)
                 resolve()
             } catch (e) {
                 reject(e)
@@ -119,30 +190,38 @@ const actions = {
             }
         })
     },
-    setId ({commit}, {id}){
+    updateRoot ({state, commit}, newRoot){
         return new Promise((resolve, reject) => {
             try {
-                commit(t.ID, {id})
-                resolve()
+                let r = state.root
+                commit(t.ROOT, null)
+                commit(t.ROOT, newRoot)
+                resolve(r)
             } catch (e) {
                 reject(e)
             }
         })
-    }
+    },
 }
 
 const mutations = {
-    [t.ID] (state, {id}) {
-        state.id = id
+    [t.BACKGROUND] (state, background) {
+        state.background = background
+    },
+    [t.BLOCK] (state, block) {
+        state.block = block
+    },
+    [t.ELEMENT] (state, el) {
+        state.el = el
     },
     [t.HEIGHT] (state, height) {
         state.height = height
     },
-    [t.WIDTH] (state, width) {
-        state.width = width
+    [t.HTML] (state, html) {
+        state.html = html
     },
-    [t.BACKGROUND] (state, background) {
-        state.background = background
+    [t.ID] (state, {id}) {
+        state.id = id
     },
     [t.ROOT] (state, rootEl) {
         state.root = rootEl
@@ -150,16 +229,14 @@ const mutations = {
     [t.SELECT] (state, item) {
         state.selected = item
     },
-    [t.HTML] (state, html) {
-        state.html = html
-    },
-    [t.ELEMENT] (state, el) {
-        state.el = el
+    [t.WIDTH] (state, width) {
+        state.width = width
     },
 }
 
 export default {
     namespaced: true,
+    modules: {Element},
     state,
     getters,
     actions,

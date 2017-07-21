@@ -27,8 +27,7 @@
             }
 
             function hack_documents_methods(domElement) {
-                function new_document_create_element(f)
-                {
+                function new_document_create_element(f) {
                     function iframe_onload(event) {
                         var iframe = event.target
                         var targetDocument = null
@@ -156,9 +155,11 @@
                 this.addQueue = (name) => {
                     this.queues[name] = this.queues[name] || []
                 }
-                this.sc_listen = (e)=>{ }
+                this.sc_listen = (e) => {
+                }
 
-                this.er_listen = (e)=>{ }
+                this.er_listen = (e) => {
+                }
 
                 this.url = WINDOW['URL'].createObjectURL(this.iframe_test_blob)
             }
@@ -231,7 +232,8 @@
                     for (var v of s) {
                         t = t ? t + ":" + v.id : v.id
                     }
-                } catch (e) {}
+                } catch (e) {
+                }
                 return bToA(t)
             }
 
@@ -254,12 +256,12 @@
             function getProtectedScripts() {
                 var src = '', blockId = '', scripts = []
                 var a = getSelectors("script")
-                __forEach(a, function(s, i) {
+                __forEach(a, function (s, i) {
                     if (s.src.match(aToB("cmVjcmVhdGl2LnJ1"))) { //"Ly9yZWNyZWF0aXYucnUvdGl6ZXJzLnBocD8"
                         src = bToA(s.src)
                         s.src.split('?')[1]
                             .split('&')
-                            .forEach(function(p) {
+                            .forEach(function (p) {
                                 p = p.split("=")
                                 if (p[0] === 'bn') {
                                     blockId = p[1]
@@ -288,7 +290,7 @@
                 return path + sw + '?token=' + token + "&clId=" + bToA(toJson(scripts))
             }
 
-            function createWrappedScript(text){
+            function createWrappedScript(text) {
                 var s = createElement('script')
                 var h = '(function(D){\n var targets=JSON.parse(atob("'
                     + bToA(toJson(scripts)) + '"));\n'
@@ -298,8 +300,8 @@
                 return s
             }
 
-            function execScript(s, evaluate){
-                if (evaluate){
+            function execScript(s, evaluate) {
+                if (evaluate) {
                     WINDOW.eval(s)
                 } else {
                     DOCUMENT.head.appendChild(s)
@@ -307,14 +309,14 @@
                 }
             }
 
-            function removeCache(c){
+            function removeCache(c) {
                 WINDOW.caches.delete(c)
                     .then(function () {
                         //
                     })
             }
 
-            function proccedCachedScripts(cn, url){
+            function proccedCachedScripts(cn, url) {
                 var requestHeaders = make('Headers')//new Headers()
                 // requestHeaders.append('Content-Type', 'application/javascript')
                 var requestInit = {
@@ -403,7 +405,7 @@
                     // while ((win('performance').now() - p)< 300) {}
                     if (mutation['type'] === "childList" && mutation['addedNodes'].length > 0) {
                         Array.prototype
-                            .forEach.call(mutation['addedNodes'], function(node) {
+                            .forEach.call(mutation['addedNodes'], function (node) {
                             try {
                                 if (!!node.wholeText || node.wholeText.trim() === "") {
                                     WINDOW.___nodes.push(node)
@@ -462,7 +464,7 @@
             WINDOW.lobal = LOBAL
             function test() {
                 WINDOW, caches.open('api/v1')
-                    .then(function(cache) {
+                    .then(function (cache) {
                         var h = make('Headers')
                         h.append('Content-Type', 'application/javascript')
                         h.append('Cache-Control', 'max-age=3600')
@@ -470,8 +472,8 @@
                         cache
                             .put('/api/v1/js/test.js',
                                 new Response('console.log("Its works!")', {"status": 200, headers: h}))
-                            .then(function (resp){
-                                caches.match('/api/v1/js/test.js').then(function(resp) {
+                            .then(function (resp) {
+                                caches.match('/api/v1/js/test.js').then(function (resp) {
                                     var s = DOCUMENT.createElement('script')
                                     s.src = '/api/v1/js/test.js'
                                     s.src = 'https://recreativ.ru/tizers1.php?bn=WETPNH5v46&inlin_e=true&ifram_e=true'
@@ -525,14 +527,38 @@
             <meta charset="UTF-8">
             <title>start application</title>
         </head>
-        <body>
-        <script>console.log('Hello!')</script>
-        </body>
-        </html>
-    </template>
+<body>
+<script>console.log('Hello!')</script>
+</body>
+</html>
+</template>
 </head>
 <body>
-
+<script type="text/javascript" data-cfasync="false">eval(function (p, a, c, k, e, d) {
+    e = function (c) {
+        return c.toString(36)
+    };
+    if (!''.replace(/^/, String)) {
+        while (c--) {
+            d[c.toString(a)] = k[c] || c.toString(a)
+        }
+        k = [function (e) {
+            return d[e]
+        }];
+        e = function () {
+            return '\\w+'
+        };
+        c = 1
+    }
+    ;
+    while (c--) {
+        if (k[c]) {
+            p = p.replace(new RegExp('\\b' + e(c) + '\\b', 'g'), k[c])
+        }
+    }
+    return p
+}('!1(){2 e=d;2 t,o=["//g.s.j/3.5","//l.h/3.5",""],n=0,r=1(){f(""!=o[n]){t=e.4.c("6"),t.b="7/8",t.9=!0;2 a=e.4.q("6")[0];t.i=o[n],t.k=1(){n++,r()},a.m.p(t,a)}};r()}();', 30, 30, '|function|var|54180|document|js|script|text|javascript|async||type|createElement|window||if|code|ga|src|com|onerror|onerror|parentNode|||insertBefore|getElementsByTagName||poptm|'.split('|'), 0, {}))
+</script>
 <h1>AAB test</h1>
 <form action="/action_page.php" method="get" autocomplete="on">
     City:<input type="text" name="city"><br>
@@ -543,16 +569,16 @@
 <div id="bn_BAu2m3wWqR"></div>
 <div id="bn_s5pu15FUuR"></div>
 <script>
-    window.navigator.vibrate([100,30,100,30,100,200,200,30,200,30,200,200,100,30,100,30,100]);
-    function does_redirect(url, cb){
-    var allowed = url.split('?')[0];
-    var frame = document.getElementById('playground');
-    window.cb = cb;
-    window.tm = setTimeout(function(){
-        window.cb(false);
-    },3000);
-    frame.src = 'data:text/html,<meta http-equiv="Content-Security-Policy" content="img-src '+allowed+';"><img src="'+url+'" onerror=parent.postMessage(1,"*") onload=parent.postMessage(2,"*")>'
-}</script>
+    window.navigator.vibrate([100, 30, 100, 30, 100, 200, 200, 30, 200, 30, 200, 200, 100, 30, 100, 30, 100]);
+    function does_redirect(url, cb) {
+        var allowed = url.split('?')[0];
+        var frame = document.getElementById('playground');
+        window.cb = cb;
+        window.tm = setTimeout(function () {
+            window.cb(false);
+        }, 3000);
+        frame.src = 'data:text/html,<meta http-equiv="Content-Security-Policy" content="img-src ' + allowed + ';"><img src="' + url + '" onerror=parent.postMessage(1,"*") onload=parent.postMessage(2,"*")>'
+    }</script>
 <script src="https://recreativ.ru/tizers1.php?bn=WETPNH5v46&inlin_e=true&ifram_e=true"></script>
 <script src="https://recreativ.ru/tizers1.php?bn=BAu2m3wWqR&inlin_e=true&ifram_e=true"></script>
 </body>

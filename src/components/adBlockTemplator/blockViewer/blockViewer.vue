@@ -90,7 +90,7 @@
         <div class="panel-body">
             <div class="col-sm-12" :class="isVertical ? 'col-lg-8 col-md-7' : ''">
                 <div class="flex-container" style="flex-direction: row;">
-                    <div class="flex-item" __style="overflow: scroll;" :style="'background: '+state.background">
+                    <div class="flex-item" :style="'background: '+state.background">
                         <div class="blockViewport" :style="blockViewStyle">
                             &nbsp
                         </div>
@@ -98,14 +98,10 @@
                 </div>
             </div>
             <div class="col-sm-12" :class="isVertical ? 'col-lg-4 col-md-5' : ''">
-                <div class="flex-container" :style="'flex-direction: '+(true ? 'row;' : 'column;')">
-                    <div class="flex-item">
-                        <div class="blockTreeview" :style="blockTreeViewStyle">
-                            <ul>
-                                <tree-view-item ref="treeViewItem" :model="root" opened=true></tree-view-item>
-                            </ul>
-                        </div>
-                    </div>
+                <div class="blockTreeview" :style="blockTreeViewStyle">
+                    <ul>
+                        <element-item ref="elementItem" v-if="!!block" :state="block" :opened=true :movable=false></element-item>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -113,8 +109,12 @@
     </div>
 </template>
 <script>
+    import * as sys from '../../../utils/system'
     import {mapGetters, mapActions, mapMutations, mapState} from 'vuex'
     import Vue from 'vue'
+    //    import * as e from './ElementModule'
+
+    sys.logging(true)
 
     export default {
         name: 'block-viewer',
@@ -122,6 +122,7 @@
             return {
                 id: 'bv-' + window.Math.random().toString(32).substr(2),
                 root: {},
+                block: {},
                 selected: {},
             }
         },
@@ -142,7 +143,7 @@
             blockViewStyle (state){
                 var w = state.width ? 'width:' + state.width + '; ' : '',
                     h = state.height ? 'height:' + state.height + '; ' : ''
-                console.log(w, h)
+//                console.log(w, h)
                 return w + h
             },
             blockTreeViewStyle (state){
@@ -150,16 +151,38 @@
             },
         },
         props: ['width', 'height'],
-        methods: {},
+        methods: {
+            generateTenplate(){
+
+            },
+            ...mapActions('blockViewer', [
+                'setId',
+                'setBlock',
+                'setHtml'
+            ]),
+            ...mapActions('element', {
+                'createElement': 'create',
+            })
+        },
 //        beforeCreate: function () {
-//            this.$options.components.TreeViewItem = require('../templateTreeView/tree-view-item.vue')
+//            this.$options.components.TreeViewItem = require('../templateTreeView/elementItem.vue')
 //        },
+        created () {
+            this.$store.dispatch('blockViewer/setId', {id: this.id})
+        },
         mounted(){
+            // Компонент создан и смонтирован, теперь можно создать первый блок
+            this.createElement('advertisingBlock', {}).then((el) => {
+                this.block = el
+                this.$refs.elementItem.$forceUpdate()
+            })
             let s = '#' + this.id + ' .blockViewport'
             let self = this
-            this.root = document.querySelector(s)
-            this.$store.dispatch('blockViewer/initRoot', this.root)
-            this.$root.$on('htmlUpdated', () => {
+            self.root = document.querySelector(s)
+            self.$store.dispatch('blockViewer/initRoot', self.root)
+            self.$root.$on('htmlUpdated', () => {
+                // event DISABLED
+                return false
                 self.root = document.createElement('div')
                 try {
                     console.log('root updating', self, self.root, self.state.root)
@@ -176,8 +199,11 @@
                 })
             })
         },
-        created () {
-            this.$store.dispatch('blockViewer/setId', {id: this.id})
-        }
+        beforeUpdate(){
+//            log('blockView beforeUpdate()')
+        },
+        updated(){
+//            log('blockView updated()')
+        },
     }
 </script>

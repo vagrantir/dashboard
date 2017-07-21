@@ -1,6 +1,5 @@
-function leadingZeroNumberChar(n) {
-    return n < 10 ? '0' + n : n;
-}
+import * as sys from './system'
+
 Date.prototype.getWeek = function () {
     var date = new Date(this.getTime());
     date.setHours(0, 0, 0, 0);
@@ -24,7 +23,7 @@ Date.prototype.getLastMonthDay = function (monthShift) {
     return (new Date(y, m + monthShift, 0)).getDate()
 }
 Date.prototype.toJSON = function () {
-    return this.getUTCFullYear() + '-' + leadingZeroNumberChar(this.getUTCMonth() + 1) + '-' + leadingZeroNumberChar(this.getUTCDate()) + 'T' + leadingZeroNumberChar(this.getUTCHours()) + ':' + leadingZeroNumberChar(this.getUTCMinutes()) + ':' + leadingZeroNumberChar(this.getUTCSeconds()) + 'Z';
+    return this.getUTCFullYear() + '-' + sys.leadingZeroNumberChar(this.getUTCMonth() + 1) + '-' + leadingZeroNumberChar(this.getUTCDate()) + 'T' + leadingZeroNumberChar(this.getUTCHours()) + ':' + leadingZeroNumberChar(this.getUTCMinutes()) + ':' + leadingZeroNumberChar(this.getUTCSeconds()) + 'Z';
 }; // MarketGid Date.toJSON
 
 export const NOW = new Date()
