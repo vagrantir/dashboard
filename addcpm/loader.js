@@ -128,7 +128,7 @@
             return f
         }
 
-        function q(g) {
+        function q(_document) {
             function c(g) {
                 function f(c) {
                     var g = c.target;
@@ -167,13 +167,13 @@
                 lesten_load_error(this)
             }
 
-            y(g, "createElement", c);
+            y(_document, "createElement", c);
             var h = d;
-            y(g, "write", h);
-            y(g, "writeln", h);
-            y(g, "open", f);
-            x.docs.push(g);
-            lesten_load_error(g)
+            y(_document, "write", h);
+            y(_document, "writeln", h);
+            y(_document, "open", f);
+            x.docs.push(_document);
+            lesten_load_error(_document)
         }
 
         function p(d, f) {

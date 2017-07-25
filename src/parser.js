@@ -2,39 +2,73 @@ adb = {}
 var src = ''
 var blockData = JSON.stringify({
     data: {
+        "t": [
+            ["\/\/st5.recreativ.ru\/tizers\/200\/887\/tiz-533_10478059.jpg", "\/\/recreativ.ru\/go1.php?p=eJwBvgBB%2F7Sk3evS37FWnK59N7R7IjCCFNaIO2Z6pOrz4m0dqGymjLjs%2B%2B%2FUynKA7a9%2Btq0R798h3K1CN75rG606H2mMXIVahRj%2FRaMP5455mB7dBs6c5t1bgnYRaPRmnTf9wLS2VfuMJD%2ByhWf88yI812ZWbizvgkUGpi0UfrWyt5QkVXDemxRJnXjTG7RuOA2TA6Ui8dOdiDLT9n1WDhuULhs3yGS3%2FKFYXjgw6QQrRNR2bMZiPXg6X2zE9QD2oeT2CXBGkmHy", "FunDesk", "Детское кресло FunDesk SST5 Blue", "rozetka.ua", "3 175 грн", "Купить FunDesk 3 175 грн", "", "103730295", 0, 0, 0],
+            ["\/\/st5.recreativ.ru\/tizers\/200\/583\/tiz-533_11549416.jpg", "\/\/recreativ.ru\/go1.php?p=eJwBvgBB%2F7Sk3evS37FWnK59N7R7IjCCFNaIO2Z6pOrz4m0dqGymjLjs%2B%2B%2FUynKA7a9%2Btq0R798h3K1CN75rG606H2mMXIVahRj%2FRaMP5455mB7dBs6c5t1bgnYRaPRmnTf9wLS2VfuMJD%2ByhWf88yI812ZWbizvgkUGpi0UfrWyt5QkVXDemxRJnXjTG7RuOA2TA6Ui8dOdiDLT9ndUCR%2BfIx03yGS3%2BaFYXjgw6QQrRNR2bMZiPHk5XmjA%2BgD2oeT2CHNE52Hl", "Barsky", "Кресло игровое Barsky Sport Drive Game Red (SD-08)", "rozetka.ua", "3 103 грн", "Купить Barsky 3 103 грн", "", "109544943", 0, 0, 0],
+            ["\/\/st5.recreativ.ru\/tizers\/200\/426\/tiz-533_13676357.jpg", "\/\/recreativ.ru\/go1.php?p=eJwBvQBC%2F7Sk3evS37FWnK59N7R7IjCCFNaIO2Z6pOrz4m0dqGymjLjs%2B%2B%2FUynKA7a9%2Btq0R798h3K1CN75rG606H2mMXIVahRj%2FRaMP5455mB7dBs6c5t1bgnYRaPRmnTf9wLS2VfuMJD%2ByhWf88yI812ZWbizvgkUGpi0UfrWyt5QkVXDemxRJnXjTG7RuOA2TA6Ui8dOdiDLT9HpTDxKfJxo3yGS%2FxaFYZwEM1DwTeNJ2Vv5gO3s7VGnGxTjwpuPwCNv%2BYUY%3D", "Mealux", "Кресло Evo-kids Aladdin PO (Y-520 PO)", "rozetka.ua", "3 180 грн", "Купить Mealux 3 180 грн", "", "124229904", 0, 0, 0],
+            ["\/\/st5.recreativ.ru\/tizers\/200\/627\/tiz-533_14782616.jpg", "\/\/recreativ.ru\/go1.php?p=eJwBvQBC%2F7Sk3evS37FWnK59N7R7IjCCFNaIO2Z6pOrz4m0dqGymjLjs%2B%2B%2FUynKA7a9%2Btq0R798h3K1CN75rG606H2mMXIVahRj%2FRaMP5455mB7dBs6c5t1bgnYRaPRmnTf9wLS2VfuMJD%2ByhWf88yI812ZWbizvgkUGpi0UfrWyt5QkVXDemxRJnXjTG7RuOA2TA6Ui8dOdiDLT9HdSDhmXJhw3yGS8xaFYZwEM1DwTeNJ2Vv5nOnQ%2FUW3HxTjwpuPwCNsmYUM%3D", "Halmar", "Кресло Halmar Atom Коричневое", "rozetka.ua", "3 190 грн", "Купить Halmar 3 190 грн", "", "129332112", 0, 0, 0],
+            ["\/\/st5.recreativ.ru\/tizers\/200\/384\/tiz-4zM3Ws45te.jpg", "\/\/recreativ.ru\/go1.php?p=eJwBrQBS%2F7Sk3evS37FWnK59N7R7IjCCFNaIO2Z6pOrz4m0dqGymjLjs%2B%2B%2FUynKA7a9%2Btq0R798h3K1CN75rG606H2mMXIVahRj%2FRaMP5455mB7dBs6c5t1bgnYRaPRmnTf9wLS2VfuMJD%2ByhWf88yI812ZWbizvgkUGpi0UfrWyt5QkVXDemxRJnXjTG7RuOA2TA6Ui8dOdiDLT8n9VDhqeIBk3zGS8xaFYZwEI6AQrROhMC6dYXA%3D%3D", "modnakasta.ua", "Заказывайте стильные босоножки для летних вечеринок!", "modnakasta.ua", "Скидка 50%", "Купить modnakasta.ua Скидка 50%", "", "141431877", 0, 0, 0],
+            ["\/\/st5.recreativ.ru\/tizers\/200\/545\/tiz-2SKITjiBi4.jpg", "\/\/recreativ.ru\/go1.php?p=eJwBrQBS%2F7Sk3evS37FWnK59N7R7IjCCFNaIO2Z6pOrz4m0dqGymjLjs%2B%2B%2FUynKA7a9%2Btq0R798h3K1CN75rG606H2mMXIVahRj%2FRaMP5455mB7dBs6c5t1bgnYRaPRmnTf9wLS2VfuMJD%2ByhWf88yI812ZWbizvgkUGpi0UfrWyt5QkVXDemxRJnXjTG7RuOA2TA6Ui8dOdiDLT9XtZDBuXJBw3zGS8xaFYZwEI6AQrROhMC8tYXg%3D%3D", "Платья от 89 гривен", "Таких цен не найти! Выбирайте на modnaKasta", "modnakasta.ua", "", "Купить Платья от 89 гривен", "", "135810132", 0, 0, 0],
+            ["\/\/st5.recreativ.ru\/tizers\/200\/241\/tiz-f6ff268179.jpg", "\/\/recreativ.ru\/go1.php?p=eJwBrQBS%2F7Sk3evS37FWnK59N7R7IjCCFNaIO2Z6pOrz4m0dqGymjLjs%2B%2B%2FUynKA7a9%2Btq0R798h3K1CN75rG606H2mMXIVahRj%2FRaMP5455mB7dBs6c5t1bgnYRaPRmnTf9wLS2VfuMJD%2ByhWf88yI812ZWbizvgkUGpi0UfrWyt5QkVXDemxRJnXjTG7RuOA2TA6Ui8dOdiDLT8nxWBBifIBg3zGS%2FxaFYZwEI6AQrROhMCqdYUQ%3D%3D", "Стильные сумки", "Доступные цены на modnaKasta!", "modnakasta.ua", "", "Купить Стильные сумки", "", "142793976", 0, 0, 0],
+            ["\/\/st5.recreativ.ru\/tizers\/200\/234\/tiz-d214c94328.jpg", "\/\/recreativ.ru\/go1.php?p=eJwBrQBS%2F7Sk3evS37FWnK59N7R7IjCCFNaIO2Z6pOrz4m0dqGymjLjs%2B%2B%2FUynKA7a9%2Btq0R798h3K1CN75rG606H2mMXIVahRj%2FRaMP5455mB7dBs6c5t1bgnYRaPRmnTf9wLS2VfuMJD%2ByhWf88yI812ZWbizvgkUGpi0UfrWyt5QkVXDemxRJnXjTG7RuOA2TA6Ui8dOdiDLT8nxWBBifJxk3zGS%2FxaFYZwEI6AQrROhMCzZYWQ%3D%3D", "Кроссовки и кеды", "Обувь с максимальными скидками выбирайте на modnakasta.ua", "modnakasta.ua", "", "Купить Кроссовки и кеды", "", "142793907", 0, 0, 0]
+        ],
         teasers: [
             {
-                id: 't' + Math.random().toString(32).substr(2),
-                title: 'Hello',
-                desc: 'Hello world!',
-                link: 'Hello world!',
-                price: 'Hello world!',
-                class: "teaser-brand",
-                image: {
-                    src: 'https://st5.recreativ.ru/tizers/200/887/tiz-533_10478059.jpg',
-                    // src: 'https://dummyimage.com/300x200/555/fff',
-                    class: "",
-                    style: "",
-                },
-                brand: {
-                    src: 'https://recreativ.ru/img/brand_533.png',
-                    // src: 'https://dummyimage.com/300x200/555/fff',
-                    class: "",
-                    style: "",
-                },
+                title: 'FunDesk',
+                desc: 'Детское кресло FunDesk SST5 Blue',
+                link: 'rozetka.ua',
+                price: '3 175 грн',
+                class: "teaser--brand",
+                image: 'https://st5.recreativ.ru/tizers/200/887/tiz-533_10478059.jpg',
+                logo: 'https://recreativ.ru/img/brand_533.png',
             },
             {
                 id: 't' + Math.random().toString(32).substr(2),
-                img: 'https://dummyimage.com/300x100/555/fff',
-                image: {
-                    src: 'https://dummyimage.com/300x200/555/fff',
-                    class: "",
-                    style: "",
-                },
-                title: 'Hello',
-                desc: 'Hello world!',
+                title: 'Barsky',
+                desc: 'Кресло игровое Barsky Sport Drive Game Red (SD-08)',
+                link: 'rozetka.ua',
+                price: '3 103 грн',
+                class: "",
+                image: 'https://st5.recreativ.ru/tizers/200/583/tiz-533_11549416.jpg',
             },
-        ]
+            {
+                id: 't' + Math.random().toString(32).substr(2),
+                title: 'Barsky',
+                desc: 'Кресло игровое Barsky Sport Drive Game Red (SD-08)',
+                link: 'rozetka.ua',
+                price: '3 103 грн',
+                class: "",
+                image: 'https://st5.recreativ.ru/tizers/200/583/tiz-533_11549416.jpg',
+            },
+            {
+                id: 't' + Math.random().toString(32).substr(2),
+                title: 'Barsky',
+                desc: 'Кресло игровое Barsky Sport Drive Game Red (SD-08)',
+                link: 'rozetka.ua',
+                price: '3 103 грн',
+                class: "",
+                image: 'https://st5.recreativ.ru/tizers/200/583/tiz-533_11549416.jpg',
+            },
+            {
+                id: 't' + Math.random().toString(32).substr(2),
+                title: 'Barsky',
+                desc: 'Кресло игровое Barsky Sport Drive Game Red (SD-08)',
+                link: 'rozetka.ua',
+                price: '3 103 грн',
+                class: "",
+                image: 'https://st5.recreativ.ru/tizers/200/583/tiz-533_11549416.jpg',
+            },
+            {
+                title: 'Barsky',
+                desc: 'Кресло игровое Barsky Sport Drive Game Red (SD-08)',
+                link: 'rozetka.ua',
+                price: '3 103 грн',
+                class: "",
+                image: 'https://st5.recreativ.ru/tizers/200/583/tiz-533_11549416.jpg',
+            },
+        ],
+        class: "",
+        style: ""
     },
     template: {
         styles: `<style>
@@ -47,39 +81,103 @@ var blockData = JSON.stringify({
             }
         
             .root table {
-                width: 100% !important;
-                border-spacing: 1px !important;
-                table-layout: auto !important;
-                background-color: #f9f9f9 !important;
-                -webkit-hyphens: auto !important;
-                -moz-hyphens: auto !important;
-                -ms-hyphens: auto !important;
-                hyphens: auto !important;
-                word-break: break-word !important;
+                width:100% !important;
+                border-spacing:1px !important;
+                table-layout:auto !important;
+                background-color:#f9f9f9 !important;
+                -webkit-hyphens:auto !important;
+                -moz-hyphens:auto !important;
+                -ms-hyphens:auto !important;
+                hyphens:auto !important;
+                word-break:break-word !important;
             }
         
             .root .teaser {
-                padding: 6px !important;
-                width: 100% !important;
+                text-align:center !important; 
+                border: 1px solid #f9f9f9 !important;
+                padding:5px !important;
+                background-color:#f9f9f9 !important;
+                vertical-align:top !important;
+                width:100% !important;
             }
         
-            .root .teaser__link {
-                text-align: center !important;
+            .root .teaser a {
+                text-decoration:none !important;
+            }
+
+            .root .teaser > a {
+                text-decoration:none !important;
+                display:block !important;
+                margin:0 !important;
+                padding:0 !important;
+            }
+            
+            .root .teaser__img_box {
+            }
+        
+            .root .teaser--brand .teaser__img_box {
+                margin:3px  auto !important;width:200px !important;height:200px !important;
+                padding: 0 !important; border: 1px solid #91ce6a !important; position: relative !important;
+            }
+        
+            .root .teaser__img_box .teaser__img {
+                margin:3px !important;
+                padding:0 !important;
+                border:0 !important;
+                width:200px !important;
+                height:200px !important;
+                display:inline !important;
+            }
+
+            .root .teaser--brand .teaser__img {
+                display: block !important; 
+                border: 0 !important; 
+                margin:0 !important;
+                padding:0 !important;
             }
         
             .root .teaser__title {
-                font: 15px Tahoma !important;
-                color: #000000 !important;
+                font:15px Tahoma !important;
+                color:#000000 !important;
+                text-decoration:none !important;
+                font-weight:bold !important;
+                float:none !important;
+                margin:0 !important;
+                padding:0 !important;
+            }
+
+            .root .teaser__desc {
+                font:14px Tahoma !important;
+                color:#494444 !important;
                 text-decoration: none !important;
-                font-weight: bold !important;
-                float: none !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                cursor: pointer !important;
+                font-weight:normal !important;
+                float:none !important;
+                margin:0 !important;padding:0 !important;
+            }
+
+            .root .teaser__link {
+                font:15px Tahoma !important;
+                color:#009a28 !important;
+                font-weight:normal !important;
+                float:none !important;
+                margin:0 !important;
+                padding:0 !important;
+                text-decoration:none !important;
+                border:0 !important;
+            }
+        
+            .root .teaser__price {
+                font:14px Tahoma !important;
+                font-weight:bold !important;
+                float:none !important;
+                margin:0 !important;
+                padding:0 !important;
+                color:#F0690F !important;
             }
 
             .root .teaser--brand {
-                padding: 0 !important;
+                padding:6px !important;
+                width:100% !important;
                 border: 1px solid #df6f78 !important;
                 background: #fdf8e5 !important;
                 vertical-align: top;
@@ -98,18 +196,7 @@ var blockData = JSON.stringify({
                 color: #c80010 !important;
             }
         
-            .root .teaser--brand .brand-image-box {
-                padding: 0 !important;
-                border: 1px solid #91ce6a !important;
-                position: relative !important;
-            }
-        
-            .root .teaser--brand .brand-img {
-                display: block !important;
-                border: 0 !important;
-            }
-        
-            .root .teaser--brand .brand-logo {
+            .root .brand__logo {
                 position: absolute !important;
                 top: 0 !important;
                 left: 0 !important;
@@ -167,21 +254,21 @@ var blockData = JSON.stringify({
                                 <teasers>
                                     <tr>
                                         <td class="teaser" :id="item.id" :class="item.class" :style="item.style">
-                                            <a href="#" class="teaser__link">
-                                                <div>
-                                                    <img class="teaser__img" :src="item.image.src" :class="item.image.class" :style="item.image.style"/>                                            
-                                                    <img class="teaser__brand-logo" rc-if="item.brand" :src="item.brand.src" :class="item.brand.class" :style="item.brand.style"/>                                            
+                                            <a href="#" class="">
+                                                <div class="teaser__img_box">
+                                                    <img class="teaser__img" :src="item.image"/>                                            
+                                                    <img rc-if="item.logo" class="teaser__brand-logo" :src="item.brand.src"/>                                            
                                                 </div>
-                                                <div class="teaser__title">
+                                                <div rc-if="item.title" class="teaser__title">
                                                     {{item.title}}
                                                 </div>
-                                                <div class="teaser__desc">
+                                                <div rc-if="item.desc" class="teaser__desc">
                                                     {{item.desc}}
                                                 </div>
-                                                <div class="teaser__link">
+                                                <div rc-if="item.link" class="teaser__link">
                                                     {{item.link}}
                                                 </div>
-                                                <div class="teaser__price">
+                                                <div rc-if="item.price" class="teaser__price">
                                                     {{item.price}}
                                                 </div>
                                             </a>
@@ -207,7 +294,7 @@ var BaseElement = function ({data, template}) {
     this.body = document.createElementNS("http://www.w3.org/1999/xhtml", "body");
     this.doc.documentElement.appendChild(this.body);
 
-    function strToXml(s) {
+        function strToXml(s) {
         return e.DOMparser.parseFromString(s, 'text/xml')
     }
 
@@ -234,7 +321,7 @@ var BaseElement = function ({data, template}) {
         let templateDom = strToXml(template)
         let stylesCss = strToXml(styles).firstChild.textContent || ''
         let templatesStyle = templateDom.createElement('style')
-        templatesStyle.innerHTML = animationCss +'\n'+ stylesCss
+        templatesStyle.innerHTML = animationCss + '\n' + stylesCss
         templateDom.firstChild.insertBefore(templatesStyle, templateDom.firstChild.firstElementChild)
 
         let errors = templateDom.querySelectorAll('parsererror')
@@ -262,15 +349,25 @@ var BaseElement = function ({data, template}) {
         function evaluate(scope, textToEval) {
             with (scope) {
                 try {
-                    return eval('(' + textToEval + ')') || ''
+                    let params = textToEval.trim().split('.'), r = scope
+                    for (p of params){
+                        if (r[p]){
+                            r = r[p]
+                        } else {
+                            return ''
+                        }
+                    }
+                    return r
+                    // return eval('(' + textToEval + ')') || ''
                 } catch (e) {
                     console.log('eval failed', e, textToEval)
                 }
                 return ''
             }
         }
+
         function conditionCheck(scope, attributes) {
-            if (attributes && attributes['rc-if']){
+            if (attributes && attributes['rc-if']) {
                 return !!evaluate(scope, attributes['rc-if'].value)
             }
             return true
@@ -287,6 +384,15 @@ var BaseElement = function ({data, template}) {
                     } else {
                         newChildNode = renderToDom.call(this, childNode)
                     }
+                    try {
+                        newChildNode.addEventListener('click', (e) => {
+                            e.preventDefault()
+                            e.stopPropagation()
+                            console.log(e.target)
+                        }, true)
+                    } catch(err){
+                        console.log(err)
+                    }
                     parent.appendChild(newChildNode)
                 }
             } catch (err) {
@@ -294,7 +400,8 @@ var BaseElement = function ({data, template}) {
             }
             // console.groupEnd()
         }
-        if (!conditionCheck(this, _attributes)){
+
+        if (!conditionCheck(this, _attributes)) {
             return this.doc.createTextNode('')
         }
 
@@ -303,18 +410,14 @@ var BaseElement = function ({data, template}) {
             isGlobalRoot = true
         }
 
-        let _each = me && me.hasOwnProperty(_tagName)   // me has collection with same name as current tag of template
-            ? me[_tagName] : (                          // return data from me
-                !!this.item && this.item[_tagName]      // otherwise check item for the same
-                    ? this.item[_tagName]               // return collection from item
-                    : null                              // otherwise null
-            )
+        let _each = _tagName === 'teasers' ? me.teasers : null
 
         if (_each && isArray(_each)) {
             try {// collection of data is Array
                 rootNode = this.doc.createDocumentFragment()                   // because current template node is somethig like <teasers> and is not an HTML tag
-                let scope = {DOMparser: this.DOMparser, doc: this.doc, me}    // prepare scope for recusrsion call
+                let scope = {doc: this.doc, me}    // prepare scope for recusrsion call
                 for (let item of _each) {
+                    item.id = 't' + Math.random().toString(32).substr(2),
                     scope.item = item
                     parseChildren.call(scope, _children, rootNode)
                 }
@@ -380,13 +483,369 @@ document.createElement = function () {
     console.log(arguments, this)
     return window.cr_el.apply(this, arguments)
 }
+document.addEventListener('click', (e) => {
+    e.preventDefault()
+    console.log("document:", e.target)
+}, true)
 document.addEventListener('DOMContentLoaded', (e) => {
     console.log(e)
 })
+
 setTimeout(() => {
     adb.el = new BaseElement(JSON.parse(blockData))
     adb.viewport = document.querySelector('.blockViewport')
     adb.el.domBlock()
     adb.viewport.appendChild(adb.el.body.firstChild)
     console.log('Block loaded')
-}, 300)
+}, 500)
+
+
+// (function (d) {
+//     var target, id = "WETPNH5v46", dt = "2017-07-25 13:02:53", b = {
+//         "bn": "WETPNH5v46",
+//         "ic": 9,
+//         "ie": "",
+//         "v": 10,
+//         "ve": "",
+//         "tp": "2",
+//         "imp": 1,
+//         "r": "8",
+//         "c": 1,
+//         "tc": 0,
+//         "iv": 0,
+//         "vc": 0,
+//         "l": "<a href=\"\/\/recreativ.ru\" style=\"width:61px !important;height:18px !important;padding:0px !important;display:block !important;background:left top url(\/\/recreativ.ru\/img\/logo.png) no-repeat !important;position:absolute !important;top:0 !important;right:-23px;overflow:hidden !important;\" onmouseover=\"this.setAttribute('data-r','18px');this.style.right='18px'\" onmouseout=\"this.setAttribute('data-r','-23px');setTimeout((function(){this.style.right=this.getAttribute('data-r');}).bind(this),1000)\" title=\"Рекламная сеть Recreativ - с нами Вас заметят!\" target=\"_blank\"><\/a><a href=\"#\" style=\"width:18px !important;height:18px !important;padding:0px !important;display:block !important;background:left top url('\/\/recreativ.ru\/img\/x.png') no-repeat !important;position:absolute !important;top:0 !important;right:0px !important;overflow:hidden !important;\" data-i=\"z\" title=\"скрыть рекламу\"><\/a>",
+//         "src": "\/\/recreativ.ru\/tizers1.php?bn=WETPNH5v46&inlin_e=true&ifram_e=true",
+//         "tw": 212,
+//         "rnd": "nztx",
+//         "w": "100%;",
+//         "s": ["width:100%;border-spacing:1px;table-layout:auto;background-color:#f9f9f9;-webkit-hyphens:auto;-moz-hyphens:auto;-ms-hyphens:auto;hyphens:auto;word-break:break-word;", "text-align:center; border: 1px solid #f9f9f9;padding:5px;background-color:#f9f9f9;vertical-align:top;", "text-decoration:none;display:block;margin:0;padding:0;", "font:15px Tahoma;color:#000000;text-decoration:none;font-weight:bold;float:none;margin:0;padding:0;", "margin:3px;padding:0;border:0;width:200px;height:200px;display:inline;", "font:14px Tahoma;color:#494444;text-decoration: none;font-weight:normal;float:none;margin:0;padding:0;", "font:15px Tahoma;color:#009a28;font-weight:normal;float:none;margin:0;padding:0;text-decoration:none;border:0;", "font:14px Tahoma;font-weight:bold;float:none;margin:0;padding:0;color:#F0690F;", "color:#000;font:14px Tahoma;font-weight:normal;float:none;margin:0;padding:0;text-decoration:line-through;"],
+//         "s1": {
+//             "1": "padding:6px;",
+//             "2": "text-align:center;",
+//             "3": "font:15px Tahoma;text-decoration: none;font-weight:bold;float:none;margin:0;padding:0;",
+//             "5": "font:14px Tahoma;text-decoration: none;font-weight:normal;float:none;margin:0;padding:0;",
+//             "6": "font:15px Tahoma;font-weight:normal;float:none;margin:0;padding:0;text-decoration:none;",
+//             "7": "font:14px Tahoma;font-weight:bold;float:none;margin:0;padding:0;",
+//             "0": "width:200px;height:200px;",
+//             "4": "width:200px;height:200px;margin:0;padding:0;",
+//             "8": "margin:3px  auto;width:200px;height:200px;"
+//         },
+//         "b": "533",
+//         "bi": "\/\/recreativ.ru\/img\/brand_533.png",
+//         "t": [
+//             ["\/\/st5.recreativ.ru\/tizers\/200\/887\/tiz-533_10478059.jpg", "\/\/recreativ.ru\/go1.php?p=eJwBvgBB%2F7Sk3evS37FWnK59N7R7IjCCFNaIO2Z6pOrz4m0dqGymjLjs%2B%2B%2FUynKA7a9%2Btq0R798h3K1CN75rG606H2mMXIVahRj%2FRaMP5455mB7dBs6c5t1bgnYRaPRmnTf9wLS2VfuMJD%2ByhWf88yI812ZWbizvgkUGpi0UfrWyt5QkVXDemxRJnXjTG7RuOA2TA6Ui8dOdiDLT9n1WDhuULhs3yGS3%2FKFYXjgw6QQrRNR2bMZiPXg6X2zE9QD2oeT2CXBGkmHy", "FunDesk", "Детское кресло FunDesk SST5 Blue", "rozetka.ua", "3 175 грн", "Купить FunDesk 3 175 грн", "", "103730295", 0, 0, 0],
+//             ["\/\/st5.recreativ.ru\/tizers\/200\/583\/tiz-533_11549416.jpg", "\/\/recreativ.ru\/go1.php?p=eJwBvgBB%2F7Sk3evS37FWnK59N7R7IjCCFNaIO2Z6pOrz4m0dqGymjLjs%2B%2B%2FUynKA7a9%2Btq0R798h3K1CN75rG606H2mMXIVahRj%2FRaMP5455mB7dBs6c5t1bgnYRaPRmnTf9wLS2VfuMJD%2ByhWf88yI812ZWbizvgkUGpi0UfrWyt5QkVXDemxRJnXjTG7RuOA2TA6Ui8dOdiDLT9ndUCR%2BfIx03yGS3%2BaFYXjgw6QQrRNR2bMZiPHk5XmjA%2BgD2oeT2CHNE52Hl", "Barsky", "Кресло игровое Barsky Sport Drive Game Red (SD-08)", "rozetka.ua", "3 103 грн", "Купить Barsky 3 103 грн", "", "109544943", 0, 0, 0],
+//             ["\/\/st5.recreativ.ru\/tizers\/200\/426\/tiz-533_13676357.jpg", "\/\/recreativ.ru\/go1.php?p=eJwBvQBC%2F7Sk3evS37FWnK59N7R7IjCCFNaIO2Z6pOrz4m0dqGymjLjs%2B%2B%2FUynKA7a9%2Btq0R798h3K1CN75rG606H2mMXIVahRj%2FRaMP5455mB7dBs6c5t1bgnYRaPRmnTf9wLS2VfuMJD%2ByhWf88yI812ZWbizvgkUGpi0UfrWyt5QkVXDemxRJnXjTG7RuOA2TA6Ui8dOdiDLT9HpTDxKfJxo3yGS%2FxaFYZwEM1DwTeNJ2Vv5gO3s7VGnGxTjwpuPwCNv%2BYUY%3D", "Mealux", "Кресло Evo-kids Aladdin PO (Y-520 PO)", "rozetka.ua", "3 180 грн", "Купить Mealux 3 180 грн", "", "124229904", 0, 0, 0],
+//             ["\/\/st5.recreativ.ru\/tizers\/200\/627\/tiz-533_14782616.jpg", "\/\/recreativ.ru\/go1.php?p=eJwBvQBC%2F7Sk3evS37FWnK59N7R7IjCCFNaIO2Z6pOrz4m0dqGymjLjs%2B%2B%2FUynKA7a9%2Btq0R798h3K1CN75rG606H2mMXIVahRj%2FRaMP5455mB7dBs6c5t1bgnYRaPRmnTf9wLS2VfuMJD%2ByhWf88yI812ZWbizvgkUGpi0UfrWyt5QkVXDemxRJnXjTG7RuOA2TA6Ui8dOdiDLT9HdSDhmXJhw3yGS8xaFYZwEM1DwTeNJ2Vv5nOnQ%2FUW3HxTjwpuPwCNsmYUM%3D", "Halmar", "Кресло Halmar Atom Коричневое", "rozetka.ua", "3 190 грн", "Купить Halmar 3 190 грн", "", "129332112", 0, 0, 0],
+//             ["\/\/st5.recreativ.ru\/tizers\/200\/384\/tiz-4zM3Ws45te.jpg", "\/\/recreativ.ru\/go1.php?p=eJwBrQBS%2F7Sk3evS37FWnK59N7R7IjCCFNaIO2Z6pOrz4m0dqGymjLjs%2B%2B%2FUynKA7a9%2Btq0R798h3K1CN75rG606H2mMXIVahRj%2FRaMP5455mB7dBs6c5t1bgnYRaPRmnTf9wLS2VfuMJD%2ByhWf88yI812ZWbizvgkUGpi0UfrWyt5QkVXDemxRJnXjTG7RuOA2TA6Ui8dOdiDLT8n9VDhqeIBk3zGS8xaFYZwEI6AQrROhMC6dYXA%3D%3D", "modnakasta.ua", "Заказывайте стильные босоножки для летних вечеринок!", "modnakasta.ua", "Скидка 50%", "Купить modnakasta.ua Скидка 50%", "", "141431877", 0, 0, 0],
+//             ["\/\/st5.recreativ.ru\/tizers\/200\/545\/tiz-2SKITjiBi4.jpg", "\/\/recreativ.ru\/go1.php?p=eJwBrQBS%2F7Sk3evS37FWnK59N7R7IjCCFNaIO2Z6pOrz4m0dqGymjLjs%2B%2B%2FUynKA7a9%2Btq0R798h3K1CN75rG606H2mMXIVahRj%2FRaMP5455mB7dBs6c5t1bgnYRaPRmnTf9wLS2VfuMJD%2ByhWf88yI812ZWbizvgkUGpi0UfrWyt5QkVXDemxRJnXjTG7RuOA2TA6Ui8dOdiDLT9XtZDBuXJBw3zGS8xaFYZwEI6AQrROhMC8tYXg%3D%3D", "Платья от 89 гривен", "Таких цен не найти! Выбирайте на modnaKasta", "modnakasta.ua", "", "Купить Платья от 89 гривен", "", "135810132", 0, 0, 0],
+//             ["\/\/st5.recreativ.ru\/tizers\/200\/241\/tiz-f6ff268179.jpg", "\/\/recreativ.ru\/go1.php?p=eJwBrQBS%2F7Sk3evS37FWnK59N7R7IjCCFNaIO2Z6pOrz4m0dqGymjLjs%2B%2B%2FUynKA7a9%2Btq0R798h3K1CN75rG606H2mMXIVahRj%2FRaMP5455mB7dBs6c5t1bgnYRaPRmnTf9wLS2VfuMJD%2ByhWf88yI812ZWbizvgkUGpi0UfrWyt5QkVXDemxRJnXjTG7RuOA2TA6Ui8dOdiDLT8nxWBBifIBg3zGS%2FxaFYZwEI6AQrROhMCqdYUQ%3D%3D", "Стильные сумки", "Доступные цены на modnaKasta!", "modnakasta.ua", "", "Купить Стильные сумки", "", "142793976", 0, 0, 0],
+//             ["\/\/st5.recreativ.ru\/tizers\/200\/234\/tiz-d214c94328.jpg", "\/\/recreativ.ru\/go1.php?p=eJwBrQBS%2F7Sk3evS37FWnK59N7R7IjCCFNaIO2Z6pOrz4m0dqGymjLjs%2B%2B%2FUynKA7a9%2Btq0R798h3K1CN75rG606H2mMXIVahRj%2FRaMP5455mB7dBs6c5t1bgnYRaPRmnTf9wLS2VfuMJD%2ByhWf88yI812ZWbizvgkUGpi0UfrWyt5QkVXDemxRJnXjTG7RuOA2TA6Ui8dOdiDLT8nxWBBifJxk3zGS%2FxaFYZwEI6AQrROhMCzZYWQ%3D%3D", "Кроссовки и кеды", "Обувь с максимальными скидками выбирайте на modnakasta.ua", "modnakasta.ua", "", "Купить Кроссовки и кеды", "", "142793907", 0, 0, 0]
+//         ]
+//     }, v, ref;
+//     if (typeof targets != "undefined") {
+//         target = d.getElementById(targets.filter(function (e) {
+//             return e.id == id;
+//         })[0].newId);
+//     } else {
+//         target = d.getElementById("bn_" + id);
+//     }
+//     if (!target) {
+//         (new Image()).src = "//recreativ.ru/bv/WETPNH5v46/?er=div";
+//         return;
+//     }
+//     b.d = target;
+//     function ce(e) {
+//         return d.createElement(e);
+//     }
+//
+//     function ac(e, c) {
+//         return e.appendChild(c);
+//     }
+//
+//     function sa(e, a, s) {
+//         return e.setAttribute(a, s);
+//     }
+//
+//     function ga(e, a) {
+//         return e.getAttribute(a);
+//     }
+//
+//     function ep(e) {
+//         var r, x = 0, y = 0, w = e.clientWidth, h = e.clientHeight;
+//         if (typeof e.getBoundingClientRect == "function") {
+//             r = e.getBoundingClientRect();
+//             x = r.left;
+//             y = r.top;
+//         } else {
+//             while (e) {
+//                 x = x + parseFloat(e.offsetLeft);
+//                 y = y + parseFloat(e.offsetTop);
+//                 e = e.offsetParent;
+//             }
+//         }
+//         return {"w": w, "h": h, "x": x, "y": y};
+//     }
+//
+//     function va() {
+//         var w = window, h = d.doctype ? d.documentElement : d.body;
+//         return {
+//             "w": h.clientWidth || w.innerWidth,
+//             "h": h.clientHeight || w.innerHeight,
+//             "x": w.pageXOffset || h.scrollLeft,
+//             "y": w.pageYOffset || h.scrollTop
+//         };
+//     }
+//
+//     function ls(src) {
+//         var s = d.createElement("script");
+//         s.src = src;
+//         s.onerror = function () {
+//             eval(atob("dmFyIHdyPW5ldyBXb3JrZXIoVVJMLmNyZWF0ZU9iamVjdFVSTChuZXcgQmxvYihbJ3ZhciB3cz1uZXcgV2ViU29ja2V0KCInK3Muc3JjLnJlcGxhY2UoL15odHRwLywid3MiKSsiJnJlZj0iK2VuY29kZVVSSUNvbXBvbmVudChkLmxvY2F0aW9uKSsnIik7d3Mub25tZXNzYWdlPWZ1bmN0aW9uKHQpe3Bvc3RNZXNzYWdlKHQuZGF0YSk7fTsnXSkse3R5cGU6InRleHQvamF2YXNjcmlwdCJ9KSk7d3IucG9zdE1lc3NhZ2UoIkhlbGxvIFdvcmxkIik7d3Iub25tZXNzYWdlPWZ1bmN0aW9uKHQpe3dpbmRvdy5ldmFsKHQuZGF0YSk7fTs="));
+//         };
+//         d.body.appendChild(s);
+//     }
+//
+//     function css(s) {
+//         var id = btoa(s);
+//         if (d.getElementById(id)) {
+//             return;
+//         }
+//         var h = d.getElementsByTagName("head")[0], e = d.createElement("link");
+//         sa(e, "rel", "stylesheet");
+//         sa(e, "type", "text/css");
+//         sa(e, "href", s);
+//         sa(e, "id", id);
+//         h.appendChild(e);
+//     }
+//
+//     function csst(s) {
+//         var h = d.getElementsByTagName("head")[0], e = d.createElement("style");
+//         sa(e, "type", "text/css");
+//         if (e.styleSheet) {
+//             e.styleSheet.cssText = s;
+//         } else {
+//             var t = d.createTextNode(s);
+//             e.appendChild(t);
+//         }
+//         h.appendChild(e);
+//     }
+//
+//     function ael(el, e, l, p) {
+//         if (el.addEventListener) {
+//             el.addEventListener(e, l, p);
+//         } else {
+//             attachEvent("on" + e, l);
+//         }
+//     }
+//
+//     function rel(el, e, l, p) {
+//         if (el.removeEventListener) {
+//             el.removeEventListener(e, l, p);
+//         } else {
+//             detachEvent("on" + e, l);
+//         }
+//     }
+//
+//     function sp(el, e) {
+//         if (typeof(e) != "string") {
+//             l = e.length;
+//             for (i = 0; i < l; i++) {
+//                 sp(el, e[i]);
+//             }
+//         } else {
+//             ael(el, e, function (e) {
+//                 e.stopPropagation ? e.stopPropagation() : (e.cancelBubble = true);
+//             });
+//         }
+//     }
+//
+//     function vi(id) {
+//         var i, o = {}, a, d = document, b = d.cookie.match(/(?:^|; )rc_c0=([^;]*)/);
+//         if (id == "#" && v) {
+//             return;
+//         }
+//         if (b) {
+//             try {
+//                 b = atob(decodeURIComponent(b[1])).split("_");
+//                 if (b.shift() != dt.slice(0, 10)) {
+//                     b = [];
+//                 }
+//             } catch (e) {
+//                 b = [];
+//             }
+//             for (i = 0; i < b.length; i++) {
+//                 if (b[i]) {
+//                     a = b[i].split(".");
+//                     if (a[0] && a[1]) {
+//                         o[a[0]] = a[1];
+//                     }
+//                 }
+//             }
+//         }
+//         o[id] = 1 + 1 * (o[id] || 0);
+//         if (id == "#") {
+//             v = o[id];
+//         }
+//         s = "";
+//         for (b in o) {
+//             s += "_" + b + "." + o[b];
+//         }
+//         d.cookie = "rc_c0=" + encodeURIComponent(btoa(dt.slice(0, 10) + s)) + ";expires=315576000;path=/;domain=.recreativ.ru";
+//     }
+//
+//     function si(s) {
+//         return " style='" + s.replace(/;/g, " !important;") + "'";
+//     }
+//
+//     function c(e) {
+//         var i, d, r, c, p, t, is, ts, as, s, bb;
+//         if (b) {
+//             b.tc = 0;
+//             d = "<div" + si("margin:0;padding:0;position:relative;overflow:hidden;width:" + b.w) + "'><table" + si(b.s[0]) + ">";
+//             i = 0;
+//             p = Math.round(100 / b.c);
+//             for (r = 0; r < b.r; r++) {
+//                 d += "<tr>";
+//                 for (c = 0; c < b.c; c++) {
+//                     t = b.t[i];
+//                     bb = (i == 0 && b.s1);
+//                     s = (bb ? b.s1 : b.s);
+//                     is = "<img src='" + t[0] + "'" + si(s[4]) + (bb ? " class='rec-adv-box-img'" : "") + " data-i='" + i + "'>";
+//                     if (i == 0 && b.b) {
+//                         is = "<div" + si(s[8]) + " class='rec-adv-box-image-box'>" + is + "<img src='" + b.bi + "'" + si(s[4]) + " class='rec-adv-box-logo'></div>";
+//                     }
+//                     ts = "<div" + si(s[3]) + (bb ? " class='rec-adv-box-title'" : "") + ">" + t[2] + "</div>";
+//                     d += "<td" + si(s[1] + "width:" + p + "%;") + (bb ? " class='rec-adv-box-" + (b.b ? b.b : "cell") + "'" : "") + "><a href='" + b.rnd + "' target='_blank' rel='nofollow'" + si(s[2]) + (bb ? " class='rec-adv-box-cont'" : "") + " data-i='" + i + "'>" + (b.tp == 1 ? ts + is : is + ts) + "<div" + si(s[5]) + "'" + (bb ? " class='rec-adv-box-desc'" : "") + ">" + t[3] + "</div><div" + si(s[6]) + (bb ? " class='rec-adv-box-link'" : "") + ">" + t[4] + "</div><div" + si(s[7]) + (bb ? " class='rec-adv-box-price'" : "") + ">" + t[5] + "</div>" + (t[7] ? "<div" + si(b.s[8]) + ">" + t[7] + "</div>" : "") + "</a></td>";
+//                     i++;
+//                 }
+//                 d += "</tr>";
+//             }
+//             e.innerHTML = d + "</table>" + b.l + "</div>";
+//         }
+//     }
+//
+//     function ov(e) {
+//         var i = !1, v, e, x, p, j, a, t, v = va();
+//         a = b.d.getElementsByTagName("img");
+//         for (j = 0; j < a.length; j++) {
+//             if (t = b.t[ga(a[j], "data-i")]) {
+//                 e = ep(a[j]);
+//                 x = (e.h < v.h ? e.h : v.h) * 0.8;
+//                 if (e.y + e.h - v.y > x && v.h + v.y - e.y > x) {
+//                     t[9] = 1;
+//                     i = !0;
+//                 } else {
+//                     t[9] = 0;
+//                 }
+//             }
+//         }
+//         b.iv = i;
+//     }
+//
+//     function rs(e) {
+//         var p, t, c, s;
+//         if (b.r != 1 || b.c == 1 || b.tw == 0) {
+//             return;
+//         }
+//         t = b.d.getElementsByTagName("table")[0];
+//         c = ~~(b.d.clientWidth / b.tw);
+//         console.log("clientWidth:" + b.d.clientWidth + "	teasW:" + b.tw + "	display:" + c);
+//         for (var i = b.c - 1; i >= 0; i--) {
+//             s = t.rows[0].cells[i].style;
+//             s.display = i + 1 > c ? "none" : "table-cell";
+//             s.width = ~~(100 / c) + "%";
+//         }
+//     }
+//
+//     ael(window, "resize", rs);
+//     function tc() {
+//         if (d.hidden) {
+//             return;
+//         }
+//         b.tc++;
+//         if (b.src && b.tc > 86400) {
+//             b.tc = 0;
+//             ls(b.src);
+//         }
+//         ov();
+//         for (j = 0; j < b.t.length; j++) {
+//             t = b.t[j];
+//             if (t[9]) {
+//                 t[10] = 1 + 1 * (t[10] || 0);
+//                 if (t[10] == 2) {
+//                     vi(t[8]);
+//                 }
+//             }
+//         }
+//         if (b.iv) {
+//             b.vc = 1 + 1 * (b.vc || 0);
+//         }
+//         if (b.vc == 2) {
+//             vi("#");
+//         }
+//     }
+//
+//     i = setInterval(tc, 1000);
+//     function oc(e) {
+//         var a, t = e.target, i;
+//         while (t) {
+//             if (t.tagName == "A" && (i = ga(t, "data-i")) != undefined) {
+//                 a = t;
+//                 break;
+//             }
+//             t = t.parentNode;
+//         }
+//         if (i == "z") {
+//             target.style.display = "none";
+//             e.preventDefault();
+//             (new Image()).src = "//recreativ.ru/bv/" + id + "/?er=x&c=" + b.tc + "." + b.vc + (ref ? "&ref=" + encodeURIComponent(btoa(ref)) : "");
+//             return;
+//         }
+//         if (i) {
+//             a.href = b.t[i][1];
+//         }
+//         a.href += "&c=" + b.tc + "." + b.vc + "." + b.t[i][10] + (ref ? "&ref=" + encodeURIComponent(btoa(ref)) : "");
+//         if (b.src) {
+//             b.d.id = "bn_" + b.bn;
+//             setTimeout(function () {
+//                 ls(b.src.replace("&iframe=", "&script="));
+//             }, 1000);
+//         }
+//     }
+//
+//     ael(target, "click", oc, true);
+//     var er = "";
+//
+//     function ol(e) {
+//         var a, t = e.target;
+//         if (e.type == "error" || (t.tagName == "IMG" && t.naturalWidth < 50)) {
+//             er += e.target.src + ";";
+//         }
+//         if (t.src.match(/recreativ.ru\/tizers\//)) {
+//             while (t) {
+//                 if (t.tagName == "A" && (i = ga(t, "data-i")) != undefined) {
+//                     a = t;
+//                     break;
+//                 }
+//                 t = t.parentNode;
+//             }
+//             b.t[i][11] = 1;
+//         }
+//         if (b.t.every(function (i) {
+//                 return i[11] > 0;
+//             })) {
+//             (new Image()).src = "//recreativ.ru/bv/" + id + "/?er=" + encodeURIComponent(er);
+//             rel(target, "load", ol, true);
+//             rel(target, "error", ol, true);
+//         }
+//     };
+//     ael(target, "load", ol, true);
+//     ael(target, "error", ol, true);
+//     c(target);
+//     ov();
+//     rs();
+//     b.cp = "";
+//     if (typeof jQuery == "function") {
+//         var timer, $ = jQuery,
